@@ -28,9 +28,9 @@
     "current_usd_spend": 0.0
   },
   "token_usage": {
-    "total": 88096,
+    "total": 192538,
     "agents": {
-      "ScrumOrchestrator": 88096
+      "ScrumOrchestrator": 192538
     }
   },
   "story_estimates": {},
