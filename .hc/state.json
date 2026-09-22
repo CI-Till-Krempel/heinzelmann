@@ -1,0 +1,66 @@
+{
+  "version": "1.0.0",
+  "product_vision": "",
+  "product_goals": [],
+  "architecture_vision": "",
+  "product_backlog": [],
+  "definition_of_done": [
+    "Code reviewed",
+    "Automated tests passing",
+    "Acceptance criteria met",
+    "No critical security issues",
+    "Docs updated if needed",
+    "specs/ROADMAP.md updated via update_roadmap to reflect this story's completed status",
+    "Actual tokens spent logged via log_story_tokens"
+  ],
+  "sprint_goal": "",
+  "sprint_number": 0,
+  "sprint_backlog_pr_sprint": 0,
+  "sprint_backlog": [],
+  "impediment_log": [],
+  "retro_actions": [],
+  "decision_log": [],
+  "sprint_report": "",
+  "budgets": {
+    "total": 1000000,
+    "total_usd": 20.0,
+    "agents": {},
+    "current_usd_spend": 0.0
+  },
+  "token_usage": {
+    "total": 88096,
+    "agents": {
+      "ScrumOrchestrator": 88096
+    }
+  },
+  "story_estimates": {},
+  "sprint_report_kpis": null,
+  "kpi_update_count": 0,
+  "kpi_baseline": 0,
+  "backlog_scope_complete": false,
+  "repo": {
+    "url": "git@github.com:CI-Till-Krempel/heinzelmann.git",
+    "local_path": "/Users/tkrempel/Projekte/heinzelmann",
+    "default_branch": "main"
+  },
+  "messages": [
+    {
+      "role": "user",
+      "content": "Hi lets set up"
+    }
+  ],
+  "hc_version": "0.1.0",
+  "retro_baseline": 0,
+  "human_approvals": [],
+  "sprint_approval_baseline": 0,
+  "release_approval_baseline": 0,
+  "dev_touch_baseline": 0,
+  "sprint_files_touched": [],
+  "last_check_build": null,
+  "pr_review_calls": {},
+  "architect_review_baseline": 0,
+  "qa_review_baseline": 0,
+  "sprint_report_pending_release": false,
+  "blocking_interactions": [],
+  "budget_reset_since_last_sprint_start": true
+}
