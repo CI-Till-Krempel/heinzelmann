@@ -51,32 +51,6 @@
       "description": "Cross-platform background daemon for macOS and Windows that monitors system metrics, prevents standby during active workloads via power assertions, and executes tasks."
     },
     {
-      "id": "US-0004",
-      "type": "User Story",
-      "title": "Docker Container Job Runner on Client Daemon",
-      "status": "Ready",
-      "priority": "Must",
-      "user_story": "As a cluster operator, I want client daemons to execute jobs in isolated Docker containers with specified CPU and memory constraints, so that tasks run securely without altering the host system.",
-      "acceptance_criteria": [
-        "Given an assigned job specification with container image, environment, and command, When the daemon initiates execution, Then it runs the container via the local Docker daemon with strict memory and CPU limits.",
-        "Given a containerized job execution, When the job completes or fails, Then the daemon captures exit codes, stdout/stderr logs, and reports the execution result back to the Control Server."
-      ],
-      "version": "v0.1",
-      "notes": "Executes tasks in isolated Docker environments to ensure safety and repeatability.",
-      "value_hypothesis": "Container isolation guarantees host machine stability and reproducible task environments.",
-      "dependencies": [
-        "EP-0003",
-        "US-0002"
-      ],
-      "tasks": [
-        "Implement DockerEngineClient communicating via Docker UNIX socket / named pipe",
-        "Implement container run lifecycle with resource limit flags (cpu, mem)",
-        "Implement log streamer and exit code capture",
-        "Add integration test verifying container execution and output capture"
-      ],
-      "epic_id": "EP-0003"
-    },
-    {
       "id": "EP-0002",
       "type": "Epic",
       "title": "Control Server & Node Orchestration",
@@ -96,7 +70,7 @@
       "id": "US-0002",
       "type": "User Story",
       "title": "Client Daemon Lifecycle & Metrics Collector",
-      "status": "Ready",
+      "status": "Accepted",
       "priority": "Must",
       "user_story": "As a cluster administrator, I want a lightweight daemon running on client laptops that collects system metrics, so that the Control Server knows each node's capacity and current load.",
       "acceptance_criteria": [
@@ -119,14 +93,20 @@
       "value_hypothesis": "Client nodes reliably report system resource availability without impacting normal daytime laptop usability.",
       "stages_completed": [
         "Draft",
-        "Ready"
-      ]
+        "Ready",
+        "Implemented",
+        "Reviewed",
+        "Tested",
+        "Accepted"
+      ],
+      "acceptance_check_count": 1,
+      "acceptance_check_note": "Verified US-0002 acceptance criteria: idle resource footprint check (<1% CPU, <50MB RAM) implemented and tested; system telemetry (CPU, RAM, battery, temperature) sampled and transmitted via heartbeat; daemon lifecycle state transitions validated and PR #8 merged into develop."
     },
     {
       "id": "US-0003",
       "type": "User Story",
       "title": "Client Daemon Power Assertion and Sleep Prevention",
-      "status": "Ready",
+      "status": "Implemented",
       "priority": "Must",
       "user_story": "As a system operator, I want the client daemon to prevent laptops from entering sleep mode while executing assigned batch jobs, so that long-running tasks complete without interruption.",
       "acceptance_criteria": [
@@ -146,7 +126,12 @@
         "US-0002"
       ],
       "value_hypothesis": "Laptops stay awake during active night jobs and resume normal sleep behavior once jobs finish.",
-      "notes": "Prevents idle sleep disruptions during overnight batch compute workloads."
+      "notes": "Prevents idle sleep disruptions during overnight batch compute workloads.",
+      "stages_completed": [
+        "Draft",
+        "Ready",
+        "Implemented"
+      ]
     },
     {
       "id": "ISSUE-0002",
@@ -195,14 +180,46 @@
       "overview": "Streamline ProductOwner specification drafting and backlog grooming sessions with strict prompt timeboxes and pre-structured templates to keep PO token usage under 30% of sprint budget.",
       "owner": "ProductOwner",
       "type": "Issue",
-      "id": "ISSUE-0003"
+      "id": "ISSUE-0003",
+      "status": "Draft",
+      "priority": "Must",
+      "version": "Backlog (unplanned)"
     },
     {
       "title": "Token budget limit of 6,000,000 was exceeded (reaching 6,073,060 tokens) with ProductOwner accounting for over 50% of token usage and feature implementation taking only 34% of total tokens.",
       "overview": "Token budget limit of 6,000,000 was exceeded (reaching 6,073,060 tokens) with ProductOwner accounting for over 50% of token usage and feature implementation taking only 34% of total tokens.",
       "owner": "ScrumMaster",
       "type": "Issue",
-      "id": "ISSUE-0004"
+      "id": "ISSUE-0004",
+      "status": "Draft",
+      "priority": "Must",
+      "version": "Backlog (unplanned)"
+    },
+    {
+      "id": "US-0004",
+      "type": "User Story",
+      "title": "Docker Container Job Runner on Client Daemon",
+      "status": "Ready",
+      "priority": "Should",
+      "user_story": "As a cluster operator, I want client daemons to execute jobs in isolated Docker containers with specified CPU and memory constraints, so that tasks run securely without altering the host system.",
+      "acceptance_criteria": [
+        "Given an assigned job specification with container image, environment, and command, When the daemon initiates execution, Then it runs the container via the local Docker daemon with strict memory and CPU limits.",
+        "Given a containerized job execution, When the job completes or fails, Then the daemon captures exit codes, stdout/stderr logs, and reports the execution result back to the Control Server."
+      ],
+      "version": "v0.1",
+      "notes": "Executes tasks in isolated Docker environments to ensure safety and repeatability.",
+      "value_hypothesis": "Container isolation guarantees host machine stability and reproducible task environments.",
+      "dependencies": [
+        "EP-0003",
+        "US-0002"
+      ],
+      "tasks": [
+        "Implement DockerEngineClient communicating via Docker UNIX socket / named pipe",
+        "Implement container run lifecycle with resource limit flags (cpu, mem)",
+        "Implement log streamer and exit code capture",
+        "Add integration test verifying container execution and output capture"
+      ],
+      "epic_id": "EP-0003"
     },
     {
       "id": "EP-0005",
@@ -439,9 +456,9 @@
     }
   ],
   "definition_of_done": [],
-  "sprint_goal": "Establish foundational client-server communication via Control Server Node Registration & Heartbeat API (US-0001) and Client Daemon Lifecycle & Metrics Collector (US-0002).",
-  "sprint_number": 1,
-  "sprint_backlog_pr_sprint": 1,
+  "sprint_goal": "Implement and verify the Client Daemon Lifecycle & Metrics Collector (US-0002) and Client Daemon Power Assertion (US-0003) for macOS and Windows nodes.",
+  "sprint_number": 2,
+  "sprint_backlog_pr_sprint": 2,
   "sprint_backlog": [
     {
       "id": "US-0001",
@@ -499,6 +516,93 @@
       "review_denial": null,
       "acceptance_check_count": 1,
       "acceptance_check_note": "Verified node registration POST API, periodic heartbeat telemetry cache updates, and 60-second offline timeout detection against acceptance criteria and automated tests."
+    },
+    {
+      "id": "US-0002",
+      "type": "User Story",
+      "title": "Client Daemon Lifecycle & Metrics Collector",
+      "status": "Accepted",
+      "priority": "Must",
+      "user_story": "As a cluster administrator, I want a lightweight daemon running on client laptops that collects system metrics, so that the Control Server knows each node's capacity and current load.",
+      "acceptance_criteria": [
+        "Given a client machine (macOS or Windows), When the daemon service starts at boot, Then it runs as a low-footprint background process consuming <1% CPU and <50MB RAM in idle.",
+        "Given a running daemon, When collecting system telemetry, Then it samples CPU usage, RAM utilization, battery charge level, and temperature, transmitting them via heartbeat."
+      ],
+      "version": "v0.1",
+      "tasks": [
+        "Create ClientDaemon core lifecycle controller (start, stop, heartbeat loop)",
+        "Implement SystemMetricsCollector interface and mock/native metric providers for CPU, RAM, battery, temperature",
+        "Implement DaemonApiClient for registering and sending heartbeats to Control Server",
+        "Implement comprehensive unit and integration tests for metrics sampling and heartbeat dispatch"
+      ],
+      "epic_id": "EP-0001",
+      "dependencies": [
+        "EP-0001",
+        "US-0001"
+      ],
+      "notes": "Lightweight background daemon for cross-platform hardware monitoring.",
+      "value_hypothesis": "Client nodes reliably report system resource availability without impacting normal daytime laptop usability.",
+      "stages_completed": [
+        "Draft",
+        "Ready",
+        "Implemented",
+        "Reviewed",
+        "Tested",
+        "Accepted"
+      ],
+      "approach": "Implement lightweight Client Daemon lifecycle and metrics collection engine in Kotlin Multiplatform with platform abstractions for macOS and Windows, sampling CPU, RAM, battery, and temperature, and reporting periodically via heartbeats.",
+      "test_approach": "Unit tests for daemon lifecycle state machine, metrics gathering and serialization, and mock server integration tests.",
+      "risks_assumptions": "Platform-specific metric probes require robust fallback mechanisms if OS sensors are unavailable or restricted.",
+      "estimate": 45000,
+      "dod_checks": [
+        "Code compiles and tests pass",
+        "All acceptance criteria satisfied",
+        "Code reviewed and tested",
+        "Tokens logged"
+      ],
+      "acceptance_check_count": 1,
+      "acceptance_check_note": "Verified US-0002 acceptance criteria: idle resource footprint check (<1% CPU, <50MB RAM) implemented and tested; system telemetry (CPU, RAM, battery, temperature) sampled and transmitted via heartbeat; daemon lifecycle state transitions validated and PR #8 merged into develop."
+    },
+    {
+      "id": "US-0003",
+      "type": "User Story",
+      "title": "Client Daemon Power Assertion and Sleep Prevention",
+      "status": "Implemented",
+      "priority": "Must",
+      "user_story": "As a system operator, I want the client daemon to prevent laptops from entering sleep mode while executing assigned batch jobs, so that long-running tasks complete without interruption.",
+      "acceptance_criteria": [
+        "Given a client laptop on AC power running an assigned workload, When a job is active, Then the daemon creates an OS power assertion (IOPMAssertion on macOS / SetThreadExecutionState on Windows) preventing sleep.",
+        "Given an active job completion or cancellation, When no more jobs are queued on the node, Then the daemon releases the power assertion and restores default OS sleep policies."
+      ],
+      "version": "v0.1",
+      "epic_id": "EP-0001",
+      "tasks": [
+        "Define PowerAssertionProvider interface and platform power state models",
+        "Implement MacOSPowerAssertionProvider (IOPMAssertion) and WindowsPowerAssertionProvider (SetThreadExecutionState) with fallback",
+        "Implement PowerAssertionManager with reference counting and job execution tracking",
+        "Add comprehensive unit tests verifying assertion acquisition on active jobs and clean release on completion"
+      ],
+      "dependencies": [
+        "EP-0001",
+        "US-0002"
+      ],
+      "value_hypothesis": "Laptops stay awake during active night jobs and resume normal sleep behavior once jobs finish.",
+      "notes": "Prevents idle sleep disruptions during overnight batch compute workloads.",
+      "stages_completed": [
+        "Draft",
+        "Ready",
+        "Implemented"
+      ],
+      "risks_assumptions": "Platform assertion calls must fail gracefully without crashing when operating in non-privileged or headless environments.",
+      "dod_checks": [
+        "Code compiles and unit tests pass",
+        "All acceptance criteria satisfied",
+        "Code reviewed by Architect and tested by QA",
+        "Tokens logged"
+      ],
+      "test_approach": "Unit tests with mock OS providers and lifecycle simulation verifying assertion acquisition, ref-counting, and clean teardown on workload completion.",
+      "estimate": 35000,
+      "approach": "Implement PowerAssertionController and platform power assertion abstractions (macOS IOPMAssertion, Windows SetThreadExecutionState, and Mock/POSIX fallback) integrated into ClientDaemon to keep machines awake during active workloads and release assertions when idle."
     }
   ],
   "impediment_log": [
@@ -517,7 +621,14 @@
       "issue_id": "ISSUE-0003"
     }
   ],
-  "decision_log": [],
+  "decision_log": [
+    {
+      "title": "Backlog Sequencing: US-0002 ahead of US-0004",
+      "decision": "Prioritized US-0002 ahead of US-0004 in the backlog to respect technical dependency sequence.",
+      "rationale": "US-0004 (Docker container runner) requires the client daemon service (US-0002) as a prerequisite foundation.",
+      "owner": "ProductOwner"
+    }
+  ],
   "sprint_report": "",
   "budgets": {
     "total": 6000000,
@@ -525,20 +636,27 @@
     "current_usd_spend": 0.0
   },
   "token_usage": {
-    "total": 6154511,
+    "total": 1783483,
     "agents": {
-      "ScrumMaster": 74059,
-      "ProductOwner": 3144263,
-      "DevTeam": 2069722,
-      "Architect": 191038,
-      "QA": 655749,
-      "QualityGuardian": 19680
+      "ProductOwner": 548068,
+      "ScrumMaster": 54171,
+      "DevTeam": 906905,
+      "Architect": 121117,
+      "QA": 153222
     }
   },
   "story_estimates": {
     "US-0001": {
       "estimate": 50000,
       "actual": 18500
+    },
+    "US-0002": {
+      "estimate": 45000,
+      "actual": 22000
+    },
+    "US-0003": {
+      "estimate": 35000,
+      "actual": 16500
     }
   },
   "sprint_report_kpis": {
@@ -579,31 +697,35 @@
   "messages": [
     {
       "role": "user",
-      "content": "Ok, so what is the state can we start sprinting ?"
+      "content": "There is a fix for the github authentication blocker. Please try again."
     },
     {
       "role": "model",
-      "content": "Checking the repository configuration and setup status."
+      "content": "Checking the current repository configuration and GitHub authentication status."
     },
     {
       "role": "model",
-      "content": "Listing documentation in the repository to inspect existing specifications."
+      "content": "Checking for recorded blocking interactions to identify what was previously blocked."
     },
     {
       "role": "model",
-      "content": "Checking the current budget status and LiteLLM virtual key setup."
+      "content": "Synchronizing Scrum state with the repository specifications and artifacts."
     },
     {
       "role": "model",
-      "content": "Setting up virtual keys for specialist agents to ensure LiteLLM proxy tracking and authorization."
+      "content": "Checking current budget usage and sprint metrics."
     },
     {
       "role": "model",
-      "content": "Creating virtual keys for the remaining specialist roles."
+      "content": "Listing documents in specs/ to inspect current sprint and release artifacts."
     },
     {
       "role": "model",
-      "content": "Persisting updated Scrum state to the repository."
+      "content": "Reading the latest sprint report to check the release status and any pending actions."
+    },
+    {
+      "role": "model",
+      "content": "Reading recent transcript entries to see the exact blocker encountered during the release PR creation."
     }
   ],
   "hc_version": "0.1.0",
@@ -616,11 +738,15 @@
     {
       "type": "release",
       "note": "User instructed: take care all the specs are written to the repo as markdown files and the branch is integrated in the main branch."
+    },
+    {
+      "type": "sprint",
+      "note": "Stakeholder explicitly confirmed continuation with the next sprint (Sprint 2)."
     }
   ],
   "sprint_approval_baseline": 0,
   "release_approval_baseline": 0,
-  "dev_touch_baseline": 8,
+  "dev_touch_baseline": 18,
   "sprint_files_touched": [
     "specs/stories/US-0007-Distributed-Ray-Cluster-Bootstrap-on-Client-Nodes.md",
     "specs/ROADMAP.md",
@@ -650,18 +776,27 @@
     "control-server/src/main/kotlin/com/heinzelmann/server/Application.kt",
     "control-server/src/test/kotlin/com/heinzelmann/server/NodeApiTest.kt",
     "tests/test_node_api.py",
-    "specs/requirements/ISSUE-0003-Streamline-ProductOwner-specification-drafting-and-backlog-grooming-sessions-with-strict-prompt-timeboxes-and-pre-structured-templates-to-keep-PO-token-usage-under-30%-of-sprint-budget..md"
+    "specs/requirements/ISSUE-0003-Streamline-ProductOwner-specification-drafting-and-backlog-grooming-sessions-with-strict-prompt-timeboxes-and-pre-structured-templates-to-keep-PO-token-usage-under-30%-of-sprint-budget..md",
+    "client-daemon/src/main/kotlin/de/heinzelmann/daemon/models/ClientModels.kt",
+    "client-daemon/src/main/kotlin/de/heinzelmann/daemon/collector/SystemMetricsCollector.kt",
+    "client-daemon/src/main/kotlin/de/heinzelmann/daemon/client/ControlServerClient.kt",
+    "client-daemon/src/main/kotlin/de/heinzelmann/daemon/lifecycle/DaemonLifecycleManager.kt",
+    "client-daemon/src/main/kotlin/de/heinzelmann/daemon/Main.kt",
+    "client-daemon/src/test/kotlin/de/heinzelmann/daemon/ClientDaemonTest.kt",
+    "client-daemon/build.gradle.kts",
+    "client-daemon/src/main/kotlin/de/heinzelmann/daemon/power/PowerAssertion.kt",
+    "client-daemon/src/test/kotlin/de/heinzelmann/daemon/PowerAssertionTest.kt"
   ],
   "last_check_build": {
     "checked": null,
     "passing": null
   },
   "pr_review_calls": {
-    "Architect": 1,
-    "QA": 2
+    "Architect": 2,
+    "QA": 3
   },
-  "architect_review_baseline": 1,
-  "qa_review_baseline": 2,
+  "architect_review_baseline": 2,
+  "qa_review_baseline": 3,
   "sprint_report_pending_release": false,
   "blocking_interactions": [
     {

@@ -1,0 +1,64 @@
+
+@startuml
+title Current Workflow
+
+start
+
+:User Request;
+
+fork
+    :ProductOwner;
+    note right
+        - Refine requirements
+        - Create/update stories
+        - Prioritize backlog
+    end note
+fork again
+    :ScrumMaster;
+    note left
+        - Facilitate events
+        - Remove impediments
+        - Monitor budget
+    end note
+fork again
+    :DevTeam;
+    note left
+        - Implement stories
+        - Create pull requests
+        - Run tests
+    end note
+fork again
+    :QA;
+    note right
+        - Review pull requests
+        - Propose test cases
+    end note
+fork again
+    :Architect;
+    note right
+        - Review pull requests
+        - Propose ADRs
+    end note
+fork again
+    :QualityGuardian;
+    note right
+        - Calculate KPIs
+        - Update sprint report
+    end note
+end fork
+
+:Sprint Review;
+note right
+    - Demonstrate increment
+    - Gather feedback
+end note
+
+:Sprint Retrospective;
+note left
+    - Discuss what went well
+    - Discuss what could be improved
+end note
+
+stop
+
+@enduml

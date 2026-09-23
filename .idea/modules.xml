@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/control-server/control-server_main.iml" filepath="$PROJECT_DIR$/.idea/modules/control-server/control-server_main.iml" group="heinzelmann/control-server" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/control-server/control-server_test.iml" filepath="$PROJECT_DIR$/.idea/modules/control-server/control-server_test.iml" group="heinzelmann/control-server" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/heinzelmann.iml" filepath="$PROJECT_DIR$/.idea/modules/heinzelmann.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/control-server/heinzelmann.control-server.iml" filepath="$PROJECT_DIR$/.idea/modules/control-server/heinzelmann.control-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/control-server/heinzelmann.control-server.main.iml" filepath="$PROJECT_DIR$/.idea/modules/control-server/heinzelmann.control-server.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/control-server/heinzelmann.control-server.test.iml" filepath="$PROJECT_DIR$/.idea/modules/control-server/heinzelmann.control-server.test.iml" />
+    </modules>
+  </component>
+</project>
