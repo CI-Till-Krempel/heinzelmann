@@ -139,7 +139,8 @@
       "type": "Epic",
       "title": "Distributed LLM & Ray Inference Engine",
       "status": "Open",
-      "priority": "Should"
+      "priority": "Should",
+      "description": "Distributed inference framework connecting idle cluster nodes using Ray and Ollama to host and run open-source coding LLMs."
     },
     {
       "id": "US-0006",
@@ -361,10 +362,10 @@
     "current_usd_spend": 0.0
   },
   "token_usage": {
-    "total": 1002609,
+    "total": 1048058,
     "agents": {
       "ScrumMaster": 57121,
-      "ProductOwner": 945488
+      "ProductOwner": 990937
     }
   },
   "story_estimates": {},
@@ -428,7 +429,8 @@
     "specs/stories/US-0012-Energy-Consumption-Correlation-and-Reporting-per-Job.md",
     "specs/stories/US-0001-Control-Server-Node-Registration-&-Heartbeat-API.md",
     "specs/stories/EP-0001-Client-Daemon-&-Power-Management.md",
-    "specs/stories/EP-0002-Control-Server-&-Node-Orchestration.md"
+    "specs/stories/EP-0002-Control-Server-&-Node-Orchestration.md",
+    "specs/stories/EP-0003-Containerized-Job-Execution.md"
   ],
   "last_check_build": null,
   "pr_review_calls": {},
