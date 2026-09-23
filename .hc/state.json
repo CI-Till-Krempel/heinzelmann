@@ -134,14 +134,6 @@
       ]
     },
     {
-      "id": "ISSUE-0002",
-      "type": "Issue",
-      "title": "Token budget (1,000,000 tokens) was exhausted during initial backlog refinement and architecture modeling before Sprint 1 stories could be estimated or advanced.",
-      "status": "Draft",
-      "priority": "Must",
-      "version": "Backlog (unplanned)"
-    },
-    {
       "id": "US-0005",
       "type": "User Story",
       "title": "Control Server Job Queue and Dispatcher",
@@ -465,6 +457,14 @@
       "version": "v0.2"
     },
     {
+      "id": "ISSUE-0002",
+      "type": "Issue",
+      "title": "Token budget (1,000,000 tokens) was exhausted during initial backlog refinement and architecture modeling before Sprint 1 stories could be estimated or advanced.",
+      "status": "Draft",
+      "priority": "Won't",
+      "version": "Backlog (unplanned)"
+    },
+    {
       "id": "ISSUE-0001",
       "type": "Issue",
       "title": "test",
@@ -744,9 +744,9 @@
     "current_usd_spend": 0.0
   },
   "token_usage": {
-    "total": 1050055,
+    "total": 1098198,
     "agents": {
-      "ProductOwner": 789846,
+      "ProductOwner": 837989,
       "ScrumMaster": 71237,
       "DevTeam": 867963,
       "Architect": 121117,
