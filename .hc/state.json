@@ -106,7 +106,7 @@
       "id": "US-0003",
       "type": "User Story",
       "title": "Client Daemon Power Assertion and Sleep Prevention",
-      "status": "Tested",
+      "status": "Accepted",
       "priority": "Must",
       "user_story": "As a system operator, I want the client daemon to prevent laptops from entering sleep mode while executing assigned batch jobs, so that long-running tasks complete without interruption.",
       "acceptance_criteria": [
@@ -132,7 +132,8 @@
         "Ready",
         "Implemented",
         "Reviewed",
-        "Tested"
+        "Tested",
+        "Accepted"
       ],
       "acceptance_check_count": 1,
       "acceptance_check_note": "Verified US-0003 acceptance criteria: OS power assertions (IOPMAssertion on macOS / SetThreadExecutionState on Windows) prevent sleep during active jobs and release properly upon workload completion."
@@ -589,7 +590,7 @@
       "id": "US-0003",
       "type": "User Story",
       "title": "Client Daemon Power Assertion and Sleep Prevention",
-      "status": "Tested",
+      "status": "Accepted",
       "priority": "Must",
       "user_story": "As a system operator, I want the client daemon to prevent laptops from entering sleep mode while executing assigned batch jobs, so that long-running tasks complete without interruption.",
       "acceptance_criteria": [
@@ -615,7 +616,8 @@
         "Ready",
         "Implemented",
         "Reviewed",
-        "Tested"
+        "Tested",
+        "Accepted"
       ],
       "risks_assumptions": "Platform assertion calls must fail gracefully without crashing when operating in non-privileged or headless environments.",
       "dod_checks": [
@@ -758,9 +760,9 @@
     "current_usd_spend": 0.0
   },
   "token_usage": {
-    "total": 1764577,
+    "total": 1818121,
     "agents": {
-      "ProductOwner": 988671,
+      "ProductOwner": 1042215,
       "ScrumMaster": 71237,
       "DevTeam": 1039125,
       "Architect": 251652,
