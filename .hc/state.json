@@ -10,13 +10,25 @@
       "title": "Control Server Job Queue and Dispatcher",
       "status": "Ready",
       "priority": "Must",
-      "user_story": "As an IT administrator or engineer, I want a central job queue and dispatching service on the Control Server, so that batch workloads are automatically routed and scheduled to eligible, available client nodes.",
+      "user_story": "As a cluster administrator, I want the Control Server to queue jobs and dispatch them to eligible online nodes based on availability and resource capacity, so that workloads are completed efficiently across the fleet.",
       "acceptance_criteria": [
-        "Given submitted batch jobs in the Control Server queue, When active nodes with sufficient free capacity (CPU/RAM) are available, Then the server assigns the job to an eligible node.",
-        "Given an assigned job, When the node daemon accepts the job, Then the server transitions job state to Running.",
-        "Given a node failure or heartbeat timeout during an active job, When the node is marked Offline, Then the server reschedules or flags the job as Failed according to retry policy."
+        "Given batch job submissions via API, When jobs are enqueued, Then the Control Server schedules and assigns them to available nodes matching resource constraints and requirements.",
+        "Given an assigned job, When a node stops reporting heartbeats before job completion, Then the Control Server detects the failure and re-queues the job for execution on an alternate available node."
       ],
-      "version": "Backlog (unplanned)"
+      "version": "Backlog (unplanned)",
+      "value_hypothesis": "Jobs are distributed evenly and automatically failover when nodes disconnect unexpectedly.",
+      "tasks": [
+        "Design JobQueue repository and state machine (Queued, Dispatched, Running, Succeeded, Failed)",
+        "Implement node scheduling strategy based on live resource metrics",
+        "Implement job dispatching protocol over HTTP/WebSocket",
+        "Add automated tests for job queuing, assignment, and failure recovery"
+      ],
+      "notes": "Central job dispatching and scheduling engine on the Control Server.",
+      "dependencies": [
+        "EP-0002",
+        "US-0001"
+      ],
+      "epic_id": "EP-0002"
     },
     {
       "id": "US-0001",
@@ -400,10 +412,10 @@
     "current_usd_spend": 0.0
   },
   "token_usage": {
-    "total": 1281045,
+    "total": 1329590,
     "agents": {
       "ScrumMaster": 57121,
-      "ProductOwner": 1223924
+      "ProductOwner": 1272469
     }
   },
   "story_estimates": {},
@@ -473,7 +485,8 @@
     "specs/stories/EP-0005-Cluster-Admin-Dashboard-&-Policy-Management.md",
     "specs/stories/EP-0006-Smart-Plug-Energy-Monitoring.md",
     "specs/stories/US-0002-Client-Daemon-Lifecycle-&-Metrics-Collector.md",
-    "specs/stories/US-0003-Client-Daemon-Power-Assertion-and-Sleep-Prevention.md"
+    "specs/stories/US-0003-Client-Daemon-Power-Assertion-and-Sleep-Prevention.md",
+    "specs/stories/US-0004-Docker-Container-Job-Runner-on-Client-Daemon.md"
   ],
   "last_check_build": null,
   "pr_review_calls": {},
