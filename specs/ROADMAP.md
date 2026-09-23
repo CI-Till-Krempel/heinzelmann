@@ -69,23 +69,23 @@ Goals
 - Define and enforce scheduling policies (night-time windows, battery and thermal limits)
 - Integrate smart plug telemetry (Shelly/Tapo) and per-job energy consumption reporting
 Stories
-- [US-0006] Admin Dashboard Node Status and Live Metrics View
-  - [ ] DRAFT
-  - [ ] READY
-  - [ ] IMPLEMENTED
-  - [ ] REVIEWED
-  - [ ] TESTED
-  - [ ] ACCEPTED
 - [US-0007] Distributed Ray Cluster Bootstrap on Client Nodes
   - [x] DRAFT
   - [x] READY
-  - [ ] IMPLEMENTED
+  - [x] IMPLEMENTED
   - [ ] REVIEWED
   - [ ] TESTED
   - [ ] ACCEPTED
 - [US-0008] Ollama Model Runner and Local Inference Execution
   - [x] DRAFT
   - [x] READY
+  - [ ] IMPLEMENTED
+  - [ ] REVIEWED
+  - [ ] TESTED
+  - [ ] ACCEPTED
+- [US-0006] Admin Dashboard Node Status and Live Metrics View
+  - [ ] DRAFT
+  - [ ] READY
   - [ ] IMPLEMENTED
   - [ ] REVIEWED
   - [ ] TESTED
