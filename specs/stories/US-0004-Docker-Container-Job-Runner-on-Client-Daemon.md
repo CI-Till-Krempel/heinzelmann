@@ -2,7 +2,7 @@
 
 - Story ID: US-0004
 - Title: Docker Container Job Runner on Client Daemon
-- Status: Ready
+- Status: Implemented
 - Priority: Must
 - Owner: Scrum Team
 - Last Updated: 2026-09-23
@@ -18,10 +18,11 @@ Container isolation guarantees host machine stability and reproducible task envi
 - Dependencies: ['EP-0003', 'US-0002']
 
 ## Test Approach
-
+Unit tests mocking Docker engine responses; integration tests verifying execution, limit application, log capture, and status reporting.
 
 ### Tasks
-- Implement DockerEngineClient communicating via Docker UNIX socket / named pipe
-- Implement container run lifecycle with resource limit flags (cpu, mem)
-- Implement log streamer and exit code capture
-- Add integration test verifying container execution and output capture
+- Implement DockerEngineClient communicating via Docker API socket
+- Implement ContainerJobRunner with strict CPU and memory limits
+- Capture container stdout/stderr logs and exit code
+- Implement job result reporting to Control Server
+- Add automated unit and integration tests
