@@ -142,14 +142,6 @@
       "version": "Backlog (unplanned)"
     },
     {
-      "id": "ISSUE-0001",
-      "type": "Issue",
-      "title": "test",
-      "status": "Draft",
-      "priority": "Must",
-      "version": "Backlog (unplanned)"
-    },
-    {
       "id": "US-0005",
       "type": "User Story",
       "title": "Control Server Job Queue and Dispatcher",
@@ -224,6 +216,20 @@
         "Add integration test verifying container execution and output capture"
       ],
       "epic_id": "EP-0003"
+    },
+    {
+      "id": "ISSUE-0005",
+      "type": "Issue",
+      "title": "Validate story dependency sequences during sprint planning to ensure prerequisite foundational stories always hold higher priority than downstream dependent stories.",
+      "status": "Draft",
+      "priority": "Must"
+    },
+    {
+      "id": "ISSUE-0007",
+      "type": "Issue",
+      "title": "Backlog priority order conflict: US-0004 was marked 'Must' while depending on prerequisite US-0002, causing advance_story_stage to reject advancing US-0002 to Implemented until PO reprioritized US-0004.",
+      "status": "Draft",
+      "priority": "Must"
     },
     {
       "id": "EP-0005",
@@ -459,18 +465,12 @@
       "version": "v0.2"
     },
     {
-      "id": "ISSUE-0005",
+      "id": "ISSUE-0001",
       "type": "Issue",
-      "title": "Validate story dependency sequences during sprint planning to ensure prerequisite foundational stories always hold higher priority than downstream dependent stories.",
+      "title": "test",
       "status": "Draft",
-      "priority": "Must"
-    },
-    {
-      "id": "ISSUE-0007",
-      "type": "Issue",
-      "title": "Backlog priority order conflict: US-0004 was marked 'Must' while depending on prerequisite US-0002, causing advance_story_stage to reject advancing US-0002 to Implemented until PO reprioritized US-0004.",
-      "status": "Draft",
-      "priority": "Must"
+      "priority": "Won't",
+      "version": "Backlog (unplanned)"
     }
   ],
   "definition_of_done": [],
@@ -744,11 +744,11 @@
     "current_usd_spend": 0.0
   },
   "token_usage": {
-    "total": 909462,
+    "total": 1050055,
     "agents": {
-      "ProductOwner": 741899,
+      "ProductOwner": 789846,
       "ScrumMaster": 71237,
-      "DevTeam": 775317,
+      "DevTeam": 867963,
       "Architect": 121117,
       "QA": 153222,
       "ScrumOrchestrator": 74208
