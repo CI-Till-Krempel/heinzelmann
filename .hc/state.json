@@ -15,7 +15,7 @@
         "Given batch job submissions via API, When jobs are enqueued, Then the Control Server schedules and assigns them to available nodes matching resource constraints and requirements.",
         "Given an assigned job, When a node stops reporting heartbeats before job completion, Then the Control Server detects the failure and re-queues the job for execution on an alternate available node."
       ],
-      "version": "Backlog (unplanned)",
+      "version": "v0.1",
       "value_hypothesis": "Jobs are distributed evenly and automatically failover when nodes disconnect unexpectedly.",
       "tasks": [
         "Design JobQueue repository and state machine (Queued, Dispatched, Running, Succeeded, Failed)",
@@ -42,7 +42,7 @@
         "Given a registered node, When the node sends a periodic heartbeat with CPU/RAM metrics, Then the server updates the node's last-seen timestamp and metric cache.",
         "Given a registered node that stops sending heartbeats, When the timeout threshold (60 seconds) expires, Then the server marks the node status as Offline."
       ],
-      "version": "Backlog (unplanned)",
+      "version": "v0.1",
       "dependencies": [
         "EP-0002"
       ],
@@ -76,7 +76,7 @@
         "Given an assigned job specification with container image, environment, and command, When the daemon initiates execution, Then it runs the container via the local Docker daemon with strict memory and CPU limits.",
         "Given a containerized job execution, When the job completes or fails, Then the daemon captures exit codes, stdout/stderr logs, and reports the execution result back to the Control Server."
       ],
-      "version": "Backlog (unplanned)",
+      "version": "v0.1",
       "notes": "Executes tasks in isolated Docker environments to ensure safety and repeatability.",
       "value_hypothesis": "Container isolation guarantees host machine stability and reproducible task environments.",
       "dependencies": [
@@ -118,7 +118,7 @@
         "Given a client machine (macOS or Windows), When the daemon service starts at boot, Then it runs as a low-footprint background process consuming <1% CPU and <50MB RAM in idle.",
         "Given a running daemon, When collecting system telemetry, Then it samples CPU usage, RAM utilization, battery charge level, and temperature, transmitting them via heartbeat."
       ],
-      "version": "Backlog (unplanned)",
+      "version": "v0.1",
       "tasks": [
         "Implement KMP platform daemon entry point for macOS (LaunchDaemon) and Windows Service",
         "Implement platform-specific hardware metrics collectors (sysctl / OSHI)",
@@ -144,7 +144,7 @@
         "Given a client laptop on AC power running an assigned workload, When a job is active, Then the daemon creates an OS power assertion (IOPMAssertion on macOS / SetThreadExecutionState on Windows) preventing sleep.",
         "Given an active job completion or cancellation, When no more jobs are queued on the node, Then the daemon releases the power assertion and restores default OS sleep policies."
       ],
-      "version": "Backlog (unplanned)",
+      "version": "v0.1",
       "epic_id": "EP-0001",
       "tasks": [
         "Implement macOS IOPMAssertionCreateWithName binding via Kotlin/Native or JNA",
@@ -424,10 +424,10 @@
     "current_usd_spend": 0.0
   },
   "token_usage": {
-    "total": 1378839,
+    "total": 1428720,
     "agents": {
       "ScrumMaster": 57121,
-      "ProductOwner": 1321718
+      "ProductOwner": 1371599
     }
   },
   "story_estimates": {},
@@ -499,7 +499,8 @@
     "specs/stories/US-0002-Client-Daemon-Lifecycle-&-Metrics-Collector.md",
     "specs/stories/US-0003-Client-Daemon-Power-Assertion-and-Sleep-Prevention.md",
     "specs/stories/US-0004-Docker-Container-Job-Runner-on-Client-Daemon.md",
-    "specs/stories/US-0005-Control-Server-Job-Queue-and-Dispatcher.md"
+    "specs/stories/US-0005-Control-Server-Job-Queue-and-Dispatcher.md",
+    "specs/stories/US-0006-Admin-Dashboard-Node-Status-and-Live-Metrics-View.md"
   ],
   "last_check_build": null,
   "pr_review_calls": {},
