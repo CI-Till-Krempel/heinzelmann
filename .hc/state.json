@@ -215,14 +215,16 @@
       "overview": "Ensure newly filed process and retrospective tracking issues are assigned Won't or lowest priority at creation time so they do not block active sprint user stories in advance_story_stage.",
       "owner": "ProductOwner",
       "type": "Issue",
-      "id": "ISSUE-0008"
+      "id": "ISSUE-0008",
+      "version": "Backlog (unplanned)"
     },
     {
       "title": "Retrospective process issues (ISSUE-0001 through ISSUE-0007) had higher or default backlog priority, repeatedly causing advance_story_stage to reject advancing active sprint stories US-0005 and US-0004 until Product Owner manually deprioritized them.",
       "overview": "Retrospective process issues (ISSUE-0001 through ISSUE-0007) had higher or default backlog priority, repeatedly causing advance_story_stage to reject advancing active sprint stories US-0005 and US-0004 until Product Owner manually deprioritized them.",
       "owner": "ProductOwner",
       "type": "Issue",
-      "id": "ISSUE-0010"
+      "id": "ISSUE-0010",
+      "version": "Backlog (unplanned)"
     },
     {
       "id": "EP-0005",
@@ -462,14 +464,16 @@
       "type": "Issue",
       "title": "Backlog priority order conflict: US-0004 was marked 'Must' while depending on prerequisite US-0002, causing advance_story_stage to reject advancing US-0002 to Implemented until PO reprioritized US-0004.",
       "status": "Draft",
-      "priority": "Won't"
+      "priority": "Won't",
+      "version": "Backlog (unplanned)"
     },
     {
       "id": "ISSUE-0005",
       "type": "Issue",
       "title": "Validate story dependency sequences during sprint planning to ensure prerequisite foundational stories always hold higher priority than downstream dependent stories.",
       "status": "Draft",
-      "priority": "Won't"
+      "priority": "Won't",
+      "version": "Backlog (unplanned)"
     },
     {
       "title": "Streamline ProductOwner specification drafting and backlog grooming sessions with strict prompt timeboxes and pre-structured templates to keep PO token usage under 30% of sprint budget.",
