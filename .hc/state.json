@@ -310,7 +310,7 @@
     },
     {
       "acceptance_criteria": [
-        "Given a scheduled batch job and a night-time execution window (e.g., 22:00 to 06:00), When the current time is outside the allowed window, Then the dispatcher holds the job in Queued state without assigning it to nodes.",
+        "Given a scheduled batch job and a night-time execution window (22:00 to 06:00), When the current time is outside the allowed window, Then the dispatcher holds the job in Queued state without assigning it to nodes.",
         "Given a running job on a battery-powered client node, When battery level drops below 50% or CPU temperature exceeds 85°C, Then the daemon signals the Control Server, pauses or evicts the job container, and relinquishes the power assertion."
       ],
       "id": "US-0010",
@@ -424,10 +424,10 @@
     "current_usd_spend": 0.0
   },
   "token_usage": {
-    "total": 1684932,
+    "total": 1738422,
     "agents": {
       "ScrumMaster": 57121,
-      "ProductOwner": 1627811
+      "ProductOwner": 1681301
     }
   },
   "story_estimates": {},
