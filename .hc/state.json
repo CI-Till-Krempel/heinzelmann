@@ -191,6 +191,13 @@
       "epic_id": "EP-0002"
     },
     {
+      "title": "Streamline ProductOwner specification drafting and backlog grooming sessions with strict prompt timeboxes and pre-structured templates to keep PO token usage under 30% of sprint budget.",
+      "overview": "Streamline ProductOwner specification drafting and backlog grooming sessions with strict prompt timeboxes and pre-structured templates to keep PO token usage under 30% of sprint budget.",
+      "owner": "ProductOwner",
+      "type": "Issue",
+      "id": "ISSUE-0003"
+    },
+    {
       "id": "EP-0005",
       "type": "Epic",
       "title": "Cluster Admin Dashboard & Policy Management",
@@ -510,13 +517,14 @@
     "current_usd_spend": 0.0
   },
   "token_usage": {
-    "total": 6089998,
+    "total": 6154511,
     "agents": {
       "ScrumMaster": 74059,
-      "ProductOwner": 3099430,
+      "ProductOwner": 3144263,
       "DevTeam": 2069722,
       "Architect": 191038,
-      "QA": 655749
+      "QA": 655749,
+      "QualityGuardian": 19680
     }
   },
   "story_estimates": {
@@ -525,8 +533,34 @@
       "actual": 18500
     }
   },
-  "sprint_report_kpis": {},
-  "kpi_update_count": 0,
+  "sprint_report_kpis": {
+    "result_quality": {
+      "defect_escape_rate": 0.05,
+      "customer_satisfaction": 4.5
+    },
+    "team_effectiveness": {
+      "commitment_reliability": 1,
+      "say_do_ratio": 0.8
+    },
+    "maintainability": {
+      "tests_failed": 0,
+      "test_coverage": 0.94,
+      "tests_run": 4,
+      "code_complexity_available": true,
+      "code_complexity": 2.9375,
+      "test_coverage_available": true
+    },
+    "security": {
+      "vulnerability_scan_available": true,
+      "vulnerability_scan_results": {
+        "low": 16,
+        "high": 0,
+        "critical": 0,
+        "medium": 0
+      }
+    }
+  },
+  "kpi_update_count": 1,
   "kpi_baseline": 0,
   "backlog_scope_complete": false,
   "repo": {
