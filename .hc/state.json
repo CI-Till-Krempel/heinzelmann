@@ -205,13 +205,6 @@
       ]
     },
     {
-      "id": "ISSUE-0005",
-      "type": "Issue",
-      "title": "Validate story dependency sequences during sprint planning to ensure prerequisite foundational stories always hold higher priority than downstream dependent stories.",
-      "status": "Draft",
-      "priority": "Must"
-    },
-    {
       "id": "ISSUE-0007",
       "type": "Issue",
       "title": "Backlog priority order conflict: US-0004 was marked 'Must' while depending on prerequisite US-0002, causing advance_story_stage to reject advancing US-0002 to Implemented until PO reprioritized US-0004.",
@@ -450,6 +443,13 @@
       ],
       "status": "Ready",
       "version": "v0.2"
+    },
+    {
+      "id": "ISSUE-0005",
+      "type": "Issue",
+      "title": "Validate story dependency sequences during sprint planning to ensure prerequisite foundational stories always hold higher priority than downstream dependent stories.",
+      "status": "Draft",
+      "priority": "Won't"
     },
     {
       "title": "Streamline ProductOwner specification drafting and backlog grooming sessions with strict prompt timeboxes and pre-structured templates to keep PO token usage under 30% of sprint budget.",
@@ -780,9 +780,9 @@
     "current_usd_spend": 0.0
   },
   "token_usage": {
-    "total": 3750253,
+    "total": 3884744,
     "agents": {
-      "ProductOwner": 1581099,
+      "ProductOwner": 1715590,
       "ScrumMaster": 71237,
       "DevTeam": 2006166,
       "Architect": 394050,
