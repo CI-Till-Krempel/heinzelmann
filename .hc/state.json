@@ -51,32 +51,6 @@
       "description": "Cross-platform background daemon for macOS and Windows that monitors system metrics, prevents standby during active workloads via power assertions, and executes tasks."
     },
     {
-      "id": "US-0004",
-      "type": "User Story",
-      "title": "Docker Container Job Runner on Client Daemon",
-      "status": "Ready",
-      "priority": "Must",
-      "user_story": "As a cluster operator, I want client daemons to execute jobs in isolated Docker containers with specified CPU and memory constraints, so that tasks run securely without altering the host system.",
-      "acceptance_criteria": [
-        "Given an assigned job specification with container image, environment, and command, When the daemon initiates execution, Then it runs the container via the local Docker daemon with strict memory and CPU limits.",
-        "Given a containerized job execution, When the job completes or fails, Then the daemon captures exit codes, stdout/stderr logs, and reports the execution result back to the Control Server."
-      ],
-      "version": "v0.1",
-      "notes": "Executes tasks in isolated Docker environments to ensure safety and repeatability.",
-      "value_hypothesis": "Container isolation guarantees host machine stability and reproducible task environments.",
-      "dependencies": [
-        "EP-0003",
-        "US-0002"
-      ],
-      "tasks": [
-        "Implement DockerEngineClient communicating via Docker UNIX socket / named pipe",
-        "Implement container run lifecycle with resource limit flags (cpu, mem)",
-        "Implement log streamer and exit code capture",
-        "Add integration test verifying container execution and output capture"
-      ],
-      "epic_id": "EP-0003"
-    },
-    {
       "id": "EP-0002",
       "type": "Epic",
       "title": "Control Server & Node Orchestration",
@@ -209,6 +183,32 @@
       "status": "Draft",
       "priority": "Must",
       "version": "Backlog (unplanned)"
+    },
+    {
+      "id": "US-0004",
+      "type": "User Story",
+      "title": "Docker Container Job Runner on Client Daemon",
+      "status": "Ready",
+      "priority": "Should",
+      "user_story": "As a cluster operator, I want client daemons to execute jobs in isolated Docker containers with specified CPU and memory constraints, so that tasks run securely without altering the host system.",
+      "acceptance_criteria": [
+        "Given an assigned job specification with container image, environment, and command, When the daemon initiates execution, Then it runs the container via the local Docker daemon with strict memory and CPU limits.",
+        "Given a containerized job execution, When the job completes or fails, Then the daemon captures exit codes, stdout/stderr logs, and reports the execution result back to the Control Server."
+      ],
+      "version": "v0.1",
+      "notes": "Executes tasks in isolated Docker environments to ensure safety and repeatability.",
+      "value_hypothesis": "Container isolation guarantees host machine stability and reproducible task environments.",
+      "dependencies": [
+        "EP-0003",
+        "US-0002"
+      ],
+      "tasks": [
+        "Implement DockerEngineClient communicating via Docker UNIX socket / named pipe",
+        "Implement container run lifecycle with resource limit flags (cpu, mem)",
+        "Implement log streamer and exit code capture",
+        "Add integration test verifying container execution and output capture"
+      ],
+      "epic_id": "EP-0003"
     },
     {
       "id": "EP-0005",
@@ -571,11 +571,11 @@
     "current_usd_spend": 0.0
   },
   "token_usage": {
-    "total": 530677,
+    "total": 665090,
     "agents": {
-      "ProductOwner": 105926,
+      "ProductOwner": 177890,
       "ScrumMaster": 54171,
-      "DevTeam": 370580
+      "DevTeam": 433029
     }
   },
   "story_estimates": {
