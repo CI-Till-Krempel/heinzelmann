@@ -197,7 +197,8 @@
       "type": "Issue",
       "id": "ISSUE-0003",
       "status": "Draft",
-      "priority": "Must"
+      "priority": "Must",
+      "version": "Backlog (unplanned)"
     },
     {
       "title": "Token budget limit of 6,000,000 was exceeded (reaching 6,073,060 tokens) with ProductOwner accounting for over 50% of token usage and feature implementation taking only 34% of total tokens.",
@@ -206,7 +207,8 @@
       "type": "Issue",
       "id": "ISSUE-0004",
       "status": "Draft",
-      "priority": "Must"
+      "priority": "Must",
+      "version": "Backlog (unplanned)"
     },
     {
       "id": "EP-0005",
