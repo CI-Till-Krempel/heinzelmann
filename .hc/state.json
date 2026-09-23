@@ -70,7 +70,7 @@
       "id": "US-0002",
       "type": "User Story",
       "title": "Client Daemon Lifecycle & Metrics Collector",
-      "status": "Ready",
+      "status": "Implemented",
       "priority": "Must",
       "user_story": "As a cluster administrator, I want a lightweight daemon running on client laptops that collects system metrics, so that the Control Server knows each node's capacity and current load.",
       "acceptance_criteria": [
@@ -93,7 +93,8 @@
       "value_hypothesis": "Client nodes reliably report system resource availability without impacting normal daytime laptop usability.",
       "stages_completed": [
         "Draft",
-        "Ready"
+        "Ready",
+        "Implemented"
       ]
     },
     {
@@ -510,7 +511,7 @@
       "id": "US-0002",
       "type": "User Story",
       "title": "Client Daemon Lifecycle & Metrics Collector",
-      "status": "Ready",
+      "status": "Implemented",
       "priority": "Must",
       "user_story": "As a cluster administrator, I want a lightweight daemon running on client laptops that collects system metrics, so that the Control Server knows each node's capacity and current load.",
       "acceptance_criteria": [
@@ -533,7 +534,8 @@
       "value_hypothesis": "Client nodes reliably report system resource availability without impacting normal daytime laptop usability.",
       "stages_completed": [
         "Draft",
-        "Ready"
+        "Ready",
+        "Implemented"
       ],
       "approach": "Implement lightweight Client Daemon lifecycle and metrics collection engine in Kotlin Multiplatform with platform abstractions for macOS and Windows, sampling CPU, RAM, battery, and temperature, and reporting periodically via heartbeats.",
       "test_approach": "Unit tests for daemon lifecycle state machine, metrics gathering and serialization, and mock server integration tests.",
@@ -578,11 +580,11 @@
     "current_usd_spend": 0.0
   },
   "token_usage": {
-    "total": 739546,
+    "total": 810147,
     "agents": {
-      "ProductOwner": 252346,
+      "ProductOwner": 289962,
       "ScrumMaster": 54171,
-      "DevTeam": 433029
+      "DevTeam": 466014
     }
   },
   "story_estimates": {
@@ -682,7 +684,7 @@
   ],
   "sprint_approval_baseline": 0,
   "release_approval_baseline": 0,
-  "dev_touch_baseline": 8,
+  "dev_touch_baseline": 16,
   "sprint_files_touched": [
     "specs/stories/US-0007-Distributed-Ray-Cluster-Bootstrap-on-Client-Nodes.md",
     "specs/ROADMAP.md",
