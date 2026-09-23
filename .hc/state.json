@@ -89,13 +89,25 @@
       "title": "Client Daemon Lifecycle & Metrics Collector",
       "status": "Ready",
       "priority": "Must",
-      "user_story": "As an IT administrator, I want a background daemon running on macOS and Windows collecting system metrics with minimal overhead, so that client machines can report health telemetry without impacting daytime employee productivity.",
+      "user_story": "As a cluster administrator, I want a lightweight daemon running on client laptops that collects system metrics, so that the Control Server knows each node's capacity and current load.",
       "acceptance_criteria": [
-        "Given a macOS or Windows host, When the client daemon service starts, Then it runs as a background process with idle CPU usage under 1% and memory under 50 MB.",
-        "Given the running daemon, When the periodic metrics loop ticks (e.g., every 15s), Then CPU load, available RAM, and battery charging state are sampled.",
-        "Given sampled metrics and a configured Control Server URL, When the heartbeat interval triggers, Then the daemon sends the telemetry payload to the server."
+        "Given a client machine (macOS or Windows), When the daemon service starts at boot, Then it runs as a low-footprint background process consuming <1% CPU and <50MB RAM in idle.",
+        "Given a running daemon, When collecting system telemetry, Then it samples CPU usage, RAM utilization, battery charge level, and temperature, transmitting them via heartbeat."
       ],
-      "version": "Backlog (unplanned)"
+      "version": "Backlog (unplanned)",
+      "tasks": [
+        "Implement KMP platform daemon entry point for macOS (LaunchDaemon) and Windows Service",
+        "Implement platform-specific hardware metrics collectors (sysctl / OSHI)",
+        "Implement periodic reporting client to Control Server",
+        "Add unit tests for metrics serialization and collector thresholds"
+      ],
+      "epic_id": "EP-0001",
+      "dependencies": [
+        "EP-0001",
+        "US-0001"
+      ],
+      "notes": "Lightweight background daemon for cross-platform hardware monitoring.",
+      "value_hypothesis": "Client nodes reliably report system resource availability without impacting normal daytime laptop usability."
     },
     {
       "id": "US-0003",
@@ -364,10 +376,10 @@
     "current_usd_spend": 0.0
   },
   "token_usage": {
-    "total": 1139619,
+    "total": 1186048,
     "agents": {
       "ScrumMaster": 57121,
-      "ProductOwner": 1082498
+      "ProductOwner": 1128927
     }
   },
   "story_estimates": {},
@@ -434,7 +446,8 @@
     "specs/stories/EP-0002-Control-Server-&-Node-Orchestration.md",
     "specs/stories/EP-0003-Containerized-Job-Execution.md",
     "specs/stories/EP-0004-Distributed-LLM-&-Ray-Inference-Engine.md",
-    "specs/stories/EP-0005-Cluster-Admin-Dashboard-&-Policy-Management.md"
+    "specs/stories/EP-0005-Cluster-Admin-Dashboard-&-Policy-Management.md",
+    "specs/stories/EP-0006-Smart-Plug-Energy-Monitoring.md"
   ],
   "last_check_build": null,
   "pr_review_calls": {},
