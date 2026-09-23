@@ -106,7 +106,7 @@
       "id": "US-0003",
       "type": "User Story",
       "title": "Client Daemon Power Assertion and Sleep Prevention",
-      "status": "Reviewed",
+      "status": "Tested",
       "priority": "Must",
       "user_story": "As a system operator, I want the client daemon to prevent laptops from entering sleep mode while executing assigned batch jobs, so that long-running tasks complete without interruption.",
       "acceptance_criteria": [
@@ -131,7 +131,8 @@
         "Draft",
         "Ready",
         "Implemented",
-        "Reviewed"
+        "Reviewed",
+        "Tested"
       ]
     },
     {
@@ -586,7 +587,7 @@
       "id": "US-0003",
       "type": "User Story",
       "title": "Client Daemon Power Assertion and Sleep Prevention",
-      "status": "Reviewed",
+      "status": "Tested",
       "priority": "Must",
       "user_story": "As a system operator, I want the client daemon to prevent laptops from entering sleep mode while executing assigned batch jobs, so that long-running tasks complete without interruption.",
       "acceptance_criteria": [
@@ -611,7 +612,8 @@
         "Draft",
         "Ready",
         "Implemented",
-        "Reviewed"
+        "Reviewed",
+        "Tested"
       ],
       "risks_assumptions": "Platform assertion calls must fail gracefully without crashing when operating in non-privileged or headless environments.",
       "dod_checks": [
@@ -752,13 +754,13 @@
     "current_usd_spend": 0.0
   },
   "token_usage": {
-    "total": 1453400,
+    "total": 1624721,
     "agents": {
       "ProductOwner": 935220,
       "ScrumMaster": 71237,
       "DevTeam": 1039125,
-      "Architect": 207926,
-      "QA": 153222,
+      "Architect": 251652,
+      "QA": 280817,
       "ScrumOrchestrator": 74208
     }
   },
@@ -936,13 +938,16 @@
     "control-server/src/main/kotlin/de/heinzelmann/server/jobs/JobRoutes.kt",
     "control-server/src/test/kotlin/de/heinzelmann/server/jobs/JobQueueTest.kt"
   ],
-  "last_check_build": {},
+  "last_check_build": {
+    "checked": null,
+    "passing": null
+  },
   "pr_review_calls": {
     "Architect": 3,
-    "QA": 3
+    "QA": 4
   },
   "architect_review_baseline": 3,
-  "qa_review_baseline": 3,
+  "qa_review_baseline": 4,
   "sprint_report_pending_release": false,
   "blocking_interactions": [
     {
