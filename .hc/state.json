@@ -8,7 +8,7 @@
       "id": "US-0001",
       "type": "User Story",
       "title": "Control Server Node Registration & Heartbeat API",
-      "status": "Ready",
+      "status": "Implemented",
       "priority": "Must",
       "user_story": "As a Control Server administrator, I want an API for node registration and periodic heartbeat telemetry, so that the server maintains an accurate real-time inventory of cluster nodes and their health.",
       "acceptance_criteria": [
@@ -32,7 +32,8 @@
       "epic_id": "EP-0002",
       "stages_completed": [
         "Draft",
-        "Ready"
+        "Ready",
+        "Implemented"
       ]
     },
     {
@@ -422,7 +423,7 @@
       "id": "US-0001",
       "type": "User Story",
       "title": "Control Server Node Registration & Heartbeat API",
-      "status": "Ready",
+      "status": "Implemented",
       "priority": "Must",
       "user_story": "As a Control Server administrator, I want an API for node registration and periodic heartbeat telemetry, so that the server maintains an accurate real-time inventory of cluster nodes and their health.",
       "acceptance_criteria": [
@@ -465,7 +466,8 @@
       "test_approach": "Ktor testApplication integration tests covering POST /api/nodes/register, POST /api/nodes/{id}/heartbeat, GET /api/nodes, and timeout threshold evaluation.",
       "stages_completed": [
         "Draft",
-        "Ready"
+        "Ready",
+        "Implemented"
       ]
     }
   ],
@@ -479,11 +481,11 @@
     "current_usd_spend": 0.0
   },
   "token_usage": {
-    "total": 3995330,
+    "total": 4150129,
     "agents": {
       "ScrumMaster": 57121,
-      "ProductOwner": 2560763,
-      "DevTeam": 1377446
+      "ProductOwner": 2642403,
+      "DevTeam": 1450605
     }
   },
   "story_estimates": {
@@ -545,7 +547,7 @@
   ],
   "sprint_approval_baseline": 0,
   "release_approval_baseline": 0,
-  "dev_touch_baseline": 0,
+  "dev_touch_baseline": 8,
   "sprint_files_touched": [
     "specs/stories/US-0007-Distributed-Ray-Cluster-Bootstrap-on-Client-Nodes.md",
     "specs/ROADMAP.md",
