@@ -197,13 +197,25 @@
       "title": "Admin Dashboard Node Status and Live Metrics View",
       "status": "Ready",
       "priority": "Should",
-      "user_story": "As an IT Administrator, I want a desktop dashboard displaying registered cluster nodes and real-time telemetry, so that I can observe cluster capacity and health at a glance.",
+      "user_story": "As an IT administrator, I want a desktop dashboard showing real-time status and hardware metrics of all cluster nodes, so that I can easily monitor cluster health and capacity at a glance.",
       "acceptance_criteria": [
-        "Given an active Control Server with registered nodes, When an administrator opens the Admin Dashboard, Then the dashboard displays all registered nodes with their online/offline status and OS type.",
-        "Given active nodes sending periodic heartbeats, When node telemetry updates on the server, Then the dashboard reflects current CPU usage, RAM utilization, and battery state.",
-        "Given a node marked offline due to heartbeat timeout, When viewed in the dashboard, Then the node is highlighted with an offline badge and last-seen timestamp."
+        "Given the Compose for Desktop Admin Dashboard connected to Control Server, When viewing the Nodes tab, Then all registered nodes are listed with their ID, OS, status (Online/Offline/Busy), CPU, and RAM metrics.",
+        "Given changes in node status or metrics on the server, When updates arrive, Then the dashboard UI updates within 5 seconds without requiring manual refresh."
       ],
-      "version": "v0.2"
+      "version": "v0.2",
+      "epic_id": "EP-0005",
+      "notes": "Real-time operator visibility into cluster state and node health.",
+      "tasks": [
+        "Set up Compose for Desktop client module and Ktor HTTP/WebSocket client",
+        "Build Node List and Node Detail views in Compose",
+        "Implement reactive state management using Kotlin Coroutines StateFlow",
+        "Add UI unit tests verifying node state rendering and status badge colors"
+      ],
+      "value_hypothesis": "IT administrators gain continuous operational visibility into fleet health without manual server querying.",
+      "dependencies": [
+        "EP-0005",
+        "US-0001"
+      ]
     },
     {
       "epic_id": "EP-0004",
@@ -412,10 +424,10 @@
     "current_usd_spend": 0.0
   },
   "token_usage": {
-    "total": 1329590,
+    "total": 1378839,
     "agents": {
       "ScrumMaster": 57121,
-      "ProductOwner": 1272469
+      "ProductOwner": 1321718
     }
   },
   "story_estimates": {},
@@ -486,7 +498,8 @@
     "specs/stories/EP-0006-Smart-Plug-Energy-Monitoring.md",
     "specs/stories/US-0002-Client-Daemon-Lifecycle-&-Metrics-Collector.md",
     "specs/stories/US-0003-Client-Daemon-Power-Assertion-and-Sleep-Prevention.md",
-    "specs/stories/US-0004-Docker-Container-Job-Runner-on-Client-Daemon.md"
+    "specs/stories/US-0004-Docker-Container-Job-Runner-on-Client-Daemon.md",
+    "specs/stories/US-0005-Control-Server-Job-Queue-and-Dispatcher.md"
   ],
   "last_check_build": null,
   "pr_review_calls": {},
