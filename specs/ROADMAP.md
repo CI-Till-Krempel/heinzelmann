@@ -79,7 +79,7 @@ Stories
 - [US-0008] Ollama Model Runner and Local Inference Execution
   - [x] DRAFT
   - [x] READY
-  - [ ] IMPLEMENTED
+  - [x] IMPLEMENTED
   - [ ] REVIEWED
   - [ ] TESTED
   - [ ] ACCEPTED
