@@ -27,6 +27,13 @@ Goals
 - Enable isolated Docker container job execution and central job dispatching
 Stories
 - [US-0001] Control Server Node Registration & Heartbeat API
+  - [x] DRAFT
+  - [x] READY
+  - [x] IMPLEMENTED
+  - [x] REVIEWED
+  - [ ] TESTED
+  - [ ] ACCEPTED
+- [US-0004] Docker Container Job Runner on Client Daemon
   - [ ] DRAFT
   - [ ] READY
   - [ ] IMPLEMENTED
@@ -41,13 +48,6 @@ Stories
   - [ ] TESTED
   - [ ] ACCEPTED
 - [US-0003] Client Daemon Power Assertion and Sleep Prevention
-  - [ ] DRAFT
-  - [ ] READY
-  - [ ] IMPLEMENTED
-  - [ ] REVIEWED
-  - [ ] TESTED
-  - [ ] ACCEPTED
-- [US-0004] Docker Container Job Runner on Client Daemon
   - [ ] DRAFT
   - [ ] READY
   - [ ] IMPLEMENTED
