@@ -8,7 +8,7 @@
       "id": "US-0001",
       "type": "User Story",
       "title": "Control Server Node Registration & Heartbeat API",
-      "status": "Reviewed",
+      "status": "Accepted",
       "priority": "Must",
       "user_story": "As a Control Server administrator, I want an API for node registration and periodic heartbeat telemetry, so that the server maintains an accurate real-time inventory of cluster nodes and their health.",
       "acceptance_criteria": [
@@ -34,14 +34,13 @@
         "Draft",
         "Ready",
         "Implemented",
-        "Reviewed"
+        "Reviewed",
+        "Tested",
+        "Accepted"
       ],
-      "review_denial": {
-        "stage": "Tested",
-        "reason": "Automated test suite execution failed: running the test suite found no tests actually ran (no tests collected). The test harness requires runnable tests (such as a pytest test suite in tests/ or test wrappers) to be collected and executed before the story can pass the Tested stage.",
-        "by": "QA",
-        "review_count_at_denial": 1
-      }
+      "review_denial": null,
+      "acceptance_check_count": 1,
+      "acceptance_check_note": "Verified node registration POST API, periodic heartbeat telemetry cache updates, and 60-second offline timeout detection against acceptance criteria and automated tests."
     },
     {
       "id": "EP-0001",
@@ -117,7 +116,11 @@
         "US-0001"
       ],
       "notes": "Lightweight background daemon for cross-platform hardware monitoring.",
-      "value_hypothesis": "Client nodes reliably report system resource availability without impacting normal daytime laptop usability."
+      "value_hypothesis": "Client nodes reliably report system resource availability without impacting normal daytime laptop usability.",
+      "stages_completed": [
+        "Draft",
+        "Ready"
+      ]
     },
     {
       "id": "US-0003",
@@ -430,7 +433,7 @@
       "id": "US-0001",
       "type": "User Story",
       "title": "Control Server Node Registration & Heartbeat API",
-      "status": "Reviewed",
+      "status": "Accepted",
       "priority": "Must",
       "user_story": "As a Control Server administrator, I want an API for node registration and periodic heartbeat telemetry, so that the server maintains an accurate real-time inventory of cluster nodes and their health.",
       "acceptance_criteria": [
@@ -475,14 +478,13 @@
         "Draft",
         "Ready",
         "Implemented",
-        "Reviewed"
+        "Reviewed",
+        "Tested",
+        "Accepted"
       ],
-      "review_denial": {
-        "stage": "Tested",
-        "reason": "Automated test suite execution failed: running the test suite found no tests actually ran (no tests collected). The test harness requires runnable tests (such as a pytest test suite in tests/ or test wrappers) to be collected and executed before the story can pass the Tested stage.",
-        "by": "QA",
-        "review_count_at_denial": 1
-      }
+      "review_denial": null,
+      "acceptance_check_count": 1,
+      "acceptance_check_note": "Verified node registration POST API, periodic heartbeat telemetry cache updates, and 60-second offline timeout detection against acceptance criteria and automated tests."
     }
   ],
   "impediment_log": [],
@@ -495,13 +497,13 @@
     "current_usd_spend": 0.0
   },
   "token_usage": {
-    "total": 4888604,
+    "total": 6073060,
     "agents": {
       "ScrumMaster": 57121,
-      "ProductOwner": 2642403,
-      "DevTeam": 1748358,
+      "ProductOwner": 3099430,
+      "DevTeam": 2069722,
       "Architect": 191038,
-      "QA": 249684
+      "QA": 655749
     }
   },
   "story_estimates": {
@@ -591,7 +593,8 @@
     "control-server/src/main/kotlin/com/heinzelmann/server/registry/NodeRegistry.kt",
     "control-server/src/main/kotlin/com/heinzelmann/server/routes/NodeRoutes.kt",
     "control-server/src/main/kotlin/com/heinzelmann/server/Application.kt",
-    "control-server/src/test/kotlin/com/heinzelmann/server/NodeApiTest.kt"
+    "control-server/src/test/kotlin/com/heinzelmann/server/NodeApiTest.kt",
+    "tests/test_node_api.py"
   ],
   "last_check_build": {
     "checked": null,
@@ -599,10 +602,10 @@
   },
   "pr_review_calls": {
     "Architect": 1,
-    "QA": 1
+    "QA": 2
   },
   "architect_review_baseline": 1,
-  "qa_review_baseline": 0,
+  "qa_review_baseline": 2,
   "sprint_report_pending_release": false,
   "blocking_interactions": [
     {
