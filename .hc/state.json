@@ -34,7 +34,7 @@
       "id": "US-0001",
       "type": "User Story",
       "title": "Control Server Node Registration & Heartbeat API",
-      "status": "Draft",
+      "status": "Ready",
       "priority": "Must",
       "user_story": "As a Control Server administrator, I want an API for node registration and periodic heartbeat telemetry, so that the server maintains an accurate real-time inventory of cluster nodes and their health.",
       "acceptance_criteria": [
@@ -57,7 +57,8 @@
       "value_hypothesis": "Control Server reliably tracks cluster node inventory and health status in real time.",
       "epic_id": "EP-0002",
       "stages_completed": [
-        "Draft"
+        "Draft",
+        "Ready"
       ]
     },
     {
@@ -421,7 +422,7 @@
       "id": "US-0001",
       "type": "User Story",
       "title": "Control Server Node Registration & Heartbeat API",
-      "status": "Draft",
+      "status": "Ready",
       "priority": "Must",
       "user_story": "As a Control Server administrator, I want an API for node registration and periodic heartbeat telemetry, so that the server maintains an accurate real-time inventory of cluster nodes and their health.",
       "acceptance_criteria": [
@@ -463,7 +464,8 @@
       ],
       "test_approach": "Ktor testApplication integration tests covering POST /api/nodes/register, POST /api/nodes/{id}/heartbeat, GET /api/nodes, and timeout threshold evaluation.",
       "stages_completed": [
-        "Draft"
+        "Draft",
+        "Ready"
       ]
     }
   ],
@@ -477,10 +479,10 @@
     "current_usd_spend": 0.0
   },
   "token_usage": {
-    "total": 3451724,
+    "total": 3530973,
     "agents": {
       "ScrumMaster": 57121,
-      "ProductOwner": 2159973,
+      "ProductOwner": 2239222,
       "DevTeam": 1234630
     }
   },
