@@ -106,7 +106,7 @@
       "id": "US-0003",
       "type": "User Story",
       "title": "Client Daemon Power Assertion and Sleep Prevention",
-      "status": "Ready",
+      "status": "Implemented",
       "priority": "Must",
       "user_story": "As a system operator, I want the client daemon to prevent laptops from entering sleep mode while executing assigned batch jobs, so that long-running tasks complete without interruption.",
       "acceptance_criteria": [
@@ -129,7 +129,8 @@
       "notes": "Prevents idle sleep disruptions during overnight batch compute workloads.",
       "stages_completed": [
         "Draft",
-        "Ready"
+        "Ready",
+        "Implemented"
       ]
     },
     {
@@ -566,7 +567,7 @@
       "id": "US-0003",
       "type": "User Story",
       "title": "Client Daemon Power Assertion and Sleep Prevention",
-      "status": "Ready",
+      "status": "Implemented",
       "priority": "Must",
       "user_story": "As a system operator, I want the client daemon to prevent laptops from entering sleep mode while executing assigned batch jobs, so that long-running tasks complete without interruption.",
       "acceptance_criteria": [
@@ -589,7 +590,8 @@
       "notes": "Prevents idle sleep disruptions during overnight batch compute workloads.",
       "stages_completed": [
         "Draft",
-        "Ready"
+        "Ready",
+        "Implemented"
       ],
       "risks_assumptions": "Platform assertion calls must fail gracefully without crashing when operating in non-privileged or headless environments.",
       "dod_checks": [
@@ -634,11 +636,11 @@
     "current_usd_spend": 0.0
   },
   "token_usage": {
-    "total": 1737627,
+    "total": 1783483,
     "agents": {
       "ProductOwner": 548068,
       "ScrumMaster": 54171,
-      "DevTeam": 861049,
+      "DevTeam": 906905,
       "Architect": 121117,
       "QA": 153222
     }
@@ -744,7 +746,7 @@
   ],
   "sprint_approval_baseline": 0,
   "release_approval_baseline": 0,
-  "dev_touch_baseline": 16,
+  "dev_touch_baseline": 18,
   "sprint_files_touched": [
     "specs/stories/US-0007-Distributed-Ray-Cluster-Bootstrap-on-Client-Nodes.md",
     "specs/ROADMAP.md",
