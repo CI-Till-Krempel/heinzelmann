@@ -487,7 +487,13 @@
       "acceptance_check_note": "Verified node registration POST API, periodic heartbeat telemetry cache updates, and 60-second offline timeout detection against acceptance criteria and automated tests."
     }
   ],
-  "impediment_log": [],
+  "impediment_log": [
+    {
+      "description": "Token budget limit of 6,000,000 was exceeded (reaching 6,073,060 tokens) with ProductOwner accounting for over 50% of token usage and feature implementation taking only 34% of total tokens.",
+      "owner": "ScrumMaster",
+      "status": "open"
+    }
+  ],
   "retro_actions": [],
   "decision_log": [],
   "sprint_report": "",
@@ -497,9 +503,9 @@
     "current_usd_spend": 0.0
   },
   "token_usage": {
-    "total": 6073060,
+    "total": 6089998,
     "agents": {
-      "ScrumMaster": 57121,
+      "ScrumMaster": 74059,
       "ProductOwner": 3099430,
       "DevTeam": 2069722,
       "Architect": 191038,
