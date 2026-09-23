@@ -50,7 +50,8 @@
       "type": "Epic",
       "title": "Client Daemon & Power Management",
       "status": "Open",
-      "priority": "Must"
+      "priority": "Must",
+      "description": "Cross-platform background daemon for macOS and Windows that monitors system metrics, prevents standby during active workloads via power assertions, and executes tasks."
     },
     {
       "id": "US-0004",
@@ -358,10 +359,10 @@
     "current_usd_spend": 0.0
   },
   "token_usage": {
-    "total": 780340,
+    "total": 912374,
     "agents": {
       "ScrumMaster": 57121,
-      "ProductOwner": 723219
+      "ProductOwner": 855253
     }
   },
   "story_estimates": {},
@@ -422,7 +423,8 @@
     "specs/stories/US-0009-Admin-Dashboard-Job-Submission-and-Status-Pipeline-View.md",
     "specs/stories/US-0010-Night-Time-Scheduling-Windows-and-Thermal-Guard-Policy.md",
     "specs/stories/US-0011-Smart-Plug-Telemetry-Collector-for-Shelly-and-Tapo.md",
-    "specs/stories/US-0012-Energy-Consumption-Correlation-and-Reporting-per-Job.md"
+    "specs/stories/US-0012-Energy-Consumption-Correlation-and-Reporting-per-Job.md",
+    "specs/stories/US-0001-Control-Server-Node-Registration-&-Heartbeat-API.md"
   ],
   "last_check_build": null,
   "pr_review_calls": {},
