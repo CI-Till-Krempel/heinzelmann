@@ -205,13 +205,6 @@
       ]
     },
     {
-      "id": "ISSUE-0007",
-      "type": "Issue",
-      "title": "Backlog priority order conflict: US-0004 was marked 'Must' while depending on prerequisite US-0002, causing advance_story_stage to reject advancing US-0002 to Implemented until PO reprioritized US-0004.",
-      "status": "Draft",
-      "priority": "Must"
-    },
-    {
       "id": "EP-0005",
       "type": "Epic",
       "title": "Cluster Admin Dashboard & Policy Management",
@@ -443,6 +436,13 @@
       ],
       "status": "Ready",
       "version": "v0.2"
+    },
+    {
+      "id": "ISSUE-0007",
+      "type": "Issue",
+      "title": "Backlog priority order conflict: US-0004 was marked 'Must' while depending on prerequisite US-0002, causing advance_story_stage to reject advancing US-0002 to Implemented until PO reprioritized US-0004.",
+      "status": "Draft",
+      "priority": "Won't"
     },
     {
       "id": "ISSUE-0005",
@@ -780,9 +780,9 @@
     "current_usd_spend": 0.0
   },
   "token_usage": {
-    "total": 3884744,
+    "total": 3952170,
     "agents": {
-      "ProductOwner": 1715590,
+      "ProductOwner": 1783016,
       "ScrumMaster": 71237,
       "DevTeam": 2006166,
       "Architect": 394050,
