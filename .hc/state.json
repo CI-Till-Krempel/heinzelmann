@@ -211,22 +211,65 @@
       "acceptance_check_note": "Verified US-0004 acceptance criteria: client daemon initiates container execution with strict CPU and memory resource constraints via DockerEngineClient, captures stdout/stderr logs and exit codes, and reports execution status to the Control Server."
     },
     {
-      "title": "Ensure newly filed process and retrospective tracking issues are assigned Won't or lowest priority at creation time so they do not block active sprint user stories in advance_story_stage.",
-      "overview": "Ensure newly filed process and retrospective tracking issues are assigned Won't or lowest priority at creation time so they do not block active sprint user stories in advance_story_stage.",
-      "owner": "ProductOwner",
-      "type": "Issue",
-      "id": "ISSUE-0008",
-      "version": "Backlog (unplanned)",
-      "status": "Draft",
-      "priority": "Must"
+      "epic_id": "EP-0004",
+      "value_hypothesis": "Client machines can form a unified Ray cluster to run parallelized distributed computing tasks.",
+      "description": "As a cluster administrator, I want client nodes to automatically join a distributed Ray cluster as worker nodes when instructed by the Control Server, so that distributed compute tasks can execute across idle machines.",
+      "dependencies": [
+        "EP-0004",
+        "US-0004"
+      ],
+      "title": "Distributed Ray Cluster Bootstrap on Client Nodes",
+      "id": "US-0007",
+      "notes": "Enables distributed computing across heterogeneous Apple Silicon and Windows nodes via Ray.",
+      "tasks": [
+        "Define RayWorkerConfig schema and launch arguments",
+        "Implement Ray worker container orchestration in daemon",
+        "Add health check and clean shutdown handling for Ray workers",
+        "Add integration test for worker container lifecycle"
+      ],
+      "priority": "Must",
+      "acceptance_criteria": [
+        "Given a client daemon instructed to join the Ray cluster, When the daemon receives cluster head coordinates, Then it launches a containerized Ray worker connecting to the specified head.",
+        "Given a running Ray worker container, When the client node status changes to busy or disconnects, Then the worker cleanly leaves the Ray cluster."
+      ],
+      "type": "User Story",
+      "stages_completed": [
+        "Draft",
+        "Ready"
+      ],
+      "status": "Ready",
+      "version": "v0.2",
+      "user_story": "As a cluster administrator, I want client nodes to automatically join a distributed Ray cluster as worker nodes when instructed by the Control Server, so that distributed compute tasks can execute across idle machines."
     },
     {
-      "title": "Retrospective process issues (ISSUE-0001 through ISSUE-0007) had higher or default backlog priority, repeatedly causing advance_story_stage to reject advancing active sprint stories US-0005 and US-0004 until Product Owner manually deprioritized them.",
-      "overview": "Retrospective process issues (ISSUE-0001 through ISSUE-0007) had higher or default backlog priority, repeatedly causing advance_story_stage to reject advancing active sprint stories US-0005 and US-0004 until Product Owner manually deprioritized them.",
-      "owner": "ProductOwner",
-      "type": "Issue",
-      "id": "ISSUE-0010",
-      "version": "Backlog (unplanned)"
+      "tasks": [
+        "Create OllamaRunner client in daemon codebase",
+        "Implement model pull and readiness verification check",
+        "Expose proxy inference endpoint with streaming response support",
+        "Add integration test with lightweight test model"
+      ],
+      "notes": "Executes open coding LLMs locally on client hardware via Ollama.",
+      "epic_id": "EP-0004",
+      "priority": "Must",
+      "id": "US-0008",
+      "acceptance_criteria": [
+        "Given a client daemon with Docker support, When instructed to prepare an Ollama model, Then it ensures the Ollama container is running and initiates pulling the target model tag.",
+        "Given a loaded Ollama model, When an inference prompt request is forwarded to the client daemon, Then the local Ollama API generates the completion response and returns metrics (tokens/sec, total tokens)."
+      ],
+      "user_story": "As a developer running LLM coding agents, I want client nodes to pull designated Ollama models and execute local inference workloads, so that code analysis tasks run directly on idle client hardware.",
+      "value_hypothesis": "Client nodes can execute LLM coding queries locally, eliminating central cloud inference costs.",
+      "title": "Ollama Model Runner and Local Inference Execution",
+      "dependencies": [
+        "EP-0004",
+        "US-0004"
+      ],
+      "type": "User Story",
+      "stages_completed": [
+        "Draft",
+        "Ready"
+      ],
+      "status": "Ready",
+      "version": "v0.2"
     },
     {
       "id": "EP-0005",
@@ -269,67 +312,6 @@
         "EP-0005",
         "US-0001"
       ]
-    },
-    {
-      "epic_id": "EP-0004",
-      "value_hypothesis": "Client machines can form a unified Ray cluster to run parallelized distributed computing tasks.",
-      "description": "As a cluster administrator, I want client nodes to automatically join a distributed Ray cluster as worker nodes when instructed by the Control Server, so that distributed compute tasks can execute across idle machines.",
-      "dependencies": [
-        "EP-0004",
-        "US-0004"
-      ],
-      "title": "Distributed Ray Cluster Bootstrap on Client Nodes",
-      "id": "US-0007",
-      "notes": "Enables distributed computing across heterogeneous Apple Silicon and Windows nodes via Ray.",
-      "tasks": [
-        "Define RayWorkerConfig schema and launch arguments",
-        "Implement Ray worker container orchestration in daemon",
-        "Add health check and clean shutdown handling for Ray workers",
-        "Add integration test for worker container lifecycle"
-      ],
-      "priority": "Should",
-      "acceptance_criteria": [
-        "Given a client daemon instructed to join the Ray cluster, When the daemon receives cluster head coordinates, Then it launches a containerized Ray worker connecting to the specified head.",
-        "Given a running Ray worker container, When the client node status changes to busy or disconnects, Then the worker cleanly leaves the Ray cluster."
-      ],
-      "type": "User Story",
-      "stages_completed": [
-        "Draft",
-        "Ready"
-      ],
-      "status": "Ready",
-      "version": "v0.2",
-      "user_story": "As a cluster administrator, I want client nodes to automatically join a distributed Ray cluster as worker nodes when instructed by the Control Server, so that distributed compute tasks can execute across idle machines."
-    },
-    {
-      "tasks": [
-        "Create OllamaRunner client in daemon codebase",
-        "Implement model pull and readiness verification check",
-        "Expose proxy inference endpoint with streaming response support",
-        "Add integration test with lightweight test model"
-      ],
-      "notes": "Executes open coding LLMs locally on client hardware via Ollama.",
-      "epic_id": "EP-0004",
-      "priority": "Should",
-      "id": "US-0008",
-      "acceptance_criteria": [
-        "Given a client daemon with Docker support, When instructed to prepare an Ollama model, Then it ensures the Ollama container is running and initiates pulling the target model tag.",
-        "Given a loaded Ollama model, When an inference prompt request is forwarded to the client daemon, Then the local Ollama API generates the completion response and returns metrics (tokens/sec, total tokens)."
-      ],
-      "user_story": "As a developer running LLM coding agents, I want client nodes to pull designated Ollama models and execute local inference workloads, so that code analysis tasks run directly on idle client hardware.",
-      "value_hypothesis": "Client nodes can execute LLM coding queries locally, eliminating central cloud inference costs.",
-      "title": "Ollama Model Runner and Local Inference Execution",
-      "dependencies": [
-        "EP-0004",
-        "US-0004"
-      ],
-      "type": "User Story",
-      "stages_completed": [
-        "Draft",
-        "Ready"
-      ],
-      "status": "Ready",
-      "version": "v0.2"
     },
     {
       "epic_id": "EP-0005",
@@ -462,11 +444,13 @@
       "version": "v0.2"
     },
     {
-      "id": "ISSUE-0007",
+      "title": "Streamline ProductOwner specification drafting and backlog grooming sessions with strict prompt timeboxes and pre-structured templates to keep PO token usage under 30% of sprint budget.",
+      "overview": "Streamline ProductOwner specification drafting and backlog grooming sessions with strict prompt timeboxes and pre-structured templates to keep PO token usage under 30% of sprint budget.",
+      "owner": "ProductOwner",
       "type": "Issue",
-      "title": "Backlog priority order conflict: US-0004 was marked 'Must' while depending on prerequisite US-0002, causing advance_story_stage to reject advancing US-0002 to Implemented until PO reprioritized US-0004.",
+      "id": "ISSUE-0003",
       "status": "Draft",
-      "priority": "Must",
+      "priority": "Won't",
       "version": "Backlog (unplanned)"
     },
     {
@@ -474,18 +458,35 @@
       "type": "Issue",
       "title": "Validate story dependency sequences during sprint planning to ensure prerequisite foundational stories always hold higher priority than downstream dependent stories.",
       "status": "Draft",
-      "priority": "Must",
+      "priority": "Won't",
       "version": "Backlog (unplanned)"
     },
     {
-      "title": "Streamline ProductOwner specification drafting and backlog grooming sessions with strict prompt timeboxes and pre-structured templates to keep PO token usage under 30% of sprint budget.",
-      "overview": "Streamline ProductOwner specification drafting and backlog grooming sessions with strict prompt timeboxes and pre-structured templates to keep PO token usage under 30% of sprint budget.",
+      "id": "ISSUE-0007",
+      "type": "Issue",
+      "title": "Backlog priority order conflict: US-0004 was marked 'Must' while depending on prerequisite US-0002, causing advance_story_stage to reject advancing US-0002 to Implemented until PO reprioritized US-0004.",
+      "status": "Draft",
+      "priority": "Won't",
+      "version": "Backlog (unplanned)"
+    },
+    {
+      "title": "Retrospective process issues (ISSUE-0001 through ISSUE-0007) had higher or default backlog priority, repeatedly causing advance_story_stage to reject advancing active sprint stories US-0005 and US-0004 until Product Owner manually deprioritized them.",
+      "overview": "Retrospective process issues (ISSUE-0001 through ISSUE-0007) had higher or default backlog priority, repeatedly causing advance_story_stage to reject advancing active sprint stories US-0005 and US-0004 until Product Owner manually deprioritized them.",
       "owner": "ProductOwner",
       "type": "Issue",
-      "id": "ISSUE-0003",
+      "id": "ISSUE-0010",
+      "version": "Backlog (unplanned)",
+      "priority": "Won't"
+    },
+    {
+      "title": "Ensure newly filed process and retrospective tracking issues are assigned Won't or lowest priority at creation time so they do not block active sprint user stories in advance_story_stage.",
+      "overview": "Ensure newly filed process and retrospective tracking issues are assigned Won't or lowest priority at creation time so they do not block active sprint user stories in advance_story_stage.",
+      "owner": "ProductOwner",
+      "type": "Issue",
+      "id": "ISSUE-0008",
+      "version": "Backlog (unplanned)",
       "status": "Draft",
-      "priority": "Must",
-      "version": "Backlog (unplanned)"
+      "priority": "Won't"
     },
     {
       "title": "Token budget limit of 6,000,000 was exceeded (reaching 6,073,060 tokens) with ProductOwner accounting for over 50% of token usage and feature implementation taking only 34% of total tokens.",
@@ -515,9 +516,9 @@
     }
   ],
   "definition_of_done": [],
-  "sprint_goal": "Deliver end-to-end containerized job execution for v0.1 MVP by implementing central job queueing and dispatching on the Control Server and isolated Docker execution on the Client Daemon.",
-  "sprint_number": 3,
-  "sprint_backlog_pr_sprint": 3,
+  "sprint_goal": "Enable distributed Ray worker bootstrap and local Ollama model inference execution on client nodes (US-0007, US-0008).",
+  "sprint_number": 4,
+  "sprint_backlog_pr_sprint": 4,
   "sprint_backlog": [
     {
       "id": "US-0001",
@@ -773,6 +774,94 @@
       ],
       "acceptance_check_count": 1,
       "acceptance_check_note": "Verified US-0004 acceptance criteria: client daemon initiates container execution with strict CPU and memory resource constraints via DockerEngineClient, captures stdout/stderr logs and exit codes, and reports execution status to the Control Server."
+    },
+    {
+      "epic_id": "EP-0004",
+      "value_hypothesis": "Client machines can form a unified Ray cluster to run parallelized distributed computing tasks.",
+      "description": "As a cluster administrator, I want client nodes to automatically join a distributed Ray cluster as worker nodes when instructed by the Control Server, so that distributed compute tasks can execute across idle machines.",
+      "dependencies": [
+        "EP-0004",
+        "US-0004"
+      ],
+      "title": "Distributed Ray Cluster Bootstrap on Client Nodes",
+      "id": "US-0007",
+      "notes": "Enables distributed computing across heterogeneous Apple Silicon and Windows nodes via Ray.",
+      "tasks": [
+        "Define RayWorkerConfig schema and launch parameters",
+        "Implement RayWorkerManager with start/stop/status methods",
+        "Hook into DaemonLifecycle to stop Ray worker cleanly when status transitions away from Idle",
+        "Add unit tests verifying container arguments and lifecycle management"
+      ],
+      "priority": "Must",
+      "acceptance_criteria": [
+        "Given a client daemon instructed to join the Ray cluster, When the daemon receives cluster head coordinates, Then it launches a containerized Ray worker connecting to the specified head.",
+        "Given a running Ray worker container, When the client node status changes to busy or disconnects, Then the worker cleanly leaves the Ray cluster."
+      ],
+      "type": "User Story",
+      "stages_completed": [
+        "Draft",
+        "Ready"
+      ],
+      "status": "Ready",
+      "version": "v0.2",
+      "user_story": "As a cluster administrator, I want client nodes to automatically join a distributed Ray cluster as worker nodes when instructed by the Control Server, so that distributed compute tasks can execute across idle machines.",
+      "dod_checks": [
+        "RayWorkerConfig data model defined",
+        "Containerized Ray worker start/stop methods implemented",
+        "Clean departure on status transition or shutdown tested",
+        "Unit and mock integration tests passing"
+      ],
+      "code_files": [
+        "client-daemon/src/main/kotlin/cluster/daemon/ray/RayWorkerManager.kt",
+        "client-daemon/src/test/kotlin/cluster/daemon/ray/RayWorkerManagerTest.kt"
+      ],
+      "estimate": 40000,
+      "approach": "Implement Ray worker container orchestration in the client daemon, managing Ray worker container lifecycles, configuration parameter generation (head address, port, resources), health checks, and graceful teardown upon node busy state or shutdown.",
+      "risks_assumptions": "Assumes Docker runtime is available on the client node as established in US-0004.",
+      "test_approach": "Unit tests mocking container execution client and verifying lifecycle state transitions and parameter validation."
+    },
+    {
+      "tasks": [
+        "Define Ollama models, request/response DTOs, and configuration",
+        "Implement OllamaManager to pull models and execute inference requests",
+        "Calculate and return performance metrics (tokens/sec, total tokens)",
+        "Add unit tests with simulated Ollama HTTP API responses"
+      ],
+      "notes": "Executes open coding LLMs locally on client hardware via Ollama.",
+      "epic_id": "EP-0004",
+      "priority": "Must",
+      "id": "US-0008",
+      "acceptance_criteria": [
+        "Given a client daemon with Docker support, When instructed to prepare an Ollama model, Then it ensures the Ollama container is running and initiates pulling the target model tag.",
+        "Given a loaded Ollama model, When an inference prompt request is forwarded to the client daemon, Then the local Ollama API generates the completion response and returns metrics (tokens/sec, total tokens)."
+      ],
+      "user_story": "As a developer running LLM coding agents, I want client nodes to pull designated Ollama models and execute local inference workloads, so that code analysis tasks run directly on idle client hardware.",
+      "value_hypothesis": "Client nodes can execute LLM coding queries locally, eliminating central cloud inference costs.",
+      "title": "Ollama Model Runner and Local Inference Execution",
+      "dependencies": [
+        "EP-0004",
+        "US-0004"
+      ],
+      "type": "User Story",
+      "stages_completed": [
+        "Draft",
+        "Ready"
+      ],
+      "status": "Ready",
+      "version": "v0.2",
+      "code_files": [
+        "client-daemon/src/main/kotlin/cluster/daemon/ollama/OllamaManager.kt",
+        "client-daemon/src/test/kotlin/cluster/daemon/ollama/OllamaManagerTest.kt"
+      ],
+      "test_approach": "Unit tests validating JSON serialization, API error handling, and metrics calculation.",
+      "dod_checks": [
+        "Ollama container management and model pull logic implemented",
+        "Inference execution endpoint/service returning completions and token metrics",
+        "Unit tests covering model pull and inference completion parsing"
+      ],
+      "risks_assumptions": "Assumes Ollama API follows standard HTTP specifications (/api/generate, /api/pull, /api/tags).",
+      "approach": "Implement Ollama runner service in the client daemon to manage the Ollama service container, pull requested model tags, verify model availability, and proxy inference requests with token throughput metrics.",
+      "estimate": 40000
     }
   ],
   "impediment_log": [
@@ -785,6 +874,11 @@
     {
       "description": "Retrospective process issues (ISSUE-0001 through ISSUE-0007) had higher or default backlog priority, repeatedly causing advance_story_stage to reject advancing active sprint stories US-0005 and US-0004 until Product Owner manually deprioritized them.",
       "owner": "ProductOwner",
+      "status": "open"
+    },
+    {
+      "description": "Sprint 4 initialization is blocked because release PR #15 (develop -> main) is currently open and unmerged. Merging or closing the release PR is required to start the new sprint.",
+      "owner": "Repository Maintainer / Stakeholder",
       "status": "open"
     }
   ],
@@ -828,14 +922,14 @@
   "budgets": {
     "total": 6000000,
     "total_usd": 20.0,
-    "current_usd_spend": 0.0
+    "current_usd_spend": 0.310965375
   },
   "token_usage": {
-    "total": 6060332,
+    "total": 672577,
     "agents": {
-      "ProductOwner": 2354405,
-      "ScrumMaster": 724451,
-      "DevTeam": 2398457,
+      "ProductOwner": 2698630,
+      "ScrumMaster": 288442,
+      "DevTeam": 2722336,
       "Architect": 578929,
       "QA": 957420,
       "ScrumOrchestrator": 74208
@@ -861,6 +955,13 @@
     "US-0004": {
       "estimate": 35000,
       "actual": 19500
+    },
+    "US-0007": {
+      "estimate": 40000,
+      "actual": 22000
+    },
+    "US-0008": {
+      "estimate": 40000
     }
   },
   "sprint_report_kpis": {
@@ -966,6 +1067,10 @@
     {
       "type": "sprint",
       "note": "Sprint 3 goal and backlog approved by user: US-0005 and US-0004 for v0.1 MVP."
+    },
+    {
+      "type": "sprint",
+      "note": "Stakeholder approved proceeding to Sprint 4."
     }
   ],
   "sprint_approval_baseline": 3,
@@ -1027,12 +1132,12 @@
     "specs/reports/SPRINT-REPORT-004.md",
     "specs/reports/SPRINT-REPORT-LATEST.md",
     "specs/reports/SPRINT-REPORT-005.md",
-    "specs/reports/TRANSCRIPT-004.md"
+    "specs/reports/TRANSCRIPT-004.md",
+    "client-daemon/src/main/kotlin/de/heinzelmann/client/ray/RayWorkerModels.kt",
+    "client-daemon/src/main/kotlin/de/heinzelmann/client/ray/RayWorkerManager.kt",
+    "client-daemon/src/test/kotlin/de/heinzelmann/client/ray/RayWorkerManagerTest.kt"
   ],
-  "last_check_build": {
-    "checked": null,
-    "passing": null
-  },
+  "last_check_build": {},
   "pr_review_calls": {
     "Architect": 5,
     "QA": 6
@@ -1049,6 +1154,15 @@
       "created_at": "2026-09-23T09:15:44.170399+00:00",
       "resolved": true,
       "resolved_at": "2026-09-23T09:24:21.124144+00:00"
+    },
+    {
+      "id": 2,
+      "kind": "release_pr",
+      "summary": "Sprint 3 release PR #15 (develop -> main) is open and must be merged before starting Sprint 4",
+      "detail": "start_sprint cannot proceed because release PR #15 (Release v0.1.2 - Sprint 3 Increment) from develop into main remains open and unmerged. Repository maintainers must merge or close this PR out-of-band before Sprint 4 can start.",
+      "created_at": "2026-09-23T15:14:34.204157+00:00",
+      "resolved": true,
+      "resolved_at": "2026-09-23T15:17:01.945258+00:00"
     }
   ],
   "budget_reset_since_last_sprint_start": false
