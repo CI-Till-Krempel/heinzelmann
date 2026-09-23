@@ -33,17 +33,10 @@ Stories
   - [x] REVIEWED
   - [x] TESTED
   - [x] ACCEPTED
-- [US-0004] Docker Container Job Runner on Client Daemon
-  - [ ] DRAFT
-  - [ ] READY
-  - [ ] IMPLEMENTED
-  - [ ] REVIEWED
-  - [ ] TESTED
-  - [ ] ACCEPTED
 - [US-0002] Client Daemon Lifecycle & Metrics Collector
   - [x] DRAFT
   - [x] READY
-  - [ ] IMPLEMENTED
+  - [x] IMPLEMENTED
   - [ ] REVIEWED
   - [ ] TESTED
   - [ ] ACCEPTED
@@ -55,6 +48,13 @@ Stories
   - [ ] TESTED
   - [ ] ACCEPTED
 - [US-0005] Control Server Job Queue and Dispatcher
+  - [ ] DRAFT
+  - [ ] READY
+  - [ ] IMPLEMENTED
+  - [ ] REVIEWED
+  - [ ] TESTED
+  - [ ] ACCEPTED
+- [US-0004] Docker Container Job Runner on Client Daemon
   - [ ] DRAFT
   - [ ] READY
   - [ ] IMPLEMENTED
