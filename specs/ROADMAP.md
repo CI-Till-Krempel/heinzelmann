@@ -48,9 +48,9 @@ Stories
   - [x] TESTED
   - [x] ACCEPTED
 - [US-0005] Control Server Job Queue and Dispatcher
-  - [ ] DRAFT
-  - [ ] READY
-  - [ ] IMPLEMENTED
+  - [x] DRAFT
+  - [x] READY
+  - [x] IMPLEMENTED
   - [ ] REVIEWED
   - [ ] TESTED
   - [ ] ACCEPTED
