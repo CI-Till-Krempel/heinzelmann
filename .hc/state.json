@@ -216,7 +216,9 @@
       "owner": "ProductOwner",
       "type": "Issue",
       "id": "ISSUE-0008",
-      "version": "Backlog (unplanned)"
+      "version": "Backlog (unplanned)",
+      "status": "Draft",
+      "priority": "Must"
     },
     {
       "title": "Retrospective process issues (ISSUE-0001 through ISSUE-0007) had higher or default backlog priority, repeatedly causing advance_story_stage to reject advancing active sprint stories US-0005 and US-0004 until Product Owner manually deprioritized them.",
@@ -464,7 +466,7 @@
       "type": "Issue",
       "title": "Backlog priority order conflict: US-0004 was marked 'Must' while depending on prerequisite US-0002, causing advance_story_stage to reject advancing US-0002 to Implemented until PO reprioritized US-0004.",
       "status": "Draft",
-      "priority": "Won't",
+      "priority": "Must",
       "version": "Backlog (unplanned)"
     },
     {
@@ -472,7 +474,7 @@
       "type": "Issue",
       "title": "Validate story dependency sequences during sprint planning to ensure prerequisite foundational stories always hold higher priority than downstream dependent stories.",
       "status": "Draft",
-      "priority": "Won't",
+      "priority": "Must",
       "version": "Backlog (unplanned)"
     },
     {
@@ -482,7 +484,7 @@
       "type": "Issue",
       "id": "ISSUE-0003",
       "status": "Draft",
-      "priority": "Won't",
+      "priority": "Must",
       "version": "Backlog (unplanned)"
     },
     {
