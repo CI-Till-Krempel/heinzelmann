@@ -175,16 +175,6 @@
       "acceptance_check_note": "Verified US-0005 acceptance criteria: Control Server schedules and assigns batch jobs to eligible nodes based on resource capacity, and automatically detects heartbeat timeouts (>60s) to re-queue jobs for alternate healthy nodes."
     },
     {
-      "title": "Streamline ProductOwner specification drafting and backlog grooming sessions with strict prompt timeboxes and pre-structured templates to keep PO token usage under 30% of sprint budget.",
-      "overview": "Streamline ProductOwner specification drafting and backlog grooming sessions with strict prompt timeboxes and pre-structured templates to keep PO token usage under 30% of sprint budget.",
-      "owner": "ProductOwner",
-      "type": "Issue",
-      "id": "ISSUE-0003",
-      "status": "Draft",
-      "priority": "Must",
-      "version": "Backlog (unplanned)"
-    },
-    {
       "id": "US-0004",
       "type": "User Story",
       "title": "Docker Container Job Runner on Client Daemon",
@@ -460,6 +450,16 @@
       ],
       "status": "Ready",
       "version": "v0.2"
+    },
+    {
+      "title": "Streamline ProductOwner specification drafting and backlog grooming sessions with strict prompt timeboxes and pre-structured templates to keep PO token usage under 30% of sprint budget.",
+      "overview": "Streamline ProductOwner specification drafting and backlog grooming sessions with strict prompt timeboxes and pre-structured templates to keep PO token usage under 30% of sprint budget.",
+      "owner": "ProductOwner",
+      "type": "Issue",
+      "id": "ISSUE-0003",
+      "status": "Draft",
+      "priority": "Won't",
+      "version": "Backlog (unplanned)"
     },
     {
       "title": "Token budget limit of 6,000,000 was exceeded (reaching 6,073,060 tokens) with ProductOwner accounting for over 50% of token usage and feature implementation taking only 34% of total tokens.",
@@ -780,9 +780,9 @@
     "current_usd_spend": 0.0
   },
   "token_usage": {
-    "total": 3683259,
+    "total": 3750253,
     "agents": {
-      "ProductOwner": 1514105,
+      "ProductOwner": 1581099,
       "ScrumMaster": 71237,
       "DevTeam": 2006166,
       "Architect": 394050,
