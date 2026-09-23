@@ -735,6 +735,12 @@
       "decision": "Prioritized US-0002 ahead of US-0004 in the backlog to respect technical dependency sequence.",
       "rationale": "US-0004 (Docker container runner) requires the client daemon service (US-0002) as a prerequisite foundation.",
       "owner": "ProductOwner"
+    },
+    {
+      "title": "Prioritize US-0005 over unplanned test issues",
+      "decision": "Deprioritized ISSUE-0001 and ISSUE-0002 to Won't and confirmed US-0005 as Must to ensure unblocked sequential delivery of Sprint 3 MVP stories.",
+      "rationale": "ISSUE-0001 and ISSUE-0002 were unplanned issues whose priority was blocking active sprint delivery of US-0005 in advance_story_stage.",
+      "owner": "ProductOwner"
     }
   ],
   "sprint_report": "",
@@ -744,9 +750,9 @@
     "current_usd_spend": 0.0
   },
   "token_usage": {
-    "total": 1146568,
+    "total": 1195429,
     "agents": {
-      "ProductOwner": 886359,
+      "ProductOwner": 935220,
       "ScrumMaster": 71237,
       "DevTeam": 867963,
       "Architect": 121117,
