@@ -2,39 +2,437 @@
   "version": "1.0.0",
   "product_vision": "",
   "product_goals": [],
-  "architecture_vision": "",
-  "product_backlog": [],
-  "definition_of_done": [
-    "Code reviewed",
-    "Automated tests passing",
-    "Acceptance criteria met",
-    "No critical security issues",
-    "Docs updated if needed",
-    "specs/ROADMAP.md updated via update_roadmap to reflect this story's completed status",
-    "Actual tokens spent logged via log_story_tokens"
+  "architecture_vision": "# Architecture Vision: Verteiltes LLM- & Job-Execution-Cluster\n\n**Version:** 1.0  \n**Status:** Approved  \n**Author:** Architect Agent  \n\n---\n\n## 1. Executive Summary & Target System Shape\nThe system transforms idle workstation capacity (macOS and Windows laptops) into a distributed, containerized compute and LLM inference cluster for overnight batch processing. The target architecture maximizes code sharing across platforms via Kotlin Multiplatform (KMP), isolates all workloads within Docker containers, and maintains a strict separation of concerns across three core system tiers:\n1. **Control Server (Ktor Backend):** Central coordinator for node registration, heartbeat monitoring, job scheduling, and metrics aggregation.\n2. **Client Daemons (KMP Background Services):** Ultra-lightweight native services on macOS (LaunchDaemon) and Windows (Windows Service) that enforce keep-awake power assertions, sample system health telemetry, and interface with local Docker daemons.\n3. **Admin Tool (Compose for Desktop):** Administrative desktop application providing real-time cluster monitoring, job execution inspection, and policy enforcement.\n\n```\n+-------------------------------------------------------+\n|                    Admin Tool                         |\n|         (Kotlin Multiplatform Desktop GUI)            |\n+---------------------------+---------------------------+\n                            | REST / WebSockets (TLS)\n                            v\n+-------------------------------------------------------+\n|                 Control Server                        |\n|        (Ktor / Kotlin Multiplatform Backend)          |\n+---------------------------+---------------------------+\n                            | REST / WebSockets (mTLS)\n           +----------------+----------------+\n           |                                 |\n           v                                 v\n+-----------------------+         +-----------------------+\n|  macOS Client Daemon  |         | Windows Client Daemon |\n|  (Background Service) |         |  (Background Service) |\n+-----------+-----------+         +-----------+-----------+\n            | Docker API                      | Docker API\n            v                                 v\n+-----------------------+         +-----------------------+\n| Docker / Ollama / Ray |         | Docker / Ollama / Ray |\n+-----------------------+         +-----------------------+\\\n```\n\n---\n\n## 2. Key Quality Attributes & Architectural Guardrails\n\n### 2.1 Host Protection & Resource Footprint Guardrail\n- **Idle Daytime Footprint:** When no batch jobs are running, the client daemon must consume < 1% CPU and < 50 MB resident memory (RSS).\n- **Strict Isolation:** No job execution or untrusted script may run directly on the host OS. All compute jobs execute inside Docker containers with constrained CPU, memory, and networking limits.\n- **Fail-Safe Power Management:** Host power assertions (`IOPMAssertionCreateWithName` on macOS, `SetThreadExecutionState` on Windows) must automatically release upon job completion, unexpected crash, or daemon shutdown to avoid draining laptop batteries unintentionally.\n\n### 2.2 Communication & Security Guardrail\n- **Mutual Authentication & Encryption:** All daemon-to-server and admin-to-server communications must run over TLS with mutual certificate authentication (mTLS) to prevent rogue node registration.\n- **Heartbeat & Resiliency:** Nodes report telemetry every 15–30 seconds. A missing heartbeat for > 60 seconds triggers a node status transition to `Offline` and initiates automated job failover / re-dispatching.\n\n### 2.3 Modularity & Kotlin Multiplatform (KMP) Architecture\n- **Shared Module (`:shared`):** Core domain models (`Node`, `Job`, `TelemetryMetrics`), protocol DTOs, validation logic, and serialization (`kotlinx.serialization`).\n- **Server Module (`:server`):** Ktor server handling REST/WebSocket endpoints, node state store, job queue, and scheduler.\n- **Client Daemon Module (`:daemon`):** Native targets for macOS (`macosArm64`, `macosX64`) and Windows (`mingwX64`), abstracting OS-level power assertions and Docker socket integrations through `expect`/`actual` declarations or common interfaces.\n- **Admin Module (`:admin`):** Compose for Desktop application leveraging shared models.\n\n---\n\n## 3. Tech-Stack Guardrails\n\n| Layer | Selected Technology | Architectural Rationale |\n|---|---|---|\n| Language / Platform | Kotlin 2.x / Kotlin Multiplatform (KMP) | Single language across backend, daemon, and UI; shared business logic and serialization schemas. |\n| Server Framework | Ktor 3.x (CIO engine, Netty or Coroutine-based) | Lightweight, asynchronous, native coroutines support, low memory footprint. |\n| Client Daemon Host Services | macOS LaunchDaemon / Windows Service | Non-intrusive autostart services operating with appropriate OS permissions for power management. |\n| Container Runtime | Docker Engine via local Docker socket (`unix:///var/run/docker.sock` or Windows named pipe `\\\\.\\pipe\\docker_engine`) | Broad ecosystem compatibility, standard image registries, robust resource isolation. |\n| Distributed LLM / Workloads | Ray Core / Ollama container images | Ray provides distributed task scheduling and actor models; Ollama provides containerized GGUF inference. |\n| Desktop UI | Jetpack Compose for Desktop | Modern declarative UI in Kotlin sharing viewmodels and models with `:shared`. |\n\n---\n\n## 4. Phase-by-Phase Roadmap Alignment\n\n- **Phase 1 (MVP v0.1):** Core Ktor control server, KMP client daemon with host telemetry and power assertion (keep-awake), and Docker container execution runner. Validated on 5–10 devices.\n- **Phase 2 (v0.2):** Distributed Ray/Ollama cluster integration for LLM coding agents, and Compose for Desktop admin monitoring.\n- **Phase 3 (v0.3+):** Smart plug energy measuring (Shelly, Tapo) and advanced night-window scheduling policies.",
+  "product_backlog": [
+    {
+      "id": "US-0005",
+      "type": "User Story",
+      "title": "Control Server Job Queue and Dispatcher",
+      "status": "Ready",
+      "priority": "Must",
+      "user_story": "As a cluster administrator, I want the Control Server to queue jobs and dispatch them to eligible online nodes based on availability and resource capacity, so that workloads are completed efficiently across the fleet.",
+      "acceptance_criteria": [
+        "Given batch job submissions via API, When jobs are enqueued, Then the Control Server schedules and assigns them to available nodes matching resource constraints and requirements.",
+        "Given an assigned job, When a node stops reporting heartbeats before job completion, Then the Control Server detects the failure and re-queues the job for execution on an alternate available node."
+      ],
+      "version": "v0.1",
+      "value_hypothesis": "Jobs are distributed evenly and automatically failover when nodes disconnect unexpectedly.",
+      "tasks": [
+        "Design JobQueue repository and state machine (Queued, Dispatched, Running, Succeeded, Failed)",
+        "Implement node scheduling strategy based on live resource metrics",
+        "Implement job dispatching protocol over HTTP/WebSocket",
+        "Add automated tests for job queuing, assignment, and failure recovery"
+      ],
+      "notes": "Central job dispatching and scheduling engine on the Control Server.",
+      "dependencies": [
+        "EP-0002",
+        "US-0001"
+      ],
+      "epic_id": "EP-0002"
+    },
+    {
+      "id": "US-0001",
+      "type": "User Story",
+      "title": "Control Server Node Registration & Heartbeat API",
+      "status": "Ready",
+      "priority": "Must",
+      "user_story": "As a Control Server administrator, I want an API for node registration and periodic heartbeat telemetry, so that the server maintains an accurate real-time inventory of cluster nodes and their health.",
+      "acceptance_criteria": [
+        "Given a running Ktor Control Server, When a client daemon sends a registration POST request with node ID, OS type, and hardware specs, Then the server stores the node and responds with 200 OK and registration confirmation.",
+        "Given a registered node, When the node sends a periodic heartbeat with CPU/RAM metrics, Then the server updates the node's last-seen timestamp and metric cache.",
+        "Given a registered node that stops sending heartbeats, When the timeout threshold (60 seconds) expires, Then the server marks the node status as Offline."
+      ],
+      "version": "v0.1",
+      "dependencies": [
+        "EP-0002"
+      ],
+      "notes": "Core registration and heartbeat telemetry for cluster nodes.",
+      "tasks": [
+        "Set up Ktor server project structure and build configuration",
+        "Define NodeRegistrationRequest and HeartbeatTelemetry models",
+        "Implement NodeRegistry repository with TTL tracking",
+        "Implement registration and heartbeat API routes",
+        "Add automated tests for registration and timeout detection"
+      ],
+      "value_hypothesis": "Control Server reliably tracks cluster node inventory and health status in real time.",
+      "epic_id": "EP-0002"
+    },
+    {
+      "id": "EP-0001",
+      "type": "Epic",
+      "title": "Client Daemon & Power Management",
+      "status": "Open",
+      "priority": "Must",
+      "description": "Cross-platform background daemon for macOS and Windows that monitors system metrics, prevents standby during active workloads via power assertions, and executes tasks."
+    },
+    {
+      "id": "US-0004",
+      "type": "User Story",
+      "title": "Docker Container Job Runner on Client Daemon",
+      "status": "Ready",
+      "priority": "Must",
+      "user_story": "As a cluster operator, I want client daemons to execute jobs in isolated Docker containers with specified CPU and memory constraints, so that tasks run securely without altering the host system.",
+      "acceptance_criteria": [
+        "Given an assigned job specification with container image, environment, and command, When the daemon initiates execution, Then it runs the container via the local Docker daemon with strict memory and CPU limits.",
+        "Given a containerized job execution, When the job completes or fails, Then the daemon captures exit codes, stdout/stderr logs, and reports the execution result back to the Control Server."
+      ],
+      "version": "v0.1",
+      "notes": "Executes tasks in isolated Docker environments to ensure safety and repeatability.",
+      "value_hypothesis": "Container isolation guarantees host machine stability and reproducible task environments.",
+      "dependencies": [
+        "EP-0003",
+        "US-0002"
+      ],
+      "tasks": [
+        "Implement DockerEngineClient communicating via Docker UNIX socket / named pipe",
+        "Implement container run lifecycle with resource limit flags (cpu, mem)",
+        "Implement log streamer and exit code capture",
+        "Add integration test verifying container execution and output capture"
+      ],
+      "epic_id": "EP-0003"
+    },
+    {
+      "id": "EP-0002",
+      "type": "Epic",
+      "title": "Control Server & Node Orchestration",
+      "status": "Open",
+      "priority": "Must",
+      "description": "Ktor backend server managing client node registrations, telemetry, heartbeat health checks, and batch job scheduling across the cluster."
+    },
+    {
+      "id": "EP-0003",
+      "type": "Epic",
+      "title": "Containerized Job Execution",
+      "status": "Open",
+      "priority": "Must",
+      "description": "Isolated execution of computational tasks and AI jobs in Docker containers on client machines with resource controls."
+    },
+    {
+      "id": "US-0002",
+      "type": "User Story",
+      "title": "Client Daemon Lifecycle & Metrics Collector",
+      "status": "Ready",
+      "priority": "Must",
+      "user_story": "As a cluster administrator, I want a lightweight daemon running on client laptops that collects system metrics, so that the Control Server knows each node's capacity and current load.",
+      "acceptance_criteria": [
+        "Given a client machine (macOS or Windows), When the daemon service starts at boot, Then it runs as a low-footprint background process consuming <1% CPU and <50MB RAM in idle.",
+        "Given a running daemon, When collecting system telemetry, Then it samples CPU usage, RAM utilization, battery charge level, and temperature, transmitting them via heartbeat."
+      ],
+      "version": "v0.1",
+      "tasks": [
+        "Implement KMP platform daemon entry point for macOS (LaunchDaemon) and Windows Service",
+        "Implement platform-specific hardware metrics collectors (sysctl / OSHI)",
+        "Implement periodic reporting client to Control Server",
+        "Add unit tests for metrics serialization and collector thresholds"
+      ],
+      "epic_id": "EP-0001",
+      "dependencies": [
+        "EP-0001",
+        "US-0001"
+      ],
+      "notes": "Lightweight background daemon for cross-platform hardware monitoring.",
+      "value_hypothesis": "Client nodes reliably report system resource availability without impacting normal daytime laptop usability."
+    },
+    {
+      "id": "US-0003",
+      "type": "User Story",
+      "title": "Client Daemon Power Assertion and Sleep Prevention",
+      "status": "Ready",
+      "priority": "Must",
+      "user_story": "As a system operator, I want the client daemon to prevent laptops from entering sleep mode while executing assigned batch jobs, so that long-running tasks complete without interruption.",
+      "acceptance_criteria": [
+        "Given a client laptop on AC power running an assigned workload, When a job is active, Then the daemon creates an OS power assertion (IOPMAssertion on macOS / SetThreadExecutionState on Windows) preventing sleep.",
+        "Given an active job completion or cancellation, When no more jobs are queued on the node, Then the daemon releases the power assertion and restores default OS sleep policies."
+      ],
+      "version": "v0.1",
+      "epic_id": "EP-0001",
+      "tasks": [
+        "Implement macOS IOPMAssertionCreateWithName binding via Kotlin/Native or JNA",
+        "Implement Windows SetThreadExecutionState binding",
+        "Create PowerAssertionManager lifecycle controller",
+        "Add automated unit/mock tests for assertion creation and release"
+      ],
+      "dependencies": [
+        "EP-0001",
+        "US-0002"
+      ],
+      "value_hypothesis": "Laptops stay awake during active night jobs and resume normal sleep behavior once jobs finish.",
+      "notes": "Prevents idle sleep disruptions during overnight batch compute workloads."
+    },
+    {
+      "id": "ISSUE-0002",
+      "type": "Issue",
+      "title": "Token budget (1,000,000 tokens) was exhausted during initial backlog refinement and architecture modeling before Sprint 1 stories could be estimated or advanced.",
+      "status": "Draft",
+      "priority": "Must",
+      "version": "Backlog (unplanned)"
+    },
+    {
+      "id": "ISSUE-0001",
+      "type": "Issue",
+      "title": "test",
+      "status": "Draft",
+      "priority": "Must",
+      "version": "Backlog (unplanned)"
+    },
+    {
+      "id": "EP-0005",
+      "type": "Epic",
+      "title": "Cluster Admin Dashboard & Policy Management",
+      "status": "Open",
+      "priority": "Should",
+      "description": "Compose for Desktop management application for cluster operators to observe nodes, submit jobs, and enforce execution policies."
+    },
+    {
+      "id": "EP-0004",
+      "type": "Epic",
+      "title": "Distributed LLM & Ray Inference Engine",
+      "status": "Open",
+      "priority": "Should",
+      "description": "Distributed inference framework connecting idle cluster nodes using Ray and Ollama to host and run open-source coding LLMs."
+    },
+    {
+      "id": "US-0006",
+      "type": "User Story",
+      "title": "Admin Dashboard Node Status and Live Metrics View",
+      "status": "Ready",
+      "priority": "Should",
+      "user_story": "As an IT administrator, I want a desktop dashboard showing real-time status and hardware metrics of all cluster nodes, so that I can easily monitor cluster health and capacity at a glance.",
+      "acceptance_criteria": [
+        "Given the Compose for Desktop Admin Dashboard connected to Control Server, When viewing the Nodes tab, Then all registered nodes are listed with their ID, OS, status (Online/Offline/Busy), CPU, and RAM metrics.",
+        "Given changes in node status or metrics on the server, When updates arrive, Then the dashboard UI updates within 5 seconds without requiring manual refresh."
+      ],
+      "version": "v0.2",
+      "epic_id": "EP-0005",
+      "notes": "Real-time operator visibility into cluster state and node health.",
+      "tasks": [
+        "Set up Compose for Desktop client module and Ktor HTTP/WebSocket client",
+        "Build Node List and Node Detail views in Compose",
+        "Implement reactive state management using Kotlin Coroutines StateFlow",
+        "Add UI unit tests verifying node state rendering and status badge colors"
+      ],
+      "value_hypothesis": "IT administrators gain continuous operational visibility into fleet health without manual server querying.",
+      "dependencies": [
+        "EP-0005",
+        "US-0001"
+      ]
+    },
+    {
+      "epic_id": "EP-0004",
+      "value_hypothesis": "Client machines can form a unified Ray cluster to run parallelized distributed computing tasks.",
+      "description": "As a cluster administrator, I want client nodes to automatically join a distributed Ray cluster as worker nodes when instructed by the Control Server, so that distributed compute tasks can execute across idle machines.",
+      "dependencies": [
+        "EP-0004",
+        "US-0004"
+      ],
+      "title": "Distributed Ray Cluster Bootstrap on Client Nodes",
+      "id": "US-0007",
+      "notes": "Enables distributed computing across heterogeneous Apple Silicon and Windows nodes via Ray.",
+      "tasks": [
+        "Define RayWorkerConfig schema and launch arguments",
+        "Implement Ray worker container orchestration in daemon",
+        "Add health check and clean shutdown handling for Ray workers",
+        "Add integration test for worker container lifecycle"
+      ],
+      "priority": "Should",
+      "acceptance_criteria": [
+        "Given a client daemon instructed to join the Ray cluster, When the daemon receives cluster head coordinates, Then it launches a containerized Ray worker connecting to the specified head.",
+        "Given a running Ray worker container, When the client node status changes to busy or disconnects, Then the worker cleanly leaves the Ray cluster."
+      ],
+      "type": "User Story",
+      "stages_completed": [
+        "Draft",
+        "Ready"
+      ],
+      "status": "Ready",
+      "version": "v0.2",
+      "user_story": "As a cluster administrator, I want client nodes to automatically join a distributed Ray cluster as worker nodes when instructed by the Control Server, so that distributed compute tasks can execute across idle machines."
+    },
+    {
+      "tasks": [
+        "Create OllamaRunner client in daemon codebase",
+        "Implement model pull and readiness verification check",
+        "Expose proxy inference endpoint with streaming response support",
+        "Add integration test with lightweight test model"
+      ],
+      "notes": "Executes open coding LLMs locally on client hardware via Ollama.",
+      "epic_id": "EP-0004",
+      "priority": "Should",
+      "id": "US-0008",
+      "acceptance_criteria": [
+        "Given a client daemon with Docker support, When instructed to prepare an Ollama model, Then it ensures the Ollama container is running and initiates pulling the target model tag.",
+        "Given a loaded Ollama model, When an inference prompt request is forwarded to the client daemon, Then the local Ollama API generates the completion response and returns metrics (tokens/sec, total tokens)."
+      ],
+      "user_story": "As a developer running LLM coding agents, I want client nodes to pull designated Ollama models and execute local inference workloads, so that code analysis tasks run directly on idle client hardware.",
+      "value_hypothesis": "Client nodes can execute LLM coding queries locally, eliminating central cloud inference costs.",
+      "title": "Ollama Model Runner and Local Inference Execution",
+      "dependencies": [
+        "EP-0004",
+        "US-0004"
+      ],
+      "type": "User Story",
+      "stages_completed": [
+        "Draft",
+        "Ready"
+      ],
+      "status": "Ready",
+      "version": "v0.2"
+    },
+    {
+      "epic_id": "EP-0005",
+      "acceptance_criteria": [
+        "Given the Compose for Desktop Admin Dashboard, When the admin enters job parameters (docker image, command, target node tags) and clicks Submit, Then the job is posted to the Control Server and appears in the active queue table.",
+        "Given active running jobs in the cluster, When the admin views the Job Pipeline view, Then each job's live state (Queued, Running, Succeeded, Failed) and execution duration are dynamically updated."
+      ],
+      "value_hypothesis": "Operators can dispatch jobs and monitor progress through an intuitive desktop GUI without CLI scripting.",
+      "tasks": [
+        "Build Job Submission form view in Compose for Desktop",
+        "Connect form to POST /api/jobs Control Server endpoint",
+        "Build Job Pipeline data table with status indicators",
+        "Add unit tests for Job Submission ViewModel"
+      ],
+      "notes": "Provides visual workflow control for dispatching and tracking cluster jobs.",
+      "title": "Admin Dashboard Job Submission and Status Pipeline View",
+      "priority": "Should",
+      "user_story": "As an IT administrator, I want a Compose for Desktop UI to submit batch job configurations and view active job progress in real time, so that I can manage and monitor cluster workload execution.",
+      "id": "US-0009",
+      "dependencies": [
+        "EP-0005",
+        "US-0005"
+      ],
+      "type": "User Story",
+      "stages_completed": [
+        "Draft",
+        "Ready"
+      ],
+      "status": "Ready",
+      "version": "v0.2"
+    },
+    {
+      "acceptance_criteria": [
+        "Given a scheduled batch job and a night-time execution window (22:00 to 06:00), When the current time is outside the allowed window, Then the dispatcher holds the job in Queued state without assigning it to nodes.",
+        "Given a running job on a battery-powered client node, When battery level drops below 50% or CPU temperature exceeds 85°C, Then the daemon signals the Control Server, pauses or evicts the job container, and relinquishes the power assertion."
+      ],
+      "id": "US-0010",
+      "title": "Night-Time Scheduling Windows and Thermal Guard Policy",
+      "epic_id": "EP-0005",
+      "tasks": [
+        "Define ClusterPolicy schema (time windows, battery floor, thermal ceiling)",
+        "Implement policy validation in Control Server dispatcher",
+        "Implement hardware guard checks in client daemon heartbeat loop",
+        "Add unit tests for policy evaluations and threshold triggers"
+      ],
+      "notes": "Protects hardware integrity and guarantees zero interference during normal working hours.",
+      "value_hypothesis": "Automated policy enforcement prevents battery degradation and overheating during unattended overnight runs.",
+      "user_story": "As a system operator, I want to enforce strict night-time execution windows and pause jobs when battery falls below 50% or thermal throttling occurs, so that client hardware is protected and daytime work is undisturbed.",
+      "priority": "Should",
+      "dependencies": [
+        "EP-0005",
+        "US-0002",
+        "US-0003"
+      ],
+      "type": "User Story",
+      "stages_completed": [
+        "Draft",
+        "Ready"
+      ],
+      "status": "Ready",
+      "version": "v0.2"
+    },
+    {
+      "id": "EP-0006",
+      "type": "Epic",
+      "title": "Smart Plug Energy Monitoring",
+      "status": "Open",
+      "priority": "Could",
+      "description": "Integration with Shelly and Tapo smart plugs to record actual electrical energy consumption and attribute wattage/kWh per job."
+    },
+    {
+      "epic_id": "EP-0006",
+      "user_story": "As an energy efficiency researcher, I want the Control Server to collect real-time wattage data from smart plugs connected to client laptops, so that energy consumption during jobs is accurately monitored.",
+      "title": "Smart Plug Telemetry Collector for Shelly and Tapo",
+      "id": "US-0011",
+      "tasks": [
+        "Implement SmartPlugClient interface with Shelly and Tapo adapters",
+        "Create SmartPlugManager service with periodic polling loop",
+        "Add node-to-plug configuration mapping schema",
+        "Add mock API tests for Shelly and Tapo response parsing"
+      ],
+      "notes": "Integrates external smart plug hardware telemetry into the cluster control plane.",
+      "value_hypothesis": "Real-time energy measurements provide empirical ground-truth power data for laptop clusters.",
+      "priority": "Could",
+      "dependencies": [
+        "EP-0006",
+        "US-0001"
+      ],
+      "acceptance_criteria": [
+        "Given a configured smart plug IP and credentials (Shelly Gen2 / Tapo P110), When the Control Server queries the smart plug API, Then it successfully reads instantaneous power (Watts) and cumulative energy (kWh).",
+        "Given mapped smart plugs to node IDs, When power metrics are collected periodically, Then the Control Server records timestamped power telemetry in the node metrics store."
+      ],
+      "type": "User Story",
+      "stages_completed": [
+        "Draft",
+        "Ready"
+      ],
+      "status": "Ready",
+      "version": "v0.2"
+    },
+    {
+      "notes": "Attributes measured physical energy costs directly to individual batch compute workloads.",
+      "dependencies": [
+        "EP-0006",
+        "US-0005",
+        "US-0011"
+      ],
+      "acceptance_criteria": [
+        "Given a completed job run with start and end timestamps and an assigned node, When the job completes, Then the Control Server computes the integrated energy consumption (kWh) over the job duration from the smart plug metrics.",
+        "Given computed job energy metrics, When the admin requests job execution details via the API or dashboard, Then the total energy consumed (kWh) and average power draw (W) are returned in the job report."
+      ],
+      "tasks": [
+        "Implement energy integration calculator (trapezoidal rule over wattage timeseries)",
+        "Store job energy summary in JobResult entity",
+        "Expose GET /api/jobs/{id}/energy endpoint in Control Server",
+        "Add unit test validating energy calculation against known wattage traces"
+      ],
+      "id": "US-0012",
+      "epic_id": "EP-0006",
+      "user_story": "As an administrator, I want the Control Server to correlate smart plug energy data with individual job runs, so that the total kilowatt-hour cost of batch LLM inference jobs can be analyzed and reported.",
+      "value_hypothesis": "Enables transparent cost and carbon footprint attribution for AI workloads running on idle hardware.",
+      "priority": "Could",
+      "title": "Energy Consumption Correlation and Reporting per Job",
+      "type": "User Story",
+      "stages_completed": [
+        "Draft",
+        "Ready"
+      ],
+      "status": "Ready",
+      "version": "v0.2"
+    }
   ],
-  "sprint_goal": "",
-  "sprint_number": 0,
-  "sprint_backlog_pr_sprint": 0,
+  "definition_of_done": [],
+  "sprint_goal": "Establish foundational client-server communication via Control Server Node Registration & Heartbeat API (US-0001) and Client Daemon Lifecycle & Metrics Collector (US-0002).",
+  "sprint_number": 1,
+  "sprint_backlog_pr_sprint": 1,
   "sprint_backlog": [],
   "impediment_log": [],
   "retro_actions": [],
   "decision_log": [],
   "sprint_report": "",
   "budgets": {
-    "total": 1000000,
+    "total": 6000000,
     "total_usd": 20.0,
-    "agents": {},
     "current_usd_spend": 0.0
   },
   "token_usage": {
-    "total": 192538,
+    "total": 2394846,
     "agents": {
-      "ScrumOrchestrator": 192538
+      "ScrumMaster": 57121,
+      "ProductOwner": 2080898,
+      "DevTeam": 256827
     }
   },
   "story_estimates": {},
-  "sprint_report_kpis": null,
+  "sprint_report_kpis": {},
   "kpi_update_count": 0,
   "kpi_baseline": 0,
   "backlog_scope_complete": false,
@@ -46,21 +444,84 @@
   "messages": [
     {
       "role": "user",
-      "content": "Hi lets set up"
+      "content": "Ok, so what is the state can we start sprinting ?"
+    },
+    {
+      "role": "model",
+      "content": "Checking the repository configuration and setup status."
+    },
+    {
+      "role": "model",
+      "content": "Listing documentation in the repository to inspect existing specifications."
+    },
+    {
+      "role": "model",
+      "content": "Checking the current budget status and LiteLLM virtual key setup."
+    },
+    {
+      "role": "model",
+      "content": "Setting up virtual keys for specialist agents to ensure LiteLLM proxy tracking and authorization."
+    },
+    {
+      "role": "model",
+      "content": "Creating virtual keys for the remaining specialist roles."
+    },
+    {
+      "role": "model",
+      "content": "Persisting updated Scrum state to the repository."
     }
   ],
   "hc_version": "0.1.0",
   "retro_baseline": 0,
-  "human_approvals": [],
+  "human_approvals": [
+    {
+      "type": "sprint",
+      "note": "User approved Sprint 2 goal and backlog: establish client-server foundation (US-0001, US-0002)."
+    },
+    {
+      "type": "release",
+      "note": "User instructed: take care all the specs are written to the repo as markdown files and the branch is integrated in the main branch."
+    }
+  ],
   "sprint_approval_baseline": 0,
   "release_approval_baseline": 0,
   "dev_touch_baseline": 0,
-  "sprint_files_touched": [],
+  "sprint_files_touched": [
+    "specs/stories/US-0007-Distributed-Ray-Cluster-Bootstrap-on-Client-Nodes.md",
+    "specs/ROADMAP.md",
+    "specs/stories/US-0008-Ollama-Model-Runner-and-Local-Inference-Execution.md",
+    "specs/stories/US-0009-Admin-Dashboard-Job-Submission-and-Status-Pipeline-View.md",
+    "specs/stories/US-0010-Night-Time-Scheduling-Windows-and-Thermal-Guard-Policy.md",
+    "specs/stories/US-0011-Smart-Plug-Telemetry-Collector-for-Shelly-and-Tapo.md",
+    "specs/stories/US-0012-Energy-Consumption-Correlation-and-Reporting-per-Job.md",
+    "specs/stories/US-0001-Control-Server-Node-Registration-&-Heartbeat-API.md",
+    "specs/stories/EP-0001-Client-Daemon-&-Power-Management.md",
+    "specs/stories/EP-0002-Control-Server-&-Node-Orchestration.md",
+    "specs/stories/EP-0003-Containerized-Job-Execution.md",
+    "specs/stories/EP-0004-Distributed-LLM-&-Ray-Inference-Engine.md",
+    "specs/stories/EP-0005-Cluster-Admin-Dashboard-&-Policy-Management.md",
+    "specs/stories/EP-0006-Smart-Plug-Energy-Monitoring.md",
+    "specs/stories/US-0002-Client-Daemon-Lifecycle-&-Metrics-Collector.md",
+    "specs/stories/US-0003-Client-Daemon-Power-Assertion-and-Sleep-Prevention.md",
+    "specs/stories/US-0004-Docker-Container-Job-Runner-on-Client-Daemon.md",
+    "specs/stories/US-0005-Control-Server-Job-Queue-and-Dispatcher.md",
+    "specs/stories/US-0006-Admin-Dashboard-Node-Status-and-Live-Metrics-View.md"
+  ],
   "last_check_build": null,
   "pr_review_calls": {},
   "architect_review_baseline": 0,
   "qa_review_baseline": 0,
   "sprint_report_pending_release": false,
-  "blocking_interactions": [],
-  "budget_reset_since_last_sprint_start": true
+  "blocking_interactions": [
+    {
+      "id": 1,
+      "kind": "approval",
+      "summary": "Release PR 'Release' is waiting on a 'release' human approval.",
+      "detail": "Cannot create a release PR - this interaction level requires a fresh 'release' human approval for this increment - call record_human_approval('release', ...) first (see docs/INTERACTION-LEVELS.md).",
+      "created_at": "2026-09-23T09:15:44.170399+00:00",
+      "resolved": true,
+      "resolved_at": "2026-09-23T09:24:21.124144+00:00"
+    }
+  ],
+  "budget_reset_since_last_sprint_start": false
 }
