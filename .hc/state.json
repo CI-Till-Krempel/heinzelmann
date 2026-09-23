@@ -8,7 +8,7 @@
       "id": "US-0001",
       "type": "User Story",
       "title": "Control Server Node Registration & Heartbeat API",
-      "status": "Implemented",
+      "status": "Reviewed",
       "priority": "Must",
       "user_story": "As a Control Server administrator, I want an API for node registration and periodic heartbeat telemetry, so that the server maintains an accurate real-time inventory of cluster nodes and their health.",
       "acceptance_criteria": [
@@ -33,7 +33,8 @@
       "stages_completed": [
         "Draft",
         "Ready",
-        "Implemented"
+        "Implemented",
+        "Reviewed"
       ]
     },
     {
@@ -423,7 +424,7 @@
       "id": "US-0001",
       "type": "User Story",
       "title": "Control Server Node Registration & Heartbeat API",
-      "status": "Implemented",
+      "status": "Reviewed",
       "priority": "Must",
       "user_story": "As a Control Server administrator, I want an API for node registration and periodic heartbeat telemetry, so that the server maintains an accurate real-time inventory of cluster nodes and their health.",
       "acceptance_criteria": [
@@ -467,7 +468,8 @@
       "stages_completed": [
         "Draft",
         "Ready",
-        "Implemented"
+        "Implemented",
+        "Reviewed"
       ]
     }
   ],
@@ -481,11 +483,12 @@
     "current_usd_spend": 0.0
   },
   "token_usage": {
-    "total": 4150129,
+    "total": 4574965,
     "agents": {
       "ScrumMaster": 57121,
       "ProductOwner": 2642403,
-      "DevTeam": 1450605
+      "DevTeam": 1748358,
+      "Architect": 127083
     }
   },
   "story_estimates": {
@@ -578,8 +581,10 @@
     "control-server/src/test/kotlin/com/heinzelmann/server/NodeApiTest.kt"
   ],
   "last_check_build": null,
-  "pr_review_calls": {},
-  "architect_review_baseline": 0,
+  "pr_review_calls": {
+    "Architect": 1
+  },
+  "architect_review_baseline": 1,
   "qa_review_baseline": 0,
   "sprint_report_pending_release": false,
   "blocking_interactions": [
