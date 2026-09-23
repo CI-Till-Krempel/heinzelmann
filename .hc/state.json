@@ -35,7 +35,13 @@
         "Ready",
         "Implemented",
         "Reviewed"
-      ]
+      ],
+      "review_denial": {
+        "stage": "Tested",
+        "reason": "Automated test suite execution failed: running the test suite found no tests actually ran (no tests collected). The test harness requires runnable tests (such as a pytest test suite in tests/ or test wrappers) to be collected and executed before the story can pass the Tested stage.",
+        "by": "QA",
+        "review_count_at_denial": 1
+      }
     },
     {
       "id": "EP-0001",
@@ -470,7 +476,13 @@
         "Ready",
         "Implemented",
         "Reviewed"
-      ]
+      ],
+      "review_denial": {
+        "stage": "Tested",
+        "reason": "Automated test suite execution failed: running the test suite found no tests actually ran (no tests collected). The test harness requires runnable tests (such as a pytest test suite in tests/ or test wrappers) to be collected and executed before the story can pass the Tested stage.",
+        "by": "QA",
+        "review_count_at_denial": 1
+      }
     }
   ],
   "impediment_log": [],
@@ -483,12 +495,13 @@
     "current_usd_spend": 0.0
   },
   "token_usage": {
-    "total": 4574965,
+    "total": 4888604,
     "agents": {
       "ScrumMaster": 57121,
       "ProductOwner": 2642403,
       "DevTeam": 1748358,
-      "Architect": 127083
+      "Architect": 191038,
+      "QA": 249684
     }
   },
   "story_estimates": {
@@ -580,9 +593,13 @@
     "control-server/src/main/kotlin/com/heinzelmann/server/Application.kt",
     "control-server/src/test/kotlin/com/heinzelmann/server/NodeApiTest.kt"
   ],
-  "last_check_build": null,
+  "last_check_build": {
+    "checked": null,
+    "passing": null
+  },
   "pr_review_calls": {
-    "Architect": 1
+    "Architect": 1,
+    "QA": 1
   },
   "architect_review_baseline": 1,
   "qa_review_baseline": 0,
