@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b7ce5638-0a71-422b-b4cb-d0edeb68be14" name="Changes" comment="" />
+    <list default="true" id="b7ce5638-0a71-422b-b4cb-d0edeb68be14" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/specs/requirements/ISSUE-0001-Enforce-strict-token-budget-timeboxes-for-initial-backlog-refinement-and-architecture-drafting-to-preserve-at-least-60%-of-sprint-tokens-for-implementation-and-testing..md" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -39,7 +41,6 @@
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "develop",
     "git.auto.fetch.suggestion.counter": "1",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/tkrempel/Projekte/heinzelmann",
