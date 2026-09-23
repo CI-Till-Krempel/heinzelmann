@@ -272,9 +272,10 @@
       "type": "User Story",
       "stages_completed": [
         "Draft",
-        "Ready"
+        "Ready",
+        "Implemented"
       ],
-      "status": "Ready",
+      "status": "Implemented",
       "version": "v0.2"
     },
     {
@@ -857,9 +858,10 @@
       "type": "User Story",
       "stages_completed": [
         "Draft",
-        "Ready"
+        "Ready",
+        "Implemented"
       ],
-      "status": "Ready",
+      "status": "Implemented",
       "version": "v0.2",
       "code_files": [
         "client-daemon/src/main/kotlin/cluster/daemon/ollama/OllamaManager.kt",
@@ -1088,7 +1090,7 @@
   ],
   "sprint_approval_baseline": 3,
   "release_approval_baseline": 1,
-  "dev_touch_baseline": 30,
+  "dev_touch_baseline": 33,
   "sprint_files_touched": [
     "specs/stories/US-0007-Distributed-Ray-Cluster-Bootstrap-on-Client-Nodes.md",
     "specs/ROADMAP.md",
