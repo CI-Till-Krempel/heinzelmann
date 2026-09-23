@@ -198,6 +198,13 @@
       "id": "ISSUE-0003"
     },
     {
+      "title": "Token budget limit of 6,000,000 was exceeded (reaching 6,073,060 tokens) with ProductOwner accounting for over 50% of token usage and feature implementation taking only 34% of total tokens.",
+      "overview": "Token budget limit of 6,000,000 was exceeded (reaching 6,073,060 tokens) with ProductOwner accounting for over 50% of token usage and feature implementation taking only 34% of total tokens.",
+      "owner": "ScrumMaster",
+      "type": "Issue",
+      "id": "ISSUE-0004"
+    },
+    {
       "id": "EP-0005",
       "type": "Epic",
       "title": "Cluster Admin Dashboard & Policy Management",
@@ -506,7 +513,8 @@
       "action": "Streamline ProductOwner specification drafting and backlog grooming sessions with strict prompt timeboxes and pre-structured templates to keep PO token usage under 30% of sprint budget.",
       "owner": "ProductOwner",
       "success_metric": "PO token consumption in Sprint 2 remains below 1,800,000 tokens while feature implementation token share increases above 50%.",
-      "status": "open"
+      "status": "open",
+      "issue_id": "ISSUE-0003"
     }
   ],
   "decision_log": [],
@@ -641,7 +649,8 @@
     "control-server/src/main/kotlin/com/heinzelmann/server/routes/NodeRoutes.kt",
     "control-server/src/main/kotlin/com/heinzelmann/server/Application.kt",
     "control-server/src/test/kotlin/com/heinzelmann/server/NodeApiTest.kt",
-    "tests/test_node_api.py"
+    "tests/test_node_api.py",
+    "specs/requirements/ISSUE-0003-Streamline-ProductOwner-specification-drafting-and-backlog-grooming-sessions-with-strict-prompt-timeboxes-and-pre-structured-templates-to-keep-PO-token-usage-under-30%-of-sprint-budget..md"
   ],
   "last_check_build": {
     "checked": null,
