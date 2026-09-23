@@ -115,13 +115,25 @@
       "title": "Client Daemon Power Assertion and Sleep Prevention",
       "status": "Ready",
       "priority": "Must",
-      "user_story": "As a cluster operator, I want client daemons to assert OS power locks (keep-awake) during active workloads, so that overnight compute jobs run to completion without machines falling asleep.",
+      "user_story": "As a system operator, I want the client daemon to prevent laptops from entering sleep mode while executing assigned batch jobs, so that long-running tasks complete without interruption.",
       "acceptance_criteria": [
-        "Given a macOS client running an active batch job or keep-awake instruction, When idle timeout triggers, Then IOPMAssertionCreateWithName prevents the system from going to sleep.",
-        "Given a Windows client running an active batch job or keep-awake instruction, When idle timeout triggers, Then SetThreadExecutionState prevents the system from entering sleep.",
-        "Given an active job that completes or is cancelled, When the daemon releases the keep-awake assertion, Then the OS resumes normal power management and sleep timers."
+        "Given a client laptop on AC power running an assigned workload, When a job is active, Then the daemon creates an OS power assertion (IOPMAssertion on macOS / SetThreadExecutionState on Windows) preventing sleep.",
+        "Given an active job completion or cancellation, When no more jobs are queued on the node, Then the daemon releases the power assertion and restores default OS sleep policies."
       ],
-      "version": "Backlog (unplanned)"
+      "version": "Backlog (unplanned)",
+      "epic_id": "EP-0001",
+      "tasks": [
+        "Implement macOS IOPMAssertionCreateWithName binding via Kotlin/Native or JNA",
+        "Implement Windows SetThreadExecutionState binding",
+        "Create PowerAssertionManager lifecycle controller",
+        "Add automated unit/mock tests for assertion creation and release"
+      ],
+      "dependencies": [
+        "EP-0001",
+        "US-0002"
+      ],
+      "value_hypothesis": "Laptops stay awake during active night jobs and resume normal sleep behavior once jobs finish.",
+      "notes": "Prevents idle sleep disruptions during overnight batch compute workloads."
     },
     {
       "id": "ISSUE-0002",
@@ -376,10 +388,10 @@
     "current_usd_spend": 0.0
   },
   "token_usage": {
-    "total": 1186048,
+    "total": 1233198,
     "agents": {
       "ScrumMaster": 57121,
-      "ProductOwner": 1128927
+      "ProductOwner": 1176077
     }
   },
   "story_estimates": {},
@@ -447,7 +459,8 @@
     "specs/stories/EP-0003-Containerized-Job-Execution.md",
     "specs/stories/EP-0004-Distributed-LLM-&-Ray-Inference-Engine.md",
     "specs/stories/EP-0005-Cluster-Admin-Dashboard-&-Policy-Management.md",
-    "specs/stories/EP-0006-Smart-Plug-Energy-Monitoring.md"
+    "specs/stories/EP-0006-Smart-Plug-Energy-Monitoring.md",
+    "specs/stories/US-0002-Client-Daemon-Lifecycle-&-Metrics-Collector.md"
   ],
   "last_check_build": null,
   "pr_review_calls": {},
