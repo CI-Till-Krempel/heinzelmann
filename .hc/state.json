@@ -132,7 +132,8 @@
       "type": "Epic",
       "title": "Cluster Admin Dashboard & Policy Management",
       "status": "Open",
-      "priority": "Should"
+      "priority": "Should",
+      "description": "Compose for Desktop management application for cluster operators to observe nodes, submit jobs, and enforce execution policies."
     },
     {
       "id": "EP-0004",
@@ -362,10 +363,10 @@
     "current_usd_spend": 0.0
   },
   "token_usage": {
-    "total": 1048058,
+    "total": 1093730,
     "agents": {
       "ScrumMaster": 57121,
-      "ProductOwner": 990937
+      "ProductOwner": 1036609
     }
   },
   "story_estimates": {},
@@ -430,7 +431,8 @@
     "specs/stories/US-0001-Control-Server-Node-Registration-&-Heartbeat-API.md",
     "specs/stories/EP-0001-Client-Daemon-&-Power-Management.md",
     "specs/stories/EP-0002-Control-Server-&-Node-Orchestration.md",
-    "specs/stories/EP-0003-Containerized-Job-Execution.md"
+    "specs/stories/EP-0003-Containerized-Job-Execution.md",
+    "specs/stories/EP-0004-Distributed-LLM-&-Ray-Inference-Engine.md"
   ],
   "last_check_build": null,
   "pr_review_calls": {},
