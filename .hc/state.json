@@ -563,7 +563,14 @@
       "issue_id": "ISSUE-0003"
     }
   ],
-  "decision_log": [],
+  "decision_log": [
+    {
+      "title": "Backlog Sequencing: US-0002 ahead of US-0004",
+      "decision": "Prioritized US-0002 ahead of US-0004 in the backlog to respect technical dependency sequence.",
+      "rationale": "US-0004 (Docker container runner) requires the client daemon service (US-0002) as a prerequisite foundation.",
+      "owner": "ProductOwner"
+    }
+  ],
   "sprint_report": "",
   "budgets": {
     "total": 6000000,
@@ -571,9 +578,9 @@
     "current_usd_spend": 0.0
   },
   "token_usage": {
-    "total": 702182,
+    "total": 739546,
     "agents": {
-      "ProductOwner": 214982,
+      "ProductOwner": 252346,
       "ScrumMaster": 54171,
       "DevTeam": 433029
     }
