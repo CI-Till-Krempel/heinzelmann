@@ -59,13 +59,25 @@
       "title": "Docker Container Job Runner on Client Daemon",
       "status": "Ready",
       "priority": "Must",
-      "user_story": "As a cluster job dispatcher, I want the client daemon to execute jobs inside isolated Docker containers and capture their lifecycle/logs, so that compute tasks execute cleanly and safely on heterogeneous client machines.",
+      "user_story": "As a cluster operator, I want client daemons to execute jobs in isolated Docker containers with specified CPU and memory constraints, so that tasks run securely without altering the host system.",
       "acceptance_criteria": [
-        "Given a client daemon with Docker available, When the Control Server dispatches a job specification (image, env, command), Then the daemon pulls (if needed) and spawns an isolated container.",
-        "Given a running job container, When the container emits logs or exits, Then the daemon captures output and streams/reports status (Running, Succeeded, Failed) to the Control Server.",
-        "Given a stop command from the Control Server or a job completion, When cleanup is invoked, Then the container is stopped and removed without leaving orphaned processes."
+        "Given an assigned job specification with container image, environment, and command, When the daemon initiates execution, Then it runs the container via the local Docker daemon with strict memory and CPU limits.",
+        "Given a containerized job execution, When the job completes or fails, Then the daemon captures exit codes, stdout/stderr logs, and reports the execution result back to the Control Server."
       ],
-      "version": "Backlog (unplanned)"
+      "version": "Backlog (unplanned)",
+      "notes": "Executes tasks in isolated Docker environments to ensure safety and repeatability.",
+      "value_hypothesis": "Container isolation guarantees host machine stability and reproducible task environments.",
+      "dependencies": [
+        "EP-0003",
+        "US-0002"
+      ],
+      "tasks": [
+        "Implement DockerEngineClient communicating via Docker UNIX socket / named pipe",
+        "Implement container run lifecycle with resource limit flags (cpu, mem)",
+        "Implement log streamer and exit code capture",
+        "Add integration test verifying container execution and output capture"
+      ],
+      "epic_id": "EP-0003"
     },
     {
       "id": "EP-0002",
@@ -388,10 +400,10 @@
     "current_usd_spend": 0.0
   },
   "token_usage": {
-    "total": 1233198,
+    "total": 1281045,
     "agents": {
       "ScrumMaster": 57121,
-      "ProductOwner": 1176077
+      "ProductOwner": 1223924
     }
   },
   "story_estimates": {},
@@ -460,7 +472,8 @@
     "specs/stories/EP-0004-Distributed-LLM-&-Ray-Inference-Engine.md",
     "specs/stories/EP-0005-Cluster-Admin-Dashboard-&-Policy-Management.md",
     "specs/stories/EP-0006-Smart-Plug-Energy-Monitoring.md",
-    "specs/stories/US-0002-Client-Daemon-Lifecycle-&-Metrics-Collector.md"
+    "specs/stories/US-0002-Client-Daemon-Lifecycle-&-Metrics-Collector.md",
+    "specs/stories/US-0003-Client-Daemon-Power-Assertion-and-Sleep-Prevention.md"
   ],
   "last_check_build": null,
   "pr_review_calls": {},
