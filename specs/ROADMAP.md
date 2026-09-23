@@ -27,6 +27,13 @@ Goals
 - Enable isolated Docker container job execution and central job dispatching
 Stories
 - [US-0001] Control Server Node Registration & Heartbeat API
+  - [x] DRAFT
+  - [x] READY
+  - [x] IMPLEMENTED
+  - [x] REVIEWED
+  - [x] TESTED
+  - [x] ACCEPTED
+- [US-0004] Docker Container Job Runner on Client Daemon
   - [ ] DRAFT
   - [ ] READY
   - [ ] IMPLEMENTED
@@ -34,20 +41,13 @@ Stories
   - [ ] TESTED
   - [ ] ACCEPTED
 - [US-0002] Client Daemon Lifecycle & Metrics Collector
-  - [ ] DRAFT
-  - [ ] READY
+  - [x] DRAFT
+  - [x] READY
   - [ ] IMPLEMENTED
   - [ ] REVIEWED
   - [ ] TESTED
   - [ ] ACCEPTED
 - [US-0003] Client Daemon Power Assertion and Sleep Prevention
-  - [ ] DRAFT
-  - [ ] READY
-  - [ ] IMPLEMENTED
-  - [ ] REVIEWED
-  - [ ] TESTED
-  - [ ] ACCEPTED
-- [US-0004] Docker Container Job Runner on Client Daemon
   - [ ] DRAFT
   - [ ] READY
   - [ ] IMPLEMENTED
@@ -121,6 +121,22 @@ Stories
 
 ### Backlog (unplanned)
 
+
+Stories
+- [ISSUE-0002] Token budget (1,000,000 tokens) was exhausted during initial backlog refinement and architecture modeling before Sprint 1 stories could be estimated or advanced.
+  - [ ] DRAFT
+  - [ ] READY
+  - [ ] IMPLEMENTED
+  - [ ] REVIEWED
+  - [ ] TESTED
+  - [ ] ACCEPTED
+- [ISSUE-0001] test
+  - [ ] DRAFT
+  - [ ] READY
+  - [ ] IMPLEMENTED
+  - [ ] REVIEWED
+  - [ ] TESTED
+  - [ ] ACCEPTED
 ---
 
 ## Task board (Kanban)

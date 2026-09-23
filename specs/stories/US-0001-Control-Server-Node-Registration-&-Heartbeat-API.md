@@ -2,7 +2,7 @@
 
 - Story ID: US-0001
 - Title: Control Server Node Registration & Heartbeat API
-- Status: Ready
+- Status: Accepted
 - Priority: Must
 - Owner: Scrum Team
 - Last Updated: 2026-09-23
@@ -19,11 +19,11 @@ Control Server reliably tracks cluster node inventory and health status in real 
 - Dependencies: ['EP-0002']
 
 ## Test Approach
-
+Ktor testApplication integration tests covering POST /api/nodes/register, POST /api/nodes/{id}/heartbeat, GET /api/nodes, and timeout threshold evaluation.
 
 ### Tasks
-- Set up Ktor server project structure and build configuration
-- Define NodeRegistrationRequest and HeartbeatTelemetry models
-- Implement NodeRegistry repository with TTL tracking
-- Implement registration and heartbeat API routes
-- Add automated tests for registration and timeout detection
+- Create control-server module and build.gradle.kts
+- Implement NodeModels data structures
+- Implement NodeRegistry repository with TTL / 60s timeout handling
+- Implement Ktor routes for register, heartbeat, and node query
+- Add integration tests validating registration, telemetry caching, and offline status transition
