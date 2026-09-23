@@ -2,7 +2,7 @@
 
 - Story ID: US-0004
 - Title: Docker Container Job Runner on Client Daemon
-- Status: Ready
+- Status: Implemented
 - Priority: Must
 - Owner: Scrum Team
 - Last Updated: 2026-09-23

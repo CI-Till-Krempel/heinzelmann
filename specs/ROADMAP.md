@@ -57,7 +57,7 @@ Stories
 - [US-0004] Docker Container Job Runner on Client Daemon
   - [x] DRAFT
   - [x] READY
-  - [ ] IMPLEMENTED
+  - [x] IMPLEMENTED
   - [ ] REVIEWED
   - [ ] TESTED
   - [ ] ACCEPTED
