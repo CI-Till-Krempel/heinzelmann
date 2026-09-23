@@ -2,7 +2,7 @@
 
 - Story ID: US-0005
 - Title: Control Server Job Queue and Dispatcher
-- Status: Ready
+- Status: Accepted
 - Priority: Must
 - Owner: Scrum Team
 - Last Updated: 2026-09-23
@@ -18,10 +18,12 @@ Jobs are distributed evenly and automatically failover when nodes disconnect une
 - Dependencies: ['EP-0002', 'US-0001']
 
 ## Test Approach
-
+Unit tests for queue state transitions and scheduler; integration tests for job dispatching and heartbeat failure recovery.
 
 ### Tasks
-- Design JobQueue repository and state machine (Queued, Dispatched, Running, Succeeded, Failed)
-- Implement node scheduling strategy based on live resource metrics
-- Implement job dispatching protocol over HTTP/WebSocket
-- Add automated tests for job queuing, assignment, and failure recovery
+- Define Job, JobStatus, and JobAssignment data models
+- Implement JobQueue state machine with concurrency control
+- Implement NodeCapacityScheduler for matching job resource requirements to available nodes
+- Implement job submission and dispatching endpoints in Ktor
+- Implement heartbeat expiration detection and automatic job failover
+- Add comprehensive unit and integration tests
