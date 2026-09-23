@@ -169,7 +169,7 @@
       "type": "User Story",
       "title": "Control Server Job Queue and Dispatcher",
       "status": "Ready",
-      "priority": "Should",
+      "priority": "Must",
       "user_story": "As a cluster administrator, I want the Control Server to queue jobs and dispatch them to eligible online nodes based on availability and resource capacity, so that workloads are completed efficiently across the fleet.",
       "acceptance_criteria": [
         "Given batch job submissions via API, When jobs are enqueued, Then the Control Server schedules and assigns them to available nodes matching resource constraints and requirements.",
