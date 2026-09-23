@@ -5,32 +5,6 @@
   "architecture_vision": "# Architecture Vision: Heinzelmann Distributed LLM & Compute Cluster\n\n## System Overview & Target Shape\nHeinzelmann is a distributed, energy-aware compute cluster leveraging idle laptop hardware (macOS Apple Silicon & Windows x86/ARM) for batch job execution and local LLM inference (e.g. StarCoder 2, CodeLlama, Llama 3 coding agents).\n\nThe system consists of three primary components:\n1. **Control Server (Ktor / Kotlin Multiplatform Backend)**:\n   - Central coordinator maintaining real-time node registry, health/heartbeat telemetry, and job queue.\n   - Intelligent scheduler distributing containerized batch tasks and LLM inference workloads based on node capacity, battery level, and thermal headroom.\n   - Integrates with external smart plugs (Shelly, Tapo) for physical energy consumption tracking.\n2. **Client Daemons (macOS LaunchDaemon & Windows Service)**:\n   - Ultra-low footprint background agent (<1% CPU, <50MB RAM idle) running on participant laptops.\n   - Periodic telemetry sampler (CPU, GPU, RAM, battery, thermal status).\n   - Manages OS-level Power Assertions (`IOPMAssertion` on macOS, `SetThreadExecutionState` on Windows) to prevent standby during active overnight jobs.\n   - Orchestrates isolated Docker container execution for jobs and Ray/Ollama workers.\n3. **Admin Dashboard (Compose for Desktop)**:\n   - Cross-platform desktop interface for cluster administrators.\n   - Real-time fleet visibility (online/offline status, resource metrics).\n   - Interactive job submission, pipeline tracking, and scheduling policy configuration.\n\n## Key Quality Attributes\n- **Zero Daytime Disruption**: Daemons operate silently and yield resources immediately during working hours or battery discharge.\n- **Hardware Safety**: Strict thermal limits (<85°C) and battery minimums (>50%) trigger graceful job pausing and sleep policy restoration.\n- **Reproducibility & Isolation**: All workloads execute inside Docker containers with enforced memory and CPU limits.\n- **Cross-Platform Consistency**: Single Kotlin Multiplatform codebase maximizes shared logic across server, desktop, and daemons.\n- **Security**: Mutual TLS (mTLS) for all control plane communication and token-authenticated API endpoints.\n\n## Tech Stack Guardrails\n- **Language & Runtime**: Kotlin Multiplatform (JVM for Server & Admin UI, Native/JVM for Daemons).\n- **Control Server**: Ktor HTTP/WebSocket engine with kotlinx.serialization and Exposed/SQLite persistence.\n- **Client Daemons**: KMP Native/JVM daemon integrating with platform power APIs and Docker daemon socket.\n- **Inference & Compute**: Docker engine running Ray cluster workers and local Ollama model instances.\n- **Desktop UI**: Jetpack Compose for Desktop with Coroutines/StateFlow reactive state.",
   "product_backlog": [
     {
-      "id": "US-0005",
-      "type": "User Story",
-      "title": "Control Server Job Queue and Dispatcher",
-      "status": "Ready",
-      "priority": "Must",
-      "user_story": "As a cluster administrator, I want the Control Server to queue jobs and dispatch them to eligible online nodes based on availability and resource capacity, so that workloads are completed efficiently across the fleet.",
-      "acceptance_criteria": [
-        "Given batch job submissions via API, When jobs are enqueued, Then the Control Server schedules and assigns them to available nodes matching resource constraints and requirements.",
-        "Given an assigned job, When a node stops reporting heartbeats before job completion, Then the Control Server detects the failure and re-queues the job for execution on an alternate available node."
-      ],
-      "version": "v0.1",
-      "value_hypothesis": "Jobs are distributed evenly and automatically failover when nodes disconnect unexpectedly.",
-      "tasks": [
-        "Design JobQueue repository and state machine (Queued, Dispatched, Running, Succeeded, Failed)",
-        "Implement node scheduling strategy based on live resource metrics",
-        "Implement job dispatching protocol over HTTP/WebSocket",
-        "Add automated tests for job queuing, assignment, and failure recovery"
-      ],
-      "notes": "Central job dispatching and scheduling engine on the Control Server.",
-      "dependencies": [
-        "EP-0002",
-        "US-0001"
-      ],
-      "epic_id": "EP-0002"
-    },
-    {
       "id": "US-0001",
       "type": "User Story",
       "title": "Control Server Node Registration & Heartbeat API",
@@ -178,6 +152,32 @@
       "status": "Draft",
       "priority": "Must",
       "version": "Backlog (unplanned)"
+    },
+    {
+      "id": "US-0005",
+      "type": "User Story",
+      "title": "Control Server Job Queue and Dispatcher",
+      "status": "Ready",
+      "priority": "Should",
+      "user_story": "As a cluster administrator, I want the Control Server to queue jobs and dispatch them to eligible online nodes based on availability and resource capacity, so that workloads are completed efficiently across the fleet.",
+      "acceptance_criteria": [
+        "Given batch job submissions via API, When jobs are enqueued, Then the Control Server schedules and assigns them to available nodes matching resource constraints and requirements.",
+        "Given an assigned job, When a node stops reporting heartbeats before job completion, Then the Control Server detects the failure and re-queues the job for execution on an alternate available node."
+      ],
+      "version": "v0.1",
+      "value_hypothesis": "Jobs are distributed evenly and automatically failover when nodes disconnect unexpectedly.",
+      "tasks": [
+        "Design JobQueue repository and state machine (Queued, Dispatched, Running, Succeeded, Failed)",
+        "Implement node scheduling strategy based on live resource metrics",
+        "Implement job dispatching protocol over HTTP/WebSocket",
+        "Add automated tests for job queuing, assignment, and failure recovery"
+      ],
+      "notes": "Central job dispatching and scheduling engine on the Control Server.",
+      "dependencies": [
+        "EP-0002",
+        "US-0001"
+      ],
+      "epic_id": "EP-0002"
     },
     {
       "id": "EP-0005",
@@ -479,10 +479,10 @@
     "current_usd_spend": 0.0
   },
   "token_usage": {
-    "total": 3833389,
+    "total": 3914136,
     "agents": {
       "ScrumMaster": 57121,
-      "ProductOwner": 2398822,
+      "ProductOwner": 2479569,
       "DevTeam": 1377446
     }
   },
