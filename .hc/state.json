@@ -195,14 +195,20 @@
       "overview": "Streamline ProductOwner specification drafting and backlog grooming sessions with strict prompt timeboxes and pre-structured templates to keep PO token usage under 30% of sprint budget.",
       "owner": "ProductOwner",
       "type": "Issue",
-      "id": "ISSUE-0003"
+      "id": "ISSUE-0003",
+      "status": "Draft",
+      "priority": "Must",
+      "version": "Backlog (unplanned)"
     },
     {
       "title": "Token budget limit of 6,000,000 was exceeded (reaching 6,073,060 tokens) with ProductOwner accounting for over 50% of token usage and feature implementation taking only 34% of total tokens.",
       "overview": "Token budget limit of 6,000,000 was exceeded (reaching 6,073,060 tokens) with ProductOwner accounting for over 50% of token usage and feature implementation taking only 34% of total tokens.",
       "owner": "ScrumMaster",
       "type": "Issue",
-      "id": "ISSUE-0004"
+      "id": "ISSUE-0004",
+      "status": "Draft",
+      "priority": "Must",
+      "version": "Backlog (unplanned)"
     },
     {
       "id": "EP-0005",
@@ -439,9 +445,9 @@
     }
   ],
   "definition_of_done": [],
-  "sprint_goal": "Establish foundational client-server communication via Control Server Node Registration & Heartbeat API (US-0001) and Client Daemon Lifecycle & Metrics Collector (US-0002).",
-  "sprint_number": 1,
-  "sprint_backlog_pr_sprint": 1,
+  "sprint_goal": "Implement and verify the Client Daemon Lifecycle & Metrics Collector (US-0002) and Client Daemon Power Assertion (US-0003) for macOS and Windows nodes.",
+  "sprint_number": 2,
+  "sprint_backlog_pr_sprint": 2,
   "sprint_backlog": [
     {
       "id": "US-0001",
@@ -499,6 +505,46 @@
       "review_denial": null,
       "acceptance_check_count": 1,
       "acceptance_check_note": "Verified node registration POST API, periodic heartbeat telemetry cache updates, and 60-second offline timeout detection against acceptance criteria and automated tests."
+    },
+    {
+      "id": "US-0002",
+      "type": "User Story",
+      "title": "Client Daemon Lifecycle & Metrics Collector",
+      "status": "Ready",
+      "priority": "Must",
+      "user_story": "As a cluster administrator, I want a lightweight daemon running on client laptops that collects system metrics, so that the Control Server knows each node's capacity and current load.",
+      "acceptance_criteria": [
+        "Given a client machine (macOS or Windows), When the daemon service starts at boot, Then it runs as a low-footprint background process consuming <1% CPU and <50MB RAM in idle.",
+        "Given a running daemon, When collecting system telemetry, Then it samples CPU usage, RAM utilization, battery charge level, and temperature, transmitting them via heartbeat."
+      ],
+      "version": "v0.1",
+      "tasks": [
+        "Create ClientDaemon core lifecycle controller (start, stop, heartbeat loop)",
+        "Implement SystemMetricsCollector interface and mock/native metric providers for CPU, RAM, battery, temperature",
+        "Implement DaemonApiClient for registering and sending heartbeats to Control Server",
+        "Implement comprehensive unit and integration tests for metrics sampling and heartbeat dispatch"
+      ],
+      "epic_id": "EP-0001",
+      "dependencies": [
+        "EP-0001",
+        "US-0001"
+      ],
+      "notes": "Lightweight background daemon for cross-platform hardware monitoring.",
+      "value_hypothesis": "Client nodes reliably report system resource availability without impacting normal daytime laptop usability.",
+      "stages_completed": [
+        "Draft",
+        "Ready"
+      ],
+      "approach": "Implement lightweight Client Daemon lifecycle and metrics collection engine in Kotlin Multiplatform with platform abstractions for macOS and Windows, sampling CPU, RAM, battery, and temperature, and reporting periodically via heartbeats.",
+      "test_approach": "Unit tests for daemon lifecycle state machine, metrics gathering and serialization, and mock server integration tests.",
+      "risks_assumptions": "Platform-specific metric probes require robust fallback mechanisms if OS sensors are unavailable or restricted.",
+      "estimate": 45000,
+      "dod_checks": [
+        "Code compiles and tests pass",
+        "All acceptance criteria satisfied",
+        "Code reviewed and tested",
+        "Tokens logged"
+      ]
     }
   ],
   "impediment_log": [
@@ -525,20 +571,21 @@
     "current_usd_spend": 0.0
   },
   "token_usage": {
-    "total": 6154511,
+    "total": 530677,
     "agents": {
-      "ScrumMaster": 74059,
-      "ProductOwner": 3144263,
-      "DevTeam": 2069722,
-      "Architect": 191038,
-      "QA": 655749,
-      "QualityGuardian": 19680
+      "ProductOwner": 105926,
+      "ScrumMaster": 54171,
+      "DevTeam": 370580
     }
   },
   "story_estimates": {
     "US-0001": {
       "estimate": 50000,
       "actual": 18500
+    },
+    "US-0002": {
+      "estimate": 45000,
+      "actual": 22000
     }
   },
   "sprint_report_kpis": {
@@ -579,31 +626,35 @@
   "messages": [
     {
       "role": "user",
-      "content": "Ok, so what is the state can we start sprinting ?"
+      "content": "There is a fix for the github authentication blocker. Please try again."
     },
     {
       "role": "model",
-      "content": "Checking the repository configuration and setup status."
+      "content": "Checking the current repository configuration and GitHub authentication status."
     },
     {
       "role": "model",
-      "content": "Listing documentation in the repository to inspect existing specifications."
+      "content": "Checking for recorded blocking interactions to identify what was previously blocked."
     },
     {
       "role": "model",
-      "content": "Checking the current budget status and LiteLLM virtual key setup."
+      "content": "Synchronizing Scrum state with the repository specifications and artifacts."
     },
     {
       "role": "model",
-      "content": "Setting up virtual keys for specialist agents to ensure LiteLLM proxy tracking and authorization."
+      "content": "Checking current budget usage and sprint metrics."
     },
     {
       "role": "model",
-      "content": "Creating virtual keys for the remaining specialist roles."
+      "content": "Listing documents in specs/ to inspect current sprint and release artifacts."
     },
     {
       "role": "model",
-      "content": "Persisting updated Scrum state to the repository."
+      "content": "Reading the latest sprint report to check the release status and any pending actions."
+    },
+    {
+      "role": "model",
+      "content": "Reading recent transcript entries to see the exact blocker encountered during the release PR creation."
     }
   ],
   "hc_version": "0.1.0",
@@ -616,6 +667,10 @@
     {
       "type": "release",
       "note": "User instructed: take care all the specs are written to the repo as markdown files and the branch is integrated in the main branch."
+    },
+    {
+      "type": "sprint",
+      "note": "Stakeholder explicitly confirmed continuation with the next sprint (Sprint 2)."
     }
   ],
   "sprint_approval_baseline": 0,
@@ -650,12 +705,16 @@
     "control-server/src/main/kotlin/com/heinzelmann/server/Application.kt",
     "control-server/src/test/kotlin/com/heinzelmann/server/NodeApiTest.kt",
     "tests/test_node_api.py",
-    "specs/requirements/ISSUE-0003-Streamline-ProductOwner-specification-drafting-and-backlog-grooming-sessions-with-strict-prompt-timeboxes-and-pre-structured-templates-to-keep-PO-token-usage-under-30%-of-sprint-budget..md"
+    "specs/requirements/ISSUE-0003-Streamline-ProductOwner-specification-drafting-and-backlog-grooming-sessions-with-strict-prompt-timeboxes-and-pre-structured-templates-to-keep-PO-token-usage-under-30%-of-sprint-budget..md",
+    "client-daemon/src/main/kotlin/de/heinzelmann/daemon/models/ClientModels.kt",
+    "client-daemon/src/main/kotlin/de/heinzelmann/daemon/collector/SystemMetricsCollector.kt",
+    "client-daemon/src/main/kotlin/de/heinzelmann/daemon/client/ControlServerClient.kt",
+    "client-daemon/src/main/kotlin/de/heinzelmann/daemon/lifecycle/DaemonLifecycleManager.kt",
+    "client-daemon/src/main/kotlin/de/heinzelmann/daemon/Main.kt",
+    "client-daemon/src/test/kotlin/de/heinzelmann/daemon/ClientDaemonTest.kt",
+    "client-daemon/build.gradle.kts"
   ],
-  "last_check_build": {
-    "checked": null,
-    "passing": null
-  },
+  "last_check_build": {},
   "pr_review_calls": {
     "Architect": 1,
     "QA": 2
