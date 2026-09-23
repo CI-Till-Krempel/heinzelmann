@@ -284,7 +284,8 @@
       "type": "Epic",
       "title": "Smart Plug Energy Monitoring",
       "status": "Open",
-      "priority": "Could"
+      "priority": "Could",
+      "description": "Integration with Shelly and Tapo smart plugs to record actual electrical energy consumption and attribute wattage/kWh per job."
     },
     {
       "epic_id": "EP-0006",
@@ -363,10 +364,10 @@
     "current_usd_spend": 0.0
   },
   "token_usage": {
-    "total": 1093730,
+    "total": 1139619,
     "agents": {
       "ScrumMaster": 57121,
-      "ProductOwner": 1036609
+      "ProductOwner": 1082498
     }
   },
   "story_estimates": {},
@@ -432,7 +433,8 @@
     "specs/stories/EP-0001-Client-Daemon-&-Power-Management.md",
     "specs/stories/EP-0002-Control-Server-&-Node-Orchestration.md",
     "specs/stories/EP-0003-Containerized-Job-Execution.md",
-    "specs/stories/EP-0004-Distributed-LLM-&-Ray-Inference-Engine.md"
+    "specs/stories/EP-0004-Distributed-LLM-&-Ray-Inference-Engine.md",
+    "specs/stories/EP-0005-Cluster-Admin-Dashboard-&-Policy-Management.md"
   ],
   "last_check_build": null,
   "pr_review_calls": {},
