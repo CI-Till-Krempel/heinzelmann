@@ -18,10 +18,10 @@ Client nodes reliably report system resource availability without impacting norm
 - Dependencies: ['EP-0001', 'US-0001']
 
 ## Test Approach
-
+Unit tests for daemon lifecycle state machine, metrics gathering and serialization, and mock server integration tests.
 
 ### Tasks
-- Implement KMP platform daemon entry point for macOS (LaunchDaemon) and Windows Service
-- Implement platform-specific hardware metrics collectors (sysctl / OSHI)
-- Implement periodic reporting client to Control Server
-- Add unit tests for metrics serialization and collector thresholds
+- Create ClientDaemon core lifecycle controller (start, stop, heartbeat loop)
+- Implement SystemMetricsCollector interface and mock/native metric providers for CPU, RAM, battery, temperature
+- Implement DaemonApiClient for registering and sending heartbeats to Control Server
+- Implement comprehensive unit and integration tests for metrics sampling and heartbeat dispatch
