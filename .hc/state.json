@@ -235,9 +235,10 @@
       "type": "User Story",
       "stages_completed": [
         "Draft",
-        "Ready"
+        "Ready",
+        "Implemented"
       ],
-      "status": "Ready",
+      "status": "Implemented",
       "version": "v0.2",
       "user_story": "As a cluster administrator, I want client nodes to automatically join a distributed Ray cluster as worker nodes when instructed by the Control Server, so that distributed compute tasks can execute across idle machines."
     },
@@ -800,9 +801,10 @@
       "type": "User Story",
       "stages_completed": [
         "Draft",
-        "Ready"
+        "Ready",
+        "Implemented"
       ],
-      "status": "Ready",
+      "status": "Implemented",
       "version": "v0.2",
       "user_story": "As a cluster administrator, I want client nodes to automatically join a distributed Ray cluster as worker nodes when instructed by the Control Server, so that distributed compute tasks can execute across idle machines.",
       "dod_checks": [
@@ -1075,7 +1077,7 @@
   ],
   "sprint_approval_baseline": 3,
   "release_approval_baseline": 1,
-  "dev_touch_baseline": 27,
+  "dev_touch_baseline": 30,
   "sprint_files_touched": [
     "specs/stories/US-0007-Distributed-Ray-Cluster-Bootstrap-on-Client-Nodes.md",
     "specs/ROADMAP.md",
