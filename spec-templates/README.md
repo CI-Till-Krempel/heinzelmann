@@ -1,0 +1,19 @@
+# Project Documentation
+
+This directory contains templates for the specs to be used in the state repository. Do not change the files here. 
+Instead use these templates to create the actual specifications in the project repository in a similar way. 
+
+This repository maintains living documentation alongside code. Use the following folders in your **state repository**:
+
+- specs/requirements — Product-level requirements and specs (PRD/SRS), acceptance criteria, and traceability
+- specs/architecture — Architecture Decision Records (ADRs), diagrams, and system design notes
+- specs/stories — User stories, use cases, and acceptance tests
+- specs/workflows — Agentic workflows, runbooks, and operational playbooks
+
+Each folder contains a README with guidance and one or more template markdown files to standardize contributions.
+
+General rules
+- One artifact per file, small and focused. Link liberally between related docs.
+- Prefer incremental ADRs to capture design rationale over time.
+- Do not commit secrets. Use placeholders in examples and store real credentials in your local .env only.
+- Keep documentation close to changes (update docs in the same PR as code where applicable).
