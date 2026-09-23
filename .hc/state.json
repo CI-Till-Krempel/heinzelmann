@@ -28,9 +28,22 @@
       "acceptance_criteria": [
         "Given a running Ktor Control Server, When a client daemon sends a registration POST request with node ID, OS type, and hardware specs, Then the server stores the node and responds with 200 OK and registration confirmation.",
         "Given a registered node, When the node sends a periodic heartbeat with CPU/RAM metrics, Then the server updates the node's last-seen timestamp and metric cache.",
-        "Given a registered node that stops sending heartbeats, When the timeout threshold (e.g., 60 seconds) expires, Then the server marks the node status as Offline."
+        "Given a registered node that stops sending heartbeats, When the timeout threshold (60 seconds) expires, Then the server marks the node status as Offline."
       ],
-      "version": "Backlog (unplanned)"
+      "version": "Backlog (unplanned)",
+      "dependencies": [
+        "EP-0002"
+      ],
+      "notes": "Core registration and heartbeat telemetry for cluster nodes.",
+      "tasks": [
+        "Set up Ktor server project structure and build configuration",
+        "Define NodeRegistrationRequest and HeartbeatTelemetry models",
+        "Implement NodeRegistry repository with TTL tracking",
+        "Implement registration and heartbeat API routes",
+        "Add automated tests for registration and timeout detection"
+      ],
+      "value_hypothesis": "Control Server reliably tracks cluster node inventory and health status in real time.",
+      "epic_id": "EP-0002"
     },
     {
       "id": "EP-0001",
@@ -345,10 +358,10 @@
     "current_usd_spend": 0.0
   },
   "token_usage": {
-    "total": 737352,
+    "total": 780340,
     "agents": {
       "ScrumMaster": 57121,
-      "ProductOwner": 680231
+      "ProductOwner": 723219
     }
   },
   "story_estimates": {},
