@@ -142,7 +142,7 @@
       "id": "US-0005",
       "type": "User Story",
       "title": "Control Server Job Queue and Dispatcher",
-      "status": "Ready",
+      "status": "Implemented",
       "priority": "Must",
       "user_story": "As a cluster administrator, I want the Control Server to queue jobs and dispatch them to eligible online nodes based on availability and resource capacity, so that workloads are completed efficiently across the fleet.",
       "acceptance_criteria": [
@@ -165,7 +165,8 @@
       "epic_id": "EP-0002",
       "stages_completed": [
         "Draft",
-        "Ready"
+        "Ready",
+        "Implemented"
       ]
     },
     {
@@ -636,7 +637,7 @@
       "id": "US-0005",
       "type": "User Story",
       "title": "Control Server Job Queue and Dispatcher",
-      "status": "Ready",
+      "status": "Implemented",
       "priority": "Must",
       "user_story": "As a cluster administrator, I want the Control Server to queue jobs and dispatch them to eligible online nodes based on availability and resource capacity, so that workloads are completed efficiently across the fleet.",
       "acceptance_criteria": [
@@ -661,7 +662,8 @@
       "epic_id": "EP-0002",
       "stages_completed": [
         "Draft",
-        "Ready"
+        "Ready",
+        "Implemented"
       ],
       "dod_checks": [
         "Code compiles cleanly under Gradle/KMP",
@@ -760,11 +762,11 @@
     "current_usd_spend": 0.0
   },
   "token_usage": {
-    "total": 1818121,
+    "total": 1933602,
     "agents": {
-      "ProductOwner": 1042215,
+      "ProductOwner": 1095973,
       "ScrumMaster": 71237,
-      "DevTeam": 1039125,
+      "DevTeam": 1100848,
       "Architect": 251652,
       "QA": 367222,
       "ScrumOrchestrator": 74208
@@ -898,7 +900,7 @@
   ],
   "sprint_approval_baseline": 0,
   "release_approval_baseline": 0,
-  "dev_touch_baseline": 18,
+  "dev_touch_baseline": 23,
   "sprint_files_touched": [
     "specs/stories/US-0007-Distributed-Ray-Cluster-Bootstrap-on-Client-Nodes.md",
     "specs/ROADMAP.md",
