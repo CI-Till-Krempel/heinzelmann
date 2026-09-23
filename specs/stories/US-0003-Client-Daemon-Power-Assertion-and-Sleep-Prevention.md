@@ -2,7 +2,7 @@
 
 - Story ID: US-0003
 - Title: Client Daemon Power Assertion and Sleep Prevention
-- Status: Ready
+- Status: Implemented
 - Priority: Must
 - Owner: Scrum Team
 - Last Updated: 2026-09-23

@@ -43,7 +43,7 @@ Stories
 - [US-0003] Client Daemon Power Assertion and Sleep Prevention
   - [x] DRAFT
   - [x] READY
-  - [ ] IMPLEMENTED
+  - [x] IMPLEMENTED
   - [ ] REVIEWED
   - [ ] TESTED
   - [ ] ACCEPTED
