@@ -185,16 +185,6 @@
       "version": "Backlog (unplanned)"
     },
     {
-      "title": "Token budget limit of 6,000,000 was exceeded (reaching 6,073,060 tokens) with ProductOwner accounting for over 50% of token usage and feature implementation taking only 34% of total tokens.",
-      "overview": "Token budget limit of 6,000,000 was exceeded (reaching 6,073,060 tokens) with ProductOwner accounting for over 50% of token usage and feature implementation taking only 34% of total tokens.",
-      "owner": "ScrumMaster",
-      "type": "Issue",
-      "id": "ISSUE-0006",
-      "status": "Draft",
-      "priority": "Must",
-      "version": "Backlog (unplanned)"
-    },
-    {
       "id": "US-0004",
       "type": "User Story",
       "title": "Docker Container Job Runner on Client Daemon",
@@ -470,6 +460,16 @@
       ],
       "status": "Ready",
       "version": "v0.2"
+    },
+    {
+      "title": "Token budget limit of 6,000,000 was exceeded (reaching 6,073,060 tokens) with ProductOwner accounting for over 50% of token usage and feature implementation taking only 34% of total tokens.",
+      "overview": "Token budget limit of 6,000,000 was exceeded (reaching 6,073,060 tokens) with ProductOwner accounting for over 50% of token usage and feature implementation taking only 34% of total tokens.",
+      "owner": "ScrumMaster",
+      "type": "Issue",
+      "id": "ISSUE-0006",
+      "status": "Draft",
+      "priority": "Won't",
+      "version": "Backlog (unplanned)"
     },
     {
       "id": "ISSUE-0002",
@@ -780,11 +780,11 @@
     "current_usd_spend": 0.0
   },
   "token_usage": {
-    "total": 3465472,
+    "total": 3683259,
     "agents": {
-      "ProductOwner": 1447384,
+      "ProductOwner": 1514105,
       "ScrumMaster": 71237,
-      "DevTeam": 1855100,
+      "DevTeam": 2006166,
       "Architect": 394050,
       "QA": 651031,
       "ScrumOrchestrator": 74208
