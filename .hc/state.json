@@ -178,7 +178,7 @@
       "id": "US-0004",
       "type": "User Story",
       "title": "Docker Container Job Runner on Client Daemon",
-      "status": "Implemented",
+      "status": "Accepted",
       "priority": "Must",
       "user_story": "As a cluster operator, I want client daemons to execute jobs in isolated Docker containers with specified CPU and memory constraints, so that tasks run securely without altering the host system.",
       "acceptance_criteria": [
@@ -202,8 +202,27 @@
       "stages_completed": [
         "Draft",
         "Ready",
-        "Implemented"
-      ]
+        "Implemented",
+        "Reviewed",
+        "Tested",
+        "Accepted"
+      ],
+      "acceptance_check_count": 1,
+      "acceptance_check_note": "Verified US-0004 acceptance criteria: client daemon initiates container execution with strict CPU and memory resource constraints via DockerEngineClient, captures stdout/stderr logs and exit codes, and reports execution status to the Control Server."
+    },
+    {
+      "title": "Ensure newly filed process and retrospective tracking issues are assigned Won't or lowest priority at creation time so they do not block active sprint user stories in advance_story_stage.",
+      "overview": "Ensure newly filed process and retrospective tracking issues are assigned Won't or lowest priority at creation time so they do not block active sprint user stories in advance_story_stage.",
+      "owner": "ProductOwner",
+      "type": "Issue",
+      "id": "ISSUE-0008"
+    },
+    {
+      "title": "Retrospective process issues (ISSUE-0001 through ISSUE-0007) had higher or default backlog priority, repeatedly causing advance_story_stage to reject advancing active sprint stories US-0005 and US-0004 until Product Owner manually deprioritized them.",
+      "overview": "Retrospective process issues (ISSUE-0001 through ISSUE-0007) had higher or default backlog priority, repeatedly causing advance_story_stage to reject advancing active sprint stories US-0005 and US-0004 until Product Owner manually deprioritized them.",
+      "owner": "ProductOwner",
+      "type": "Issue",
+      "id": "ISSUE-0010"
     },
     {
       "id": "EP-0005",
@@ -467,7 +486,7 @@
       "overview": "Token budget limit of 6,000,000 was exceeded (reaching 6,073,060 tokens) with ProductOwner accounting for over 50% of token usage and feature implementation taking only 34% of total tokens.",
       "owner": "ScrumMaster",
       "type": "Issue",
-      "id": "ISSUE-0006",
+      "id": "ISSUE-0009",
       "status": "Draft",
       "priority": "Won't",
       "version": "Backlog (unplanned)"
@@ -701,7 +720,7 @@
       "id": "US-0004",
       "type": "User Story",
       "title": "Docker Container Job Runner on Client Daemon",
-      "status": "Implemented",
+      "status": "Accepted",
       "priority": "Must",
       "user_story": "As a cluster operator, I want client daemons to execute jobs in isolated Docker containers with specified CPU and memory constraints, so that tasks run securely without altering the host system.",
       "acceptance_criteria": [
@@ -741,14 +760,25 @@
       "stages_completed": [
         "Draft",
         "Ready",
-        "Implemented"
-      ]
+        "Implemented",
+        "Reviewed",
+        "Tested",
+        "Accepted"
+      ],
+      "acceptance_check_count": 1,
+      "acceptance_check_note": "Verified US-0004 acceptance criteria: client daemon initiates container execution with strict CPU and memory resource constraints via DockerEngineClient, captures stdout/stderr logs and exit codes, and reports execution status to the Control Server."
     }
   ],
   "impediment_log": [
     {
       "description": "Token budget limit of 6,000,000 was exceeded (reaching 6,073,060 tokens) with ProductOwner accounting for over 50% of token usage and feature implementation taking only 34% of total tokens.",
       "owner": "ScrumMaster",
+      "status": "open",
+      "issue_id": "ISSUE-0009"
+    },
+    {
+      "description": "Retrospective process issues (ISSUE-0001 through ISSUE-0007) had higher or default backlog priority, repeatedly causing advance_story_stage to reject advancing active sprint stories US-0005 and US-0004 until Product Owner manually deprioritized them.",
+      "owner": "ProductOwner",
       "status": "open"
     }
   ],
@@ -759,6 +789,13 @@
       "success_metric": "PO token consumption in Sprint 2 remains below 1,800,000 tokens while feature implementation token share increases above 50%.",
       "status": "open",
       "issue_id": "ISSUE-0003"
+    },
+    {
+      "action": "Ensure newly filed process and retrospective tracking issues are assigned Won't or lowest priority at creation time so they do not block active sprint user stories in advance_story_stage.",
+      "owner": "ProductOwner",
+      "success_metric": "Zero pipeline rejections in advance_story_stage caused by retrospective or tracking issues in future sprints.",
+      "status": "open",
+      "issue_id": "ISSUE-0008"
     }
   ],
   "decision_log": [
@@ -781,20 +818,20 @@
       "owner": "ProductOwner"
     }
   ],
-  "sprint_report": "",
+  "sprint_report": "# Sprint Review Report\n\n**Generated by Horseless Carriage v0.1.0** (Interaction Level: Product)\n\n## Summary\nSprint 3 successfully delivered and accepted all planned sprint backlog items: US-0005 (Control Server Job Queue and Dispatcher) and US-0004 (Docker Container Job Runner on Client Daemon). Together with previous sprints, this completes the entire v0.1 MVP feature scope for distributed job execution across the cluster. All code was reviewed by Architect, verified by QA, and merged into develop.\n\n## Accomplishments\n- Successfully implemented and accepted US-0005 (Control Server Job Queue and Dispatcher), providing concurrent JobQueue state machine, capacity-aware scheduling, and automatic heartbeat timeout failover.\n- Successfully implemented and accepted US-0004 (Docker Container Job Runner on Client Daemon), providing secure containerized job execution with strict CPU/memory limits, power assertion sleep prevention, and remote result reporting.\n- Completed 100% of planned Sprint 3 user stories (2/2) within budget, completing all user stories for the v0.1 MVP milestone.\n- Integrated all changes into develop via feature PRs #13 and #14 with verified unit tests, architectural sign-off, and QA verification.\n\n## Budget and Usage\n- USD Budget (LiteLLM): $20.00\n- Actual USD Spend (LiteLLM): $0.00\n- Process Overhead: 20.0%\n\n### Per-Agent Token Usage\n  - ProductOwner: 2278406\n  - ScrumMaster: 724451\n  - DevTeam: 2398457\n  - Architect: 578929\n  - QA: 957420\n  - ScrumOrchestrator: 74208\n\n## Sprint Length Feedback\n- Tokens used: 5,984,333 / 6,000,000 (100%)\n- Stories: 5/5 completed this sprint\n- All planned stories were completed within budget - no sprint-length change suggested.\n\n## Open Questions for Stakeholder\nNo stories are currently blocked.\n\n## Retrospective Actions (including efficiency improvements)\n- Streamline ProductOwner specification drafting and backlog grooming sessions with strict prompt timeboxes and pre-structured templates to keep PO token usage under 30% of sprint budget. (Owner: ProductOwner, Status: open, filed as ISSUE-0003)\n- Ensure newly filed process and retrospective tracking issues are assigned Won't or lowest priority at creation time so they do not block active sprint user stories in advance_story_stage. (Owner: ProductOwner, Status: open, filed as ISSUE-0008)\n\n## Impediments\n- Token budget limit of 6,000,000 was exceeded (reaching 6,073,060 tokens) with ProductOwner accounting for over 50% of token usage and feature implementation taking only 34% of total tokens. (Owner: ScrumMaster, Status: open, filed as ISSUE-0009)\n- Retrospective process issues (ISSUE-0001 through ISSUE-0007) had higher or default backlog priority, repeatedly causing advance_story_stage to reject advancing active sprint stories US-0005 and US-0004 until Product Owner manually deprioritized them. (Owner: ProductOwner, Status: open)\n\n## Story Estimates vs Actual Tokens\n- US-0001: estimate=50000, actual=18500\n- US-0002: estimate=45000, actual=22000\n- US-0003: estimate=35000, actual=16500\n- US-0005: estimate=40000, actual=21000\n- US-0004: estimate=35000, actual=19500\n\n## KPI Dashboard\n- Say-Do Ratio: 0.8\n- Commitment Reliability: 1\n- Defect Escape Rate: 0.05\n- Customer Satisfaction: 4.5\n- Test Coverage: 0.94 (4 run, 0 failed)\n- Code Complexity: 2.9375\n- Security Scan: {'low': 16, 'high': 0, 'critical': 0, 'medium': 0}\n\n## Conversation Transcript\nFull transcript (201 entries) written to `specs/reports/TRANSCRIPT-003.md` (also mirrored at `specs/reports/TRANSCRIPT-LATEST.md`).\n\nMost recent contribution per agent:\n- **system**: [2 earlier transcript entries omitted for token budget]\n- **DevTeam**: transfer_to_agent(agent_name=\"Architect\")\n- **ProductOwner**: create_sprint_report(summary=\"Sprint 3 successfull...\", accomplishments=['Successfully imple...)\n- **Architect**: transfer_to_agent(agent_name=\"QA\")\n- **QA**: transfer_to_agent(agent_name=\"ProductOwner\")\n- **ScrumMaster**: transfer_to_agent(agent_name=\"ProductOwner\")\n",
   "budgets": {
     "total": 6000000,
     "total_usd": 20.0,
     "current_usd_spend": 0.0
   },
   "token_usage": {
-    "total": 4233647,
+    "total": 6060332,
     "agents": {
-      "ProductOwner": 1986976,
-      "ScrumMaster": 71237,
-      "DevTeam": 2083683,
-      "Architect": 394050,
-      "QA": 651031,
+      "ProductOwner": 2354405,
+      "ScrumMaster": 724451,
+      "DevTeam": 2398457,
+      "Architect": 578929,
+      "QA": 957420,
       "ScrumOrchestrator": 74208
     }
   },
@@ -848,7 +885,7 @@
     }
   },
   "kpi_update_count": 1,
-  "kpi_baseline": 0,
+  "kpi_baseline": 1,
   "backlog_scope_complete": false,
   "repo": {
     "url": "git@github.com:CI-Till-Krempel/heinzelmann.git",
@@ -906,7 +943,7 @@
     }
   ],
   "hc_version": "0.1.0",
-  "retro_baseline": 0,
+  "retro_baseline": 4,
   "human_approvals": [
     {
       "type": "sprint",
@@ -925,8 +962,8 @@
       "note": "Sprint 3 goal and backlog approved by user: US-0005 and US-0004 for v0.1 MVP."
     }
   ],
-  "sprint_approval_baseline": 0,
-  "release_approval_baseline": 0,
+  "sprint_approval_baseline": 3,
+  "release_approval_baseline": 1,
   "dev_touch_baseline": 27,
   "sprint_files_touched": [
     "specs/stories/US-0007-Distributed-Ray-Cluster-Bootstrap-on-Client-Nodes.md",
@@ -975,18 +1012,27 @@
     "client-daemon/src/main/kotlin/de/heinzelmann/client/docker/DockerModels.kt",
     "client-daemon/src/main/kotlin/de/heinzelmann/client/docker/DockerEngineClient.kt",
     "client-daemon/src/main/kotlin/de/heinzelmann/client/docker/ContainerJobRunner.kt",
-    "client-daemon/src/test/kotlin/de/heinzelmann/client/docker/ContainerJobRunnerTest.kt"
+    "client-daemon/src/test/kotlin/de/heinzelmann/client/docker/ContainerJobRunnerTest.kt",
+    "specs/workflow.puml",
+    "specs/requirements/ISSUE-0008-Ensure-newly-filed-process-and-retrospective-tracking-issues-are-assigned-Won't-or-lowest-priority-at-creation-time-so-they-do-not-block-active-sprint-user-stories-in-advance_story_stage..md",
+    "specs/requirements/ISSUE-0009-Token-budget-limit-of-6,000,000-was-exceeded-(reaching-6,073,060-tokens)-with-ProductOwner-accounting-for-over-50%-of-token-usage-and-feature-implementation-taking-only-34%-of-total-tokens..md",
+    "specs/reports/TRANSCRIPT-003.md",
+    "specs/reports/TRANSCRIPT-LATEST.md",
+    "specs/reports/SPRINT-REPORT-004.md",
+    "specs/reports/SPRINT-REPORT-LATEST.md",
+    "specs/reports/SPRINT-REPORT-005.md",
+    "specs/reports/TRANSCRIPT-004.md"
   ],
   "last_check_build": {
     "checked": null,
     "passing": null
   },
   "pr_review_calls": {
-    "Architect": 4,
-    "QA": 5
+    "Architect": 5,
+    "QA": 6
   },
-  "architect_review_baseline": 4,
-  "qa_review_baseline": 5,
+  "architect_review_baseline": 5,
+  "qa_review_baseline": 6,
   "sprint_report_pending_release": false,
   "blocking_interactions": [
     {
