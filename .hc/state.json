@@ -424,10 +424,11 @@
     "current_usd_spend": 0.0
   },
   "token_usage": {
-    "total": 2017565,
+    "total": 2394846,
     "agents": {
       "ScrumMaster": 57121,
-      "ProductOwner": 1960444
+      "ProductOwner": 2080898,
+      "DevTeam": 256827
     }
   },
   "story_estimates": {},
@@ -476,6 +477,10 @@
     {
       "type": "sprint",
       "note": "User approved Sprint 2 goal and backlog: establish client-server foundation (US-0001, US-0002)."
+    },
+    {
+      "type": "release",
+      "note": "User instructed: take care all the specs are written to the repo as markdown files and the branch is integrated in the main branch."
     }
   ],
   "sprint_approval_baseline": 0,
