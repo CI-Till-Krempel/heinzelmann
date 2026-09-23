@@ -531,11 +531,11 @@
     "current_usd_spend": 0.0
   },
   "token_usage": {
-    "total": 210508,
+    "total": 282589,
     "agents": {
-      "ScrumMaster": 61895,
+      "ScrumMaster": 108970,
       "ProductOwner": 46682,
-      "DevTeam": 101931
+      "DevTeam": 126937
     }
   },
   "story_estimates": {
@@ -677,6 +677,15 @@
       "created_at": "2026-09-23T09:15:44.170399+00:00",
       "resolved": true,
       "resolved_at": "2026-09-23T09:24:21.124144+00:00"
+    },
+    {
+      "id": 2,
+      "kind": "critical_error",
+      "summary": "Git checkout blocked by .idea/workspace.xml and GitHub credentials expired/invalid (HTTP 401).",
+      "detail": "Git checkout of branch 'develop' is blocked by untracked file '.idea/workspace.xml', and GitHub CLI/API authentication is failing with 'HTTP 401: Bad credentials'. This prevents branch switching, PR creation, and remote synchronizations.",
+      "created_at": "2026-09-23T11:34:36.242958+00:00",
+      "resolved": false,
+      "resolved_at": null
     }
   ],
   "budget_reset_since_last_sprint_start": false
