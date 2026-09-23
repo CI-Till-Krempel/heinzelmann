@@ -2,7 +2,7 @@
   "version": "1.0.0",
   "product_vision": "",
   "product_goals": [],
-  "architecture_vision": "# Architecture Vision: Verteiltes LLM- & Job-Execution-Cluster\n\n**Version:** 1.0  \n**Status:** Approved  \n**Author:** Architect Agent  \n\n---\n\n## 1. Executive Summary & Target System Shape\nThe system transforms idle workstation capacity (macOS and Windows laptops) into a distributed, containerized compute and LLM inference cluster for overnight batch processing. The target architecture maximizes code sharing across platforms via Kotlin Multiplatform (KMP), isolates all workloads within Docker containers, and maintains a strict separation of concerns across three core system tiers:\n1. **Control Server (Ktor Backend):** Central coordinator for node registration, heartbeat monitoring, job scheduling, and metrics aggregation.\n2. **Client Daemons (KMP Background Services):** Ultra-lightweight native services on macOS (LaunchDaemon) and Windows (Windows Service) that enforce keep-awake power assertions, sample system health telemetry, and interface with local Docker daemons.\n3. **Admin Tool (Compose for Desktop):** Administrative desktop application providing real-time cluster monitoring, job execution inspection, and policy enforcement.\n\n```\n+-------------------------------------------------------+\n|                    Admin Tool                         |\n|         (Kotlin Multiplatform Desktop GUI)            |\n+---------------------------+---------------------------+\n                            | REST / WebSockets (TLS)\n                            v\n+-------------------------------------------------------+\n|                 Control Server                        |\n|        (Ktor / Kotlin Multiplatform Backend)          |\n+---------------------------+---------------------------+\n                            | REST / WebSockets (mTLS)\n           +----------------+----------------+\n           |                                 |\n           v                                 v\n+-----------------------+         +-----------------------+\n|  macOS Client Daemon  |         | Windows Client Daemon |\n|  (Background Service) |         |  (Background Service) |\n+-----------+-----------+         +-----------+-----------+\n            | Docker API                      | Docker API\n            v                                 v\n+-----------------------+         +-----------------------+\n| Docker / Ollama / Ray |         | Docker / Ollama / Ray |\n+-----------------------+         +-----------------------+\\\n```\n\n---\n\n## 2. Key Quality Attributes & Architectural Guardrails\n\n### 2.1 Host Protection & Resource Footprint Guardrail\n- **Idle Daytime Footprint:** When no batch jobs are running, the client daemon must consume < 1% CPU and < 50 MB resident memory (RSS).\n- **Strict Isolation:** No job execution or untrusted script may run directly on the host OS. All compute jobs execute inside Docker containers with constrained CPU, memory, and networking limits.\n- **Fail-Safe Power Management:** Host power assertions (`IOPMAssertionCreateWithName` on macOS, `SetThreadExecutionState` on Windows) must automatically release upon job completion, unexpected crash, or daemon shutdown to avoid draining laptop batteries unintentionally.\n\n### 2.2 Communication & Security Guardrail\n- **Mutual Authentication & Encryption:** All daemon-to-server and admin-to-server communications must run over TLS with mutual certificate authentication (mTLS) to prevent rogue node registration.\n- **Heartbeat & Resiliency:** Nodes report telemetry every 15–30 seconds. A missing heartbeat for > 60 seconds triggers a node status transition to `Offline` and initiates automated job failover / re-dispatching.\n\n### 2.3 Modularity & Kotlin Multiplatform (KMP) Architecture\n- **Shared Module (`:shared`):** Core domain models (`Node`, `Job`, `TelemetryMetrics`), protocol DTOs, validation logic, and serialization (`kotlinx.serialization`).\n- **Server Module (`:server`):** Ktor server handling REST/WebSocket endpoints, node state store, job queue, and scheduler.\n- **Client Daemon Module (`:daemon`):** Native targets for macOS (`macosArm64`, `macosX64`) and Windows (`mingwX64`), abstracting OS-level power assertions and Docker socket integrations through `expect`/`actual` declarations or common interfaces.\n- **Admin Module (`:admin`):** Compose for Desktop application leveraging shared models.\n\n---\n\n## 3. Tech-Stack Guardrails\n\n| Layer | Selected Technology | Architectural Rationale |\n|---|---|---|\n| Language / Platform | Kotlin 2.x / Kotlin Multiplatform (KMP) | Single language across backend, daemon, and UI; shared business logic and serialization schemas. |\n| Server Framework | Ktor 3.x (CIO engine, Netty or Coroutine-based) | Lightweight, asynchronous, native coroutines support, low memory footprint. |\n| Client Daemon Host Services | macOS LaunchDaemon / Windows Service | Non-intrusive autostart services operating with appropriate OS permissions for power management. |\n| Container Runtime | Docker Engine via local Docker socket (`unix:///var/run/docker.sock` or Windows named pipe `\\\\.\\pipe\\docker_engine`) | Broad ecosystem compatibility, standard image registries, robust resource isolation. |\n| Distributed LLM / Workloads | Ray Core / Ollama container images | Ray provides distributed task scheduling and actor models; Ollama provides containerized GGUF inference. |\n| Desktop UI | Jetpack Compose for Desktop | Modern declarative UI in Kotlin sharing viewmodels and models with `:shared`. |\n\n---\n\n## 4. Phase-by-Phase Roadmap Alignment\n\n- **Phase 1 (MVP v0.1):** Core Ktor control server, KMP client daemon with host telemetry and power assertion (keep-awake), and Docker container execution runner. Validated on 5–10 devices.\n- **Phase 2 (v0.2):** Distributed Ray/Ollama cluster integration for LLM coding agents, and Compose for Desktop admin monitoring.\n- **Phase 3 (v0.3+):** Smart plug energy measuring (Shelly, Tapo) and advanced night-window scheduling policies.",
+  "architecture_vision": "# Architecture Vision: Heinzelmann Distributed LLM & Compute Cluster\n\n## System Overview & Target Shape\nHeinzelmann is a distributed, energy-aware compute cluster leveraging idle laptop hardware (macOS Apple Silicon & Windows x86/ARM) for batch job execution and local LLM inference (e.g. StarCoder 2, CodeLlama, Llama 3 coding agents).\n\nThe system consists of three primary components:\n1. **Control Server (Ktor / Kotlin Multiplatform Backend)**:\n   - Central coordinator maintaining real-time node registry, health/heartbeat telemetry, and job queue.\n   - Intelligent scheduler distributing containerized batch tasks and LLM inference workloads based on node capacity, battery level, and thermal headroom.\n   - Integrates with external smart plugs (Shelly, Tapo) for physical energy consumption tracking.\n2. **Client Daemons (macOS LaunchDaemon & Windows Service)**:\n   - Ultra-low footprint background agent (<1% CPU, <50MB RAM idle) running on participant laptops.\n   - Periodic telemetry sampler (CPU, GPU, RAM, battery, thermal status).\n   - Manages OS-level Power Assertions (`IOPMAssertion` on macOS, `SetThreadExecutionState` on Windows) to prevent standby during active overnight jobs.\n   - Orchestrates isolated Docker container execution for jobs and Ray/Ollama workers.\n3. **Admin Dashboard (Compose for Desktop)**:\n   - Cross-platform desktop interface for cluster administrators.\n   - Real-time fleet visibility (online/offline status, resource metrics).\n   - Interactive job submission, pipeline tracking, and scheduling policy configuration.\n\n## Key Quality Attributes\n- **Zero Daytime Disruption**: Daemons operate silently and yield resources immediately during working hours or battery discharge.\n- **Hardware Safety**: Strict thermal limits (<85°C) and battery minimums (>50%) trigger graceful job pausing and sleep policy restoration.\n- **Reproducibility & Isolation**: All workloads execute inside Docker containers with enforced memory and CPU limits.\n- **Cross-Platform Consistency**: Single Kotlin Multiplatform codebase maximizes shared logic across server, desktop, and daemons.\n- **Security**: Mutual TLS (mTLS) for all control plane communication and token-authenticated API endpoints.\n\n## Tech Stack Guardrails\n- **Language & Runtime**: Kotlin Multiplatform (JVM for Server & Admin UI, Native/JVM for Daemons).\n- **Control Server**: Ktor HTTP/WebSocket engine with kotlinx.serialization and Exposed/SQLite persistence.\n- **Client Daemons**: KMP Native/JVM daemon integrating with platform power APIs and Docker daemon socket.\n- **Inference & Compute**: Docker engine running Ray cluster workers and local Ollama model instances.\n- **Desktop UI**: Jetpack Compose for Desktop with Coroutines/StateFlow reactive state.",
   "product_backlog": [
     {
       "id": "US-0005",
@@ -413,7 +413,54 @@
   "sprint_goal": "Establish foundational client-server communication via Control Server Node Registration & Heartbeat API (US-0001) and Client Daemon Lifecycle & Metrics Collector (US-0002).",
   "sprint_number": 1,
   "sprint_backlog_pr_sprint": 1,
-  "sprint_backlog": [],
+  "sprint_backlog": [
+    {
+      "id": "US-0001",
+      "type": "User Story",
+      "title": "Control Server Node Registration & Heartbeat API",
+      "status": "Ready",
+      "priority": "Must",
+      "user_story": "As a Control Server administrator, I want an API for node registration and periodic heartbeat telemetry, so that the server maintains an accurate real-time inventory of cluster nodes and their health.",
+      "acceptance_criteria": [
+        "Given a running Ktor Control Server, When a client daemon sends a registration POST request with node ID, OS type, and hardware specs, Then the server stores the node and responds with 200 OK and registration confirmation.",
+        "Given a registered node, When the node sends a periodic heartbeat with CPU/RAM metrics, Then the server updates the node's last-seen timestamp and metric cache.",
+        "Given a registered node that stops sending heartbeats, When the timeout threshold (60 seconds) expires, Then the server marks the node status as Offline."
+      ],
+      "version": "v0.1",
+      "dependencies": [
+        "EP-0002"
+      ],
+      "notes": "Core registration and heartbeat telemetry for cluster nodes.",
+      "tasks": [
+        "Create control-server module and build.gradle.kts",
+        "Implement NodeModels data structures",
+        "Implement NodeRegistry repository with TTL / 60s timeout handling",
+        "Implement Ktor routes for register, heartbeat, and node query",
+        "Add integration tests validating registration, telemetry caching, and offline status transition"
+      ],
+      "value_hypothesis": "Control Server reliably tracks cluster node inventory and health status in real time.",
+      "epic_id": "EP-0002",
+      "approach": "Implement Ktor server module with data models (NodeRegistrationRequest, HeartbeatTelemetry, NodeState), an in-memory thread-safe NodeRegistry with TTL tracking (60s threshold), and Ktor HTTP routes for POST /api/nodes/register and POST /api/nodes/{id}/heartbeat, backed by automated integration tests.",
+      "estimate": 50000,
+      "risks_assumptions": "Assuming standard Ktor 2.x/3.x Netty engine with kotlinx.serialization; concurrent map for thread-safe registry.",
+      "code_files": [
+        "control-server/build.gradle.kts",
+        "control-server/src/main/kotlin/com/heinzelmann/server/Application.kt",
+        "control-server/src/main/kotlin/com/heinzelmann/server/models/NodeModels.kt",
+        "control-server/src/main/kotlin/com/heinzelmann/server/registry/NodeRegistry.kt",
+        "control-server/src/main/kotlin/com/heinzelmann/server/routes/NodeRoutes.kt",
+        "control-server/src/test/kotlin/com/heinzelmann/server/NodeApiTest.kt"
+      ],
+      "dod_checks": [
+        "Acceptance criteria met",
+        "Source code committed and pushed on feature branch",
+        "Automated tests passing",
+        "CI green",
+        "Token usage logged"
+      ],
+      "test_approach": "Ktor testApplication integration tests covering POST /api/nodes/register, POST /api/nodes/{id}/heartbeat, GET /api/nodes, and timeout threshold evaluation."
+    }
+  ],
   "impediment_log": [],
   "retro_actions": [],
   "decision_log": [],
@@ -424,14 +471,19 @@
     "current_usd_spend": 0.0
   },
   "token_usage": {
-    "total": 2394846,
+    "total": 3231926,
     "agents": {
       "ScrumMaster": 57121,
       "ProductOwner": 2080898,
-      "DevTeam": 256827
+      "DevTeam": 1093907
     }
   },
-  "story_estimates": {},
+  "story_estimates": {
+    "US-0001": {
+      "estimate": 50000,
+      "actual": 18500
+    }
+  },
   "sprint_report_kpis": {},
   "kpi_update_count": 0,
   "kpi_baseline": 0,
@@ -505,7 +557,15 @@
     "specs/stories/US-0003-Client-Daemon-Power-Assertion-and-Sleep-Prevention.md",
     "specs/stories/US-0004-Docker-Container-Job-Runner-on-Client-Daemon.md",
     "specs/stories/US-0005-Control-Server-Job-Queue-and-Dispatcher.md",
-    "specs/stories/US-0006-Admin-Dashboard-Node-Status-and-Live-Metrics-View.md"
+    "specs/stories/US-0006-Admin-Dashboard-Node-Status-and-Live-Metrics-View.md",
+    "settings.gradle.kts",
+    "build.gradle.kts",
+    "control-server/build.gradle.kts",
+    "control-server/src/main/kotlin/com/heinzelmann/server/models/NodeModels.kt",
+    "control-server/src/main/kotlin/com/heinzelmann/server/registry/NodeRegistry.kt",
+    "control-server/src/main/kotlin/com/heinzelmann/server/routes/NodeRoutes.kt",
+    "control-server/src/main/kotlin/com/heinzelmann/server/Application.kt",
+    "control-server/src/test/kotlin/com/heinzelmann/server/NodeApiTest.kt"
   ],
   "last_check_build": null,
   "pr_review_calls": {},
