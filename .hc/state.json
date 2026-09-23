@@ -80,7 +80,8 @@
       "type": "Epic",
       "title": "Containerized Job Execution",
       "status": "Open",
-      "priority": "Must"
+      "priority": "Must",
+      "description": "Isolated execution of computational tasks and AI jobs in Docker containers on client machines with resource controls."
     },
     {
       "id": "US-0002",
@@ -360,10 +361,10 @@
     "current_usd_spend": 0.0
   },
   "token_usage": {
-    "total": 957373,
+    "total": 1002609,
     "agents": {
       "ScrumMaster": 57121,
-      "ProductOwner": 900252
+      "ProductOwner": 945488
     }
   },
   "story_estimates": {},
@@ -426,7 +427,8 @@
     "specs/stories/US-0011-Smart-Plug-Telemetry-Collector-for-Shelly-and-Tapo.md",
     "specs/stories/US-0012-Energy-Consumption-Correlation-and-Reporting-per-Job.md",
     "specs/stories/US-0001-Control-Server-Node-Registration-&-Heartbeat-API.md",
-    "specs/stories/EP-0001-Client-Daemon-&-Power-Management.md"
+    "specs/stories/EP-0001-Client-Daemon-&-Power-Management.md",
+    "specs/stories/EP-0002-Control-Server-&-Node-Orchestration.md"
   ],
   "last_check_build": null,
   "pr_review_calls": {},
