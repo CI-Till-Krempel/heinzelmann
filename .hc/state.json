@@ -236,11 +236,16 @@
       "stages_completed": [
         "Draft",
         "Ready",
-        "Implemented"
+        "Implemented",
+        "Reviewed",
+        "Tested",
+        "Accepted"
       ],
-      "status": "Implemented",
+      "status": "Accepted",
       "version": "v0.2",
-      "user_story": "As a cluster administrator, I want client nodes to automatically join a distributed Ray cluster as worker nodes when instructed by the Control Server, so that distributed compute tasks can execute across idle machines."
+      "user_story": "As a cluster administrator, I want client nodes to automatically join a distributed Ray cluster as worker nodes when instructed by the Control Server, so that distributed compute tasks can execute across idle machines.",
+      "acceptance_check_count": 1,
+      "acceptance_check_note": "Verified acceptance criteria for US-0007: Ray worker container start command construction, head coordinate connection, and clean departure on node status change to busy or disconnected."
     },
     {
       "tasks": [
@@ -802,9 +807,12 @@
       "stages_completed": [
         "Draft",
         "Ready",
-        "Implemented"
+        "Implemented",
+        "Reviewed",
+        "Tested",
+        "Accepted"
       ],
-      "status": "Implemented",
+      "status": "Accepted",
       "version": "v0.2",
       "user_story": "As a cluster administrator, I want client nodes to automatically join a distributed Ray cluster as worker nodes when instructed by the Control Server, so that distributed compute tasks can execute across idle machines.",
       "dod_checks": [
@@ -820,7 +828,9 @@
       "estimate": 40000,
       "approach": "Implement Ray worker container orchestration in the client daemon, managing Ray worker container lifecycles, configuration parameter generation (head address, port, resources), health checks, and graceful teardown upon node busy state or shutdown.",
       "risks_assumptions": "Assumes Docker runtime is available on the client node as established in US-0004.",
-      "test_approach": "Unit tests mocking container execution client and verifying lifecycle state transitions and parameter validation."
+      "test_approach": "Unit tests mocking container execution client and verifying lifecycle state transitions and parameter validation.",
+      "acceptance_check_count": 1,
+      "acceptance_check_note": "Verified acceptance criteria for US-0007: Ray worker container start command construction, head coordinate connection, and clean departure on node status change to busy or disconnected."
     },
     {
       "tasks": [
@@ -924,16 +934,16 @@
   "budgets": {
     "total": 6000000,
     "total_usd": 20.0,
-    "current_usd_spend": 0.310965375
+    "current_usd_spend": 0.488253225
   },
   "token_usage": {
-    "total": 672577,
+    "total": 1532913,
     "agents": {
-      "ProductOwner": 2698630,
+      "ProductOwner": 2839891,
       "ScrumMaster": 288442,
-      "DevTeam": 2722336,
-      "Architect": 578929,
-      "QA": 957420,
+      "DevTeam": 3154861,
+      "Architect": 685137,
+      "QA": 1137762,
       "ScrumOrchestrator": 74208
     }
   },
@@ -963,7 +973,8 @@
       "actual": 22000
     },
     "US-0008": {
-      "estimate": 40000
+      "estimate": 40000,
+      "actual": 21500
     }
   },
   "sprint_report_kpis": {
@@ -1137,15 +1148,21 @@
     "specs/reports/TRANSCRIPT-004.md",
     "client-daemon/src/main/kotlin/de/heinzelmann/client/ray/RayWorkerModels.kt",
     "client-daemon/src/main/kotlin/de/heinzelmann/client/ray/RayWorkerManager.kt",
-    "client-daemon/src/test/kotlin/de/heinzelmann/client/ray/RayWorkerManagerTest.kt"
+    "client-daemon/src/test/kotlin/de/heinzelmann/client/ray/RayWorkerManagerTest.kt",
+    "client-daemon/src/main/kotlin/de/heinzelmann/client/ollama/OllamaModels.kt",
+    "client-daemon/src/main/kotlin/de/heinzelmann/client/ollama/OllamaManager.kt",
+    "client-daemon/src/test/kotlin/de/heinzelmann/client/ollama/OllamaManagerTest.kt"
   ],
-  "last_check_build": {},
-  "pr_review_calls": {
-    "Architect": 5,
-    "QA": 6
+  "last_check_build": {
+    "checked": null,
+    "passing": null
   },
-  "architect_review_baseline": 5,
-  "qa_review_baseline": 6,
+  "pr_review_calls": {
+    "Architect": 6,
+    "QA": 7
+  },
+  "architect_review_baseline": 6,
+  "qa_review_baseline": 7,
   "sprint_report_pending_release": false,
   "blocking_interactions": [
     {
