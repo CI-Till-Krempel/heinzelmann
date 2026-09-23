@@ -133,7 +133,9 @@
         "Implemented",
         "Reviewed",
         "Tested"
-      ]
+      ],
+      "acceptance_check_count": 1,
+      "acceptance_check_note": "Verified US-0003 acceptance criteria: OS power assertions (IOPMAssertion on macOS / SetThreadExecutionState on Windows) prevent sleep during active jobs and release properly upon workload completion."
     },
     {
       "id": "US-0005",
@@ -624,7 +626,9 @@
       ],
       "test_approach": "Unit tests with mock OS providers and lifecycle simulation verifying assertion acquisition, ref-counting, and clean teardown on workload completion.",
       "estimate": 35000,
-      "approach": "Implement PowerAssertionController and platform power assertion abstractions (macOS IOPMAssertion, Windows SetThreadExecutionState, and Mock/POSIX fallback) integrated into ClientDaemon to keep machines awake during active workloads and release assertions when idle."
+      "approach": "Implement PowerAssertionController and platform power assertion abstractions (macOS IOPMAssertion, Windows SetThreadExecutionState, and Mock/POSIX fallback) integrated into ClientDaemon to keep machines awake during active workloads and release assertions when idle.",
+      "acceptance_check_count": 1,
+      "acceptance_check_note": "Verified US-0003 acceptance criteria: OS power assertions (IOPMAssertion on macOS / SetThreadExecutionState on Windows) prevent sleep during active jobs and release properly upon workload completion."
     },
     {
       "id": "US-0005",
@@ -754,13 +758,13 @@
     "current_usd_spend": 0.0
   },
   "token_usage": {
-    "total": 1624721,
+    "total": 1764577,
     "agents": {
-      "ProductOwner": 935220,
+      "ProductOwner": 988671,
       "ScrumMaster": 71237,
       "DevTeam": 1039125,
       "Architect": 251652,
-      "QA": 280817,
+      "QA": 367222,
       "ScrumOrchestrator": 74208
     }
   },
