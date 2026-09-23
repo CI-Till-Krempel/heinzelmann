@@ -106,7 +106,7 @@
       "id": "US-0003",
       "type": "User Story",
       "title": "Client Daemon Power Assertion and Sleep Prevention",
-      "status": "Implemented",
+      "status": "Accepted",
       "priority": "Must",
       "user_story": "As a system operator, I want the client daemon to prevent laptops from entering sleep mode while executing assigned batch jobs, so that long-running tasks complete without interruption.",
       "acceptance_criteria": [
@@ -173,7 +173,11 @@
         "EP-0002",
         "US-0001"
       ],
-      "epic_id": "EP-0002"
+      "epic_id": "EP-0002",
+      "stages_completed": [
+        "Draft",
+        "Ready"
+      ]
     },
     {
       "title": "Streamline ProductOwner specification drafting and backlog grooming sessions with strict prompt timeboxes and pre-structured templates to keep PO token usage under 30% of sprint budget.",
@@ -190,7 +194,7 @@
       "overview": "Token budget limit of 6,000,000 was exceeded (reaching 6,073,060 tokens) with ProductOwner accounting for over 50% of token usage and feature implementation taking only 34% of total tokens.",
       "owner": "ScrumMaster",
       "type": "Issue",
-      "id": "ISSUE-0004",
+      "id": "ISSUE-0006",
       "status": "Draft",
       "priority": "Must",
       "version": "Backlog (unplanned)"
@@ -200,7 +204,7 @@
       "type": "User Story",
       "title": "Docker Container Job Runner on Client Daemon",
       "status": "Ready",
-      "priority": "Should",
+      "priority": "Must",
       "user_story": "As a cluster operator, I want client daemons to execute jobs in isolated Docker containers with specified CPU and memory constraints, so that tasks run securely without altering the host system.",
       "acceptance_criteria": [
         "Given an assigned job specification with container image, environment, and command, When the daemon initiates execution, Then it runs the container via the local Docker daemon with strict memory and CPU limits.",
@@ -453,12 +457,26 @@
       ],
       "status": "Ready",
       "version": "v0.2"
+    },
+    {
+      "id": "ISSUE-0005",
+      "type": "Issue",
+      "title": "Validate story dependency sequences during sprint planning to ensure prerequisite foundational stories always hold higher priority than downstream dependent stories.",
+      "status": "Draft",
+      "priority": "Must"
+    },
+    {
+      "id": "ISSUE-0007",
+      "type": "Issue",
+      "title": "Backlog priority order conflict: US-0004 was marked 'Must' while depending on prerequisite US-0002, causing advance_story_stage to reject advancing US-0002 to Implemented until PO reprioritized US-0004.",
+      "status": "Draft",
+      "priority": "Must"
     }
   ],
   "definition_of_done": [],
-  "sprint_goal": "Implement and verify the Client Daemon Lifecycle & Metrics Collector (US-0002) and Client Daemon Power Assertion (US-0003) for macOS and Windows nodes.",
-  "sprint_number": 2,
-  "sprint_backlog_pr_sprint": 2,
+  "sprint_goal": "Deliver end-to-end containerized job execution for v0.1 MVP by implementing central job queueing and dispatching on the Control Server and isolated Docker execution on the Client Daemon.",
+  "sprint_number": 3,
+  "sprint_backlog_pr_sprint": 3,
   "sprint_backlog": [
     {
       "id": "US-0001",
@@ -603,6 +621,96 @@
       "test_approach": "Unit tests with mock OS providers and lifecycle simulation verifying assertion acquisition, ref-counting, and clean teardown on workload completion.",
       "estimate": 35000,
       "approach": "Implement PowerAssertionController and platform power assertion abstractions (macOS IOPMAssertion, Windows SetThreadExecutionState, and Mock/POSIX fallback) integrated into ClientDaemon to keep machines awake during active workloads and release assertions when idle."
+    },
+    {
+      "id": "US-0005",
+      "type": "User Story",
+      "title": "Control Server Job Queue and Dispatcher",
+      "status": "Ready",
+      "priority": "Must",
+      "user_story": "As a cluster administrator, I want the Control Server to queue jobs and dispatch them to eligible online nodes based on availability and resource capacity, so that workloads are completed efficiently across the fleet.",
+      "acceptance_criteria": [
+        "Given batch job submissions via API, When jobs are enqueued, Then the Control Server schedules and assigns them to available nodes matching resource constraints and requirements.",
+        "Given an assigned job, When a node stops reporting heartbeats before job completion, Then the Control Server detects the failure and re-queues the job for execution on an alternate available node."
+      ],
+      "version": "v0.1",
+      "value_hypothesis": "Jobs are distributed evenly and automatically failover when nodes disconnect unexpectedly.",
+      "tasks": [
+        "Define Job, JobStatus, and JobAssignment data models",
+        "Implement JobQueue state machine with concurrency control",
+        "Implement NodeCapacityScheduler for matching job resource requirements to available nodes",
+        "Implement job submission and dispatching endpoints in Ktor",
+        "Implement heartbeat expiration detection and automatic job failover",
+        "Add comprehensive unit and integration tests"
+      ],
+      "notes": "Central job dispatching and scheduling engine on the Control Server.",
+      "dependencies": [
+        "EP-0002",
+        "US-0001"
+      ],
+      "epic_id": "EP-0002",
+      "stages_completed": [
+        "Draft",
+        "Ready"
+      ],
+      "dod_checks": [
+        "Code compiles cleanly under Gradle/KMP",
+        "Unit and integration tests pass with high coverage",
+        "Resource scheduling and failover logic verified",
+        "Token actuals logged before marking Implemented"
+      ],
+      "test_approach": "Unit tests for queue state transitions and scheduler; integration tests for job dispatching and heartbeat failure recovery.",
+      "approach": "Implement Ktor Control Server in-memory JobQueue and NodeCapacityScheduler to manage job state transitions, schedule jobs onto eligible registered nodes, and handle automatic re-queueing upon heartbeat timeouts.",
+      "estimate": 40000,
+      "code_files": [
+        "server/src/main/kotlin/cluster/server/jobs/JobModels.kt",
+        "server/src/main/kotlin/cluster/server/jobs/JobQueue.kt",
+        "server/src/main/kotlin/cluster/server/jobs/JobDispatcher.kt",
+        "server/src/test/kotlin/cluster/server/jobs/JobQueueTest.kt"
+      ],
+      "risks_assumptions": "Assumes US-0001 node registration API provides active heartbeat timestamps and node capacity metadata."
+    },
+    {
+      "id": "US-0004",
+      "type": "User Story",
+      "title": "Docker Container Job Runner on Client Daemon",
+      "status": "Ready",
+      "priority": "Must",
+      "user_story": "As a cluster operator, I want client daemons to execute jobs in isolated Docker containers with specified CPU and memory constraints, so that tasks run securely without altering the host system.",
+      "acceptance_criteria": [
+        "Given an assigned job specification with container image, environment, and command, When the daemon initiates execution, Then it runs the container via the local Docker daemon with strict memory and CPU limits.",
+        "Given a containerized job execution, When the job completes or fails, Then the daemon captures exit codes, stdout/stderr logs, and reports the execution result back to the Control Server."
+      ],
+      "version": "v0.1",
+      "notes": "Executes tasks in isolated Docker environments to ensure safety and repeatability.",
+      "value_hypothesis": "Container isolation guarantees host machine stability and reproducible task environments.",
+      "dependencies": [
+        "EP-0003",
+        "US-0002"
+      ],
+      "tasks": [
+        "Implement DockerEngineClient communicating via Docker API socket",
+        "Implement ContainerJobRunner with strict CPU and memory limits",
+        "Capture container stdout/stderr logs and exit code",
+        "Implement job result reporting to Control Server",
+        "Add automated unit and integration tests"
+      ],
+      "epic_id": "EP-0003",
+      "dod_checks": [
+        "Code compiles cleanly under Gradle/KMP",
+        "Unit and integration tests pass with high coverage",
+        "Docker execution limits (CPU, RAM) validated",
+        "Token actuals logged before marking Implemented"
+      ],
+      "code_files": [
+        "client/src/main/kotlin/cluster/client/docker/DockerEngineClient.kt",
+        "client/src/main/kotlin/cluster/client/docker/ContainerJobRunner.kt",
+        "client/src/test/kotlin/cluster/client/docker/ContainerJobRunnerTest.kt"
+      ],
+      "test_approach": "Unit tests mocking Docker engine responses; integration tests verifying execution, limit application, log capture, and status reporting.",
+      "risks_assumptions": "Assumes local Docker daemon is accessible via Unix socket / named pipe and container images can be resolved.",
+      "estimate": 35000,
+      "approach": "Implement DockerEngineClient on Client Daemon to execute containerized jobs with CPU/memory limits, stream logs, capture exit codes, and report results to Control Server."
     }
   ],
   "impediment_log": [
@@ -636,13 +744,14 @@
     "current_usd_spend": 0.0
   },
   "token_usage": {
-    "total": 1783483,
+    "total": 909462,
     "agents": {
-      "ProductOwner": 548068,
-      "ScrumMaster": 54171,
-      "DevTeam": 906905,
+      "ProductOwner": 741899,
+      "ScrumMaster": 71237,
+      "DevTeam": 775317,
       "Architect": 121117,
-      "QA": 153222
+      "QA": 153222,
+      "ScrumOrchestrator": 74208
     }
   },
   "story_estimates": {
@@ -657,6 +766,13 @@
     "US-0003": {
       "estimate": 35000,
       "actual": 16500
+    },
+    "US-0005": {
+      "estimate": 40000,
+      "actual": 21000
+    },
+    "US-0004": {
+      "estimate": 35000
     }
   },
   "sprint_report_kpis": {
@@ -697,35 +813,51 @@
   "messages": [
     {
       "role": "user",
-      "content": "There is a fix for the github authentication blocker. Please try again."
+      "content": "There was a problem, so all changes were not pushed when the token limit was hit. It was now improved and should not occur anymore. I pushed all dangling changes to the repo, so you might have to pull changes on develop. As the second sprint is done, lets plan the next one."
     },
     {
       "role": "model",
-      "content": "Checking the current repository configuration and GitHub authentication status."
+      "content": "Checking the repository status and syncing the latest state from git."
     },
     {
       "role": "model",
-      "content": "Checking for recorded blocking interactions to identify what was previously blocked."
+      "content": "Loading the persisted Scrum state from the repository to reflect any newly pushed changes."
     },
     {
       "role": "model",
-      "content": "Synchronizing Scrum state with the repository specifications and artifacts."
+      "content": "Checking current budget usage and status."
     },
     {
       "role": "model",
-      "content": "Checking current budget usage and sprint metrics."
+      "content": "Listing documentation in the repository to inspect recent changes and story status."
     },
     {
       "role": "model",
-      "content": "Listing documents in specs/ to inspect current sprint and release artifacts."
+      "content": "Reading ROADMAP.md to understand the current sprint progress and story pipeline stages."
     },
     {
       "role": "model",
-      "content": "Reading the latest sprint report to check the release status and any pending actions."
+      "content": "Reading SPRINT-REPORT-002.md to check the closeout status and summary of Sprint 2."
     },
     {
       "role": "model",
-      "content": "Reading recent transcript entries to see the exact blocker encountered during the release PR creation."
+      "content": "Reading SPRINT-REPORT-003.md to see if Sprint 3 was started or reported."
+    },
+    {
+      "role": "model",
+      "content": "Initializing Scrum state to synchronize artifacts from specs and verify the current session state."
+    },
+    {
+      "role": "model",
+      "content": "Checking for any open blocking interactions that require human input."
+    },
+    {
+      "role": "model",
+      "content": "Reading user story US-0005 to check its current status, scope, and acceptance criteria."
+    },
+    {
+      "role": "model",
+      "content": "Reading user story US-0004 to check its current status, scope, and acceptance criteria."
     }
   ],
   "hc_version": "0.1.0",
@@ -742,6 +874,10 @@
     {
       "type": "sprint",
       "note": "Stakeholder explicitly confirmed continuation with the next sprint (Sprint 2)."
+    },
+    {
+      "type": "sprint",
+      "note": "Sprint 3 goal and backlog approved by user: US-0005 and US-0004 for v0.1 MVP."
     }
   ],
   "sprint_approval_baseline": 0,
@@ -785,12 +921,14 @@
     "client-daemon/src/test/kotlin/de/heinzelmann/daemon/ClientDaemonTest.kt",
     "client-daemon/build.gradle.kts",
     "client-daemon/src/main/kotlin/de/heinzelmann/daemon/power/PowerAssertion.kt",
-    "client-daemon/src/test/kotlin/de/heinzelmann/daemon/PowerAssertionTest.kt"
+    "client-daemon/src/test/kotlin/de/heinzelmann/daemon/PowerAssertionTest.kt",
+    "control-server/src/main/kotlin/de/heinzelmann/server/jobs/JobModels.kt",
+    "control-server/src/main/kotlin/de/heinzelmann/server/jobs/JobQueue.kt",
+    "control-server/src/main/kotlin/de/heinzelmann/server/jobs/JobDispatcher.kt",
+    "control-server/src/main/kotlin/de/heinzelmann/server/jobs/JobRoutes.kt",
+    "control-server/src/test/kotlin/de/heinzelmann/server/jobs/JobQueueTest.kt"
   ],
-  "last_check_build": {
-    "checked": null,
-    "passing": null
-  },
+  "last_check_build": {},
   "pr_review_calls": {
     "Architect": 2,
     "QA": 3
