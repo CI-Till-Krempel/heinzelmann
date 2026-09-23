@@ -142,7 +142,7 @@
       "id": "US-0005",
       "type": "User Story",
       "title": "Control Server Job Queue and Dispatcher",
-      "status": "Implemented",
+      "status": "Accepted",
       "priority": "Must",
       "user_story": "As a cluster administrator, I want the Control Server to queue jobs and dispatch them to eligible online nodes based on availability and resource capacity, so that workloads are completed efficiently across the fleet.",
       "acceptance_criteria": [
@@ -166,8 +166,13 @@
       "stages_completed": [
         "Draft",
         "Ready",
-        "Implemented"
-      ]
+        "Implemented",
+        "Reviewed",
+        "Tested",
+        "Accepted"
+      ],
+      "acceptance_check_count": 1,
+      "acceptance_check_note": "Verified US-0005 acceptance criteria: Control Server schedules and assigns batch jobs to eligible nodes based on resource capacity, and automatically detects heartbeat timeouts (>60s) to re-queue jobs for alternate healthy nodes."
     },
     {
       "title": "Streamline ProductOwner specification drafting and backlog grooming sessions with strict prompt timeboxes and pre-structured templates to keep PO token usage under 30% of sprint budget.",
@@ -213,7 +218,11 @@
         "Implement log streamer and exit code capture",
         "Add integration test verifying container execution and output capture"
       ],
-      "epic_id": "EP-0003"
+      "epic_id": "EP-0003",
+      "stages_completed": [
+        "Draft",
+        "Ready"
+      ]
     },
     {
       "id": "ISSUE-0005",
@@ -637,7 +646,7 @@
       "id": "US-0005",
       "type": "User Story",
       "title": "Control Server Job Queue and Dispatcher",
-      "status": "Implemented",
+      "status": "Accepted",
       "priority": "Must",
       "user_story": "As a cluster administrator, I want the Control Server to queue jobs and dispatch them to eligible online nodes based on availability and resource capacity, so that workloads are completed efficiently across the fleet.",
       "acceptance_criteria": [
@@ -663,7 +672,10 @@
       "stages_completed": [
         "Draft",
         "Ready",
-        "Implemented"
+        "Implemented",
+        "Reviewed",
+        "Tested",
+        "Accepted"
       ],
       "dod_checks": [
         "Code compiles cleanly under Gradle/KMP",
@@ -680,7 +692,9 @@
         "server/src/main/kotlin/cluster/server/jobs/JobDispatcher.kt",
         "server/src/test/kotlin/cluster/server/jobs/JobQueueTest.kt"
       ],
-      "risks_assumptions": "Assumes US-0001 node registration API provides active heartbeat timestamps and node capacity metadata."
+      "risks_assumptions": "Assumes US-0001 node registration API provides active heartbeat timestamps and node capacity metadata.",
+      "acceptance_check_count": 1,
+      "acceptance_check_note": "Verified US-0005 acceptance criteria: Control Server schedules and assigns batch jobs to eligible nodes based on resource capacity, and automatically detects heartbeat timeouts (>60s) to re-queue jobs for alternate healthy nodes."
     },
     {
       "id": "US-0004",
@@ -722,7 +736,11 @@
       "test_approach": "Unit tests mocking Docker engine responses; integration tests verifying execution, limit application, log capture, and status reporting.",
       "risks_assumptions": "Assumes local Docker daemon is accessible via Unix socket / named pipe and container images can be resolved.",
       "estimate": 35000,
-      "approach": "Implement DockerEngineClient on Client Daemon to execute containerized jobs with CPU/memory limits, stream logs, capture exit codes, and report results to Control Server."
+      "approach": "Implement DockerEngineClient on Client Daemon to execute containerized jobs with CPU/memory limits, stream logs, capture exit codes, and report results to Control Server.",
+      "stages_completed": [
+        "Draft",
+        "Ready"
+      ]
     }
   ],
   "impediment_log": [
@@ -762,13 +780,13 @@
     "current_usd_spend": 0.0
   },
   "token_usage": {
-    "total": 1933602,
+    "total": 3465472,
     "agents": {
-      "ProductOwner": 1095973,
+      "ProductOwner": 1447384,
       "ScrumMaster": 71237,
-      "DevTeam": 1100848,
-      "Architect": 251652,
-      "QA": 367222,
+      "DevTeam": 1855100,
+      "Architect": 394050,
+      "QA": 651031,
       "ScrumOrchestrator": 74208
     }
   },
@@ -790,7 +808,8 @@
       "actual": 21000
     },
     "US-0004": {
-      "estimate": 35000
+      "estimate": 35000,
+      "actual": 19500
     }
   },
   "sprint_report_kpis": {
@@ -944,18 +963,22 @@
     "control-server/src/main/kotlin/de/heinzelmann/server/jobs/JobQueue.kt",
     "control-server/src/main/kotlin/de/heinzelmann/server/jobs/JobDispatcher.kt",
     "control-server/src/main/kotlin/de/heinzelmann/server/jobs/JobRoutes.kt",
-    "control-server/src/test/kotlin/de/heinzelmann/server/jobs/JobQueueTest.kt"
+    "control-server/src/test/kotlin/de/heinzelmann/server/jobs/JobQueueTest.kt",
+    "client-daemon/src/main/kotlin/de/heinzelmann/client/docker/DockerModels.kt",
+    "client-daemon/src/main/kotlin/de/heinzelmann/client/docker/DockerEngineClient.kt",
+    "client-daemon/src/main/kotlin/de/heinzelmann/client/docker/ContainerJobRunner.kt",
+    "client-daemon/src/test/kotlin/de/heinzelmann/client/docker/ContainerJobRunnerTest.kt"
   ],
   "last_check_build": {
     "checked": null,
     "passing": null
   },
   "pr_review_calls": {
-    "Architect": 3,
-    "QA": 4
+    "Architect": 4,
+    "QA": 5
   },
-  "architect_review_baseline": 3,
-  "qa_review_baseline": 4,
+  "architect_review_baseline": 4,
+  "qa_review_baseline": 5,
   "sprint_report_pending_release": false,
   "blocking_interactions": [
     {
