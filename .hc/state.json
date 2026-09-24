@@ -131,13 +131,6 @@
       "user_story": "As a <role>, I want <capability>, so that <benefit>."
     },
     {
-      "id": "ISSUE-0003",
-      "type": "Issue",
-      "title": "Streamline ProductOwner specification drafting and backlog grooming sessions with strict prompt timeboxes and pre-structured templates to keep PO token usage under 30% of sprint budget.",
-      "status": "Draft",
-      "priority": "Must"
-    },
-    {
       "id": "ISSUE-0005",
       "type": "Issue",
       "title": "Validate story dependency sequences during sprint planning to ensure prerequisite foundational stories always hold higher priority than downstream dependent stories.",
@@ -261,6 +254,13 @@
       "version": "v0.2"
     },
     {
+      "id": "ISSUE-0003",
+      "type": "Issue",
+      "title": "Streamline ProductOwner specification drafting and backlog grooming sessions with strict prompt timeboxes and pre-structured templates to keep PO token usage under 30% of sprint budget.",
+      "status": "Draft",
+      "priority": "Won't"
+    },
+    {
       "id": "ISSUE-0007",
       "type": "Issue",
       "title": "Backlog priority order conflict: US-0004 was marked 'Must' while depending on prerequisite US-0002, causing advance_story_stage to reject advancing US-0002 to Implemented until PO reprioritized US-0004.",
@@ -356,10 +356,10 @@
     "current_usd_spend": 0.373479975
   },
   "token_usage": {
-    "total": 1831581,
+    "total": 1903058,
     "agents": {
       "ScrumMaster": 251567,
-      "ProductOwner": 551361,
+      "ProductOwner": 622838,
       "DevTeam": 1028653
     }
   },
