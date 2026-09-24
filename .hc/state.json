@@ -264,7 +264,7 @@
         "Given a configured smart plug IP and credentials (Shelly Gen2 / Tapo P110), When the Control Server queries the smart plug API, Then it successfully reads instantaneous power (Watts) and cumulative energy (kWh).",
         "Given mapped smart plugs to node IDs, When power metrics are collected periodically, Then the Control Server records timestamped power telemetry in the node metrics store."
       ],
-      "version": "Backlog"
+      "version": "v0.2"
     },
     {
       "id": "ISSUE-0009",
