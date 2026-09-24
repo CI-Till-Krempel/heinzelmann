@@ -138,13 +138,6 @@
       "priority": "Must"
     },
     {
-      "id": "ISSUE-0013",
-      "type": "Issue",
-      "title": "Sprint 4 initialization is blocked because release PR #15 (develop -> main) is currently open and unmerged. Merging or closing the release PR is required to start the new sprint.",
-      "status": "Draft",
-      "priority": "Must"
-    },
-    {
       "id": "US-0010",
       "type": "User Story",
       "title": "Night-Time Scheduling, Hardware Protection, and Instant User Yield Governance Policy",
@@ -238,6 +231,13 @@
         "Given mapped smart plugs to node IDs, When power metrics are collected periodically, Then the Control Server records timestamped power telemetry in the node metrics store."
       ],
       "version": "v0.2"
+    },
+    {
+      "id": "ISSUE-0013",
+      "type": "Issue",
+      "title": "Sprint 4 initialization is blocked because release PR #15 (develop -> main) is currently open and unmerged. Merging or closing the release PR is required to start the new sprint.",
+      "status": "Draft",
+      "priority": "Won't"
     },
     {
       "id": "ISSUE-0008",
@@ -353,14 +353,14 @@
   "budgets": {
     "total": 6000000,
     "total_usd": 20.0,
-    "current_usd_spend": 0.411648675
+    "current_usd_spend": 0.4579125
   },
   "token_usage": {
-    "total": 2335840,
+    "total": 2621373,
     "agents": {
       "ScrumMaster": 251567,
-      "ProductOwner": 1055620,
-      "DevTeam": 1028653
+      "ProductOwner": 1202236,
+      "DevTeam": 1167570
     }
   },
   "story_estimates": {
