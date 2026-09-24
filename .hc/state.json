@@ -131,13 +131,6 @@
       "user_story": "As a <role>, I want <capability>, so that <benefit>."
     },
     {
-      "id": "ISSUE-0005",
-      "type": "Issue",
-      "title": "Validate story dependency sequences during sprint planning to ensure prerequisite foundational stories always hold higher priority than downstream dependent stories.",
-      "status": "Draft",
-      "priority": "Must"
-    },
-    {
       "id": "ISSUE-0011",
       "type": "Issue",
       "title": "Product Owner should automatically create and merge the sprint backlog PR immediately after sprint kickoff so DevTeam does not encounter start_feature_branch gate rejections.",
@@ -254,6 +247,13 @@
       "version": "v0.2"
     },
     {
+      "id": "ISSUE-0005",
+      "type": "Issue",
+      "title": "Validate story dependency sequences during sprint planning to ensure prerequisite foundational stories always hold higher priority than downstream dependent stories.",
+      "status": "Draft",
+      "priority": "Won't"
+    },
+    {
       "id": "ISSUE-0003",
       "type": "Issue",
       "title": "Streamline ProductOwner specification drafting and backlog grooming sessions with strict prompt timeboxes and pre-structured templates to keep PO token usage under 30% of sprint budget.",
@@ -353,13 +353,13 @@
   "budgets": {
     "total": 6000000,
     "total_usd": 20.0,
-    "current_usd_spend": 0.373479975
+    "current_usd_spend": 0.411648675
   },
   "token_usage": {
-    "total": 1903058,
+    "total": 2046646,
     "agents": {
       "ScrumMaster": 251567,
-      "ProductOwner": 622838,
+      "ProductOwner": 766426,
       "DevTeam": 1028653
     }
   },
