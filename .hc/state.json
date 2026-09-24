@@ -176,7 +176,7 @@
       "id": "US-0010",
       "type": "User Story",
       "title": "Night-Time Scheduling, Hardware Protection, and Instant User Yield Governance Policy",
-      "status": "Ready",
+      "status": "Draft",
       "priority": "Must",
       "user_story": "As an employee and system operator, I want the cluster daemon to enforce strict night-time execution windows, require AC power with >=80% battery, enforce a 75°C thermal ceiling, and instantly yield on user activity (<2s), so that client hardware is protected and daytime work is completely undisturbed.",
       "acceptance_criteria": [
@@ -185,7 +185,10 @@
         "Given an active job on a client node during night hours, When user interaction (mouse/keyboard input or display wakeup) is detected, Then the daemon immediately yields system resources, pauses the container, and notifies the Control Server within 2 seconds."
       ],
       "version": "v0.2",
-      "notes": "Enforces zero-disruption governance and protects employee laptop batteries, thermals, and daytime user experience."
+      "notes": "Enforces zero-disruption governance and protects employee laptop batteries, thermals, and daytime user experience.",
+      "stages_completed": [
+        "Draft"
+      ]
     },
     {
       "id": "EP-0005",
@@ -280,7 +283,7 @@
       "id": "US-0010",
       "type": "User Story",
       "title": "Night-Time Scheduling, Hardware Protection, and Instant User Yield Governance Policy",
-      "status": "Ready",
+      "status": "Draft",
       "priority": "Must",
       "user_story": "As an employee and system operator, I want the cluster daemon to enforce strict night-time execution windows, require AC power with >=80% battery, enforce a 75°C thermal ceiling, and instantly yield on user activity (<2s), so that client hardware is protected and daytime work is completely undisturbed.",
       "acceptance_criteria": [
@@ -316,7 +319,10 @@
         "control-server/src/main/kotlin/de/heinzelmann/server/policy/SchedulingWindowPolicy.kt",
         "client-daemon/src/test/kotlin/de/heinzelmann/daemon/governance/GovernanceManagerTest.kt"
       ],
-      "estimate": 40000
+      "estimate": 40000,
+      "stages_completed": [
+        "Draft"
+      ]
     }
   ],
   "impediment_log": [],
@@ -345,14 +351,14 @@
   "budgets": {
     "total": 6000000,
     "total_usd": 20.0,
-    "current_usd_spend": 0.263430525
+    "current_usd_spend": 0.296208225
   },
   "token_usage": {
-    "total": 1155904,
+    "total": 1416184,
     "agents": {
       "ScrumMaster": 251567,
-      "ProductOwner": 200606,
-      "DevTeam": 703731
+      "ProductOwner": 269835,
+      "DevTeam": 894782
     }
   },
   "story_estimates": {
