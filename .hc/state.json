@@ -107,14 +107,6 @@
       "priority": "Must"
     },
     {
-      "id": "ST-1",
-      "type": "User Story",
-      "title": "Updated Story",
-      "status": "in_progress",
-      "priority": "Must",
-      "user_story": "As a <role>, I want <capability>, so that <benefit>."
-    },
-    {
       "id": "US-0010",
       "type": "User Story",
       "title": "Night-Time Scheduling, Hardware Protection, and Instant User Yield Governance Policy",
@@ -134,6 +126,61 @@
       ]
     },
     {
+      "id": "US-0001",
+      "type": "User Story",
+      "title": "Control Server Node Registration & Heartbeat API",
+      "status": "Accepted",
+      "priority": "Must",
+      "user_story": "As a Control Server administrator, I want an API for node registration and periodic heartbeat telemetry, so that the server maintains an accurate real-time inventory of cluster nodes and their health.",
+      "acceptance_criteria": [
+        "Given a running Ktor Control Server, When a client daemon sends a registration POST request with node ID, OS type, and hardware specs, Then the server stores the node and responds with 200 OK and registration confirmation.",
+        "Given a registered node, When the node sends a periodic heartbeat with CPU/RAM metrics, Then the server updates the node's last-seen timestamp and metric cache.",
+        "Given a registered node that stops sending heartbeats, When the timeout threshold (60 seconds) expires, Then the server marks the node status as Offline."
+      ]
+    },
+    {
+      "id": "ISSUE-0011",
+      "type": "Issue",
+      "title": "Product Owner should automatically create and merge the sprint backlog PR immediately after sprint kickoff so DevTeam does not encounter start_feature_branch gate rejections.",
+      "status": "Draft",
+      "priority": "Must"
+    },
+    {
+      "id": "ISSUE-0013",
+      "type": "Issue",
+      "title": "Sprint 4 initialization is blocked because release PR #15 (develop -> main) is currently open and unmerged. Merging or closing the release PR is required to start the new sprint.",
+      "status": "Draft",
+      "priority": "Must"
+    },
+    {
+      "id": "ISSUE-0008",
+      "type": "Issue",
+      "title": "Ensure newly filed process and retrospective tracking issues are assigned Won't or lowest priority at creation time so they do not block active sprint user stories in advance_story_stage.",
+      "status": "Draft",
+      "priority": "Must"
+    },
+    {
+      "id": "ISSUE-0005",
+      "type": "Issue",
+      "title": "Validate story dependency sequences during sprint planning to ensure prerequisite foundational stories always hold higher priority than downstream dependent stories.",
+      "status": "Draft",
+      "priority": "Must"
+    },
+    {
+      "id": "ISSUE-0003",
+      "type": "Issue",
+      "title": "Streamline ProductOwner specification drafting and backlog grooming sessions with strict prompt timeboxes and pre-structured templates to keep PO token usage under 30% of sprint budget.",
+      "status": "Draft",
+      "priority": "Must"
+    },
+    {
+      "id": "ISSUE-0007",
+      "type": "Issue",
+      "title": "Backlog priority order conflict: US-0004 was marked 'Must' while depending on prerequisite US-0002, causing advance_story_stage to reject advancing US-0002 to Implemented until PO reprioritized US-0004.",
+      "status": "Draft",
+      "priority": "Must"
+    },
+    {
       "id": "EP-0005",
       "type": "Epic",
       "title": "Cluster Admin Dashboard & Policy Management",
@@ -150,13 +197,13 @@
     {
       "id": "US-0006",
       "type": "User Story",
-      "title": "Admin Dashboard Node Status, Governance and Live Metrics View",
+      "title": "Admin Dashboard Node Status and Live Metrics View",
       "status": "Ready",
       "priority": "Should",
-      "user_story": "As an IT administrator, I want a desktop dashboard showing real-time node status, hardware health (temperature, battery, AC connection), user override status, and live power draw, so that I can monitor cluster health and governance compliance at a glance.",
+      "user_story": "As an IT administrator, I want a desktop dashboard showing real-time status and hardware metrics of all cluster nodes, so that I can easily monitor cluster health and capacity at a glance.",
       "acceptance_criteria": [
-        "Given the Compose for Desktop Admin Dashboard connected to Control Server, When viewing the Nodes tab, Then all registered nodes are listed with their ID, OS, status (Online/Offline/Busy/UserActive), CPU, RAM, temperature (°C), battery (%), AC connection status, and instantaneous power draw (Watts).",
-        "Given changes in node status, governance triggers, or metrics on the server, When updates arrive, Then the dashboard UI updates within 5 seconds without requiring manual refresh."
+        "Given the Compose for Desktop Admin Dashboard connected to Control Server, When viewing the Nodes tab, Then all registered nodes are listed with their ID, OS, status (Online/Offline/Busy), CPU, and RAM metrics.",
+        "Given changes in node status or metrics on the server, When updates arrive, Then the dashboard UI updates within 5 seconds without requiring manual refresh."
       ],
       "version": "v0.2",
       "notes": "Provides operational visibility into fleet health, governance compliance, and live wattage telemetry without CLI scripting."
@@ -164,13 +211,13 @@
     {
       "id": "US-0009",
       "type": "User Story",
-      "title": "Admin Dashboard Job Submission and ROI Pipeline View",
+      "title": "Admin Dashboard Job Submission and Status Pipeline View",
       "status": "Ready",
       "priority": "Should",
-      "user_story": "As an IT administrator, I want a Compose for Desktop UI to submit batch job configurations with policy constraints and view live job execution, energy consumed (kWh), and estimated cloud savings, so that I can manage workloads and quantify cluster ROI.",
+      "user_story": "As an IT administrator, I want a Compose for Desktop UI to submit batch job configurations and view active job progress in real time, so that I can manage and monitor cluster workload execution.",
       "acceptance_criteria": [
-        "Given the Compose for Desktop Admin Dashboard, When the admin enters job parameters (docker image, command, target node tags, and optional off-hour window tags) and clicks Submit, Then the job is posted to the Control Server and appears in the active queue table.",
-        "Given active or completed jobs in the cluster, When viewing the Job Pipeline view, Then each job's live state (Queued, Running, Succeeded, Failed, Yielded), execution duration, total energy consumed (kWh), and estimated cloud cost savings ($) are dynamically displayed."
+        "Given the Compose for Desktop Admin Dashboard, When the admin enters job parameters (docker image, command, target node tags) and clicks Submit, Then the job is posted to the Control Server and appears in the active queue table.",
+        "Given active running jobs in the cluster, When the admin views the Job Pipeline view, Then each job's live state (Queued, Running, Succeeded, Failed) and execution duration are dynamically updated."
       ],
       "version": "v0.2",
       "notes": "Allows operators to submit jobs with governance constraints and monitor real-time execution alongside energy and cost ROI."
@@ -178,13 +225,13 @@
     {
       "id": "US-0012",
       "type": "User Story",
-      "title": "Energy Consumption Correlation and Reporting per Job via OS and Utilization Telemetry",
+      "title": "Energy Consumption Correlation and Reporting per Job",
       "status": "Ready",
-      "priority": "Should",
-      "user_story": "As an IT administrator, I want the Control Server to correlate node OS power counters and CPU/GPU utilization telemetry with individual job runs, so that energy consumption (kWh) and estimated cost savings are reported without requiring external smart plugs.",
+      "priority": "Could",
+      "user_story": "As an administrator, I want the Control Server to correlate smart plug energy data with individual job runs, so that the total kilowatt-hour cost of batch LLM inference jobs can be analyzed and reported.",
       "acceptance_criteria": [
-        "Given a completed job run with timestamps and node telemetry, When the job completes, Then the Control Server computes total energy consumption (kWh) and average power draw using OS power metrics or CPU/GPU TDP utilization models.",
-        "Given computed job energy metrics, When queried via API or dashboard, Then the total energy consumed (kWh) and estimated cloud cost avoidance are returned in the job execution report."
+        "Given a completed job run with start and end timestamps and an assigned node, When the job completes, Then the Control Server computes the integrated energy consumption (kWh) over the job duration from the smart plug metrics.",
+        "Given computed job energy metrics, When the admin requests job execution details via the API or dashboard, Then the total energy consumed (kWh) and average power draw (W) are returned in the job report."
       ],
       "notes": "Replaces physical smart plug telemetry with native OS power metrics (macOS powermetrics/IOKit, Windows RAPL) and software TDP estimation models.",
       "version": "v0.2"
@@ -210,62 +257,20 @@
       "version": "v0.2"
     },
     {
+      "id": "ST-1",
+      "type": "User Story",
+      "title": "Updated Story",
+      "status": "in_progress",
+      "priority": "Won't",
+      "user_story": "As a <role>, I want <capability>, so that <benefit>."
+    },
+    {
       "id": "ST-2",
       "title": "Repeated Story",
       "status": "in_progress",
       "type": "User Story",
       "priority": "Won't",
       "user_story": "As a <role>, I want <capability>, so that <benefit>."
-    },
-    {
-      "id": "US-0001",
-      "type": "User Story",
-      "title": "ST-1",
-      "status": "Draft",
-      "priority": "Won't",
-      "user_story": "As a <role>, I want <capability>, so that <benefit>."
-    },
-    {
-      "id": "ISSUE-0011",
-      "type": "Issue",
-      "title": "Product Owner should automatically create and merge the sprint backlog PR immediately after sprint kickoff so DevTeam does not encounter start_feature_branch gate rejections.",
-      "status": "Draft",
-      "priority": "Won't"
-    },
-    {
-      "id": "ISSUE-0013",
-      "type": "Issue",
-      "title": "Sprint 4 initialization is blocked because release PR #15 (develop -> main) is currently open and unmerged. Merging or closing the release PR is required to start the new sprint.",
-      "status": "Draft",
-      "priority": "Won't"
-    },
-    {
-      "id": "ISSUE-0008",
-      "type": "Issue",
-      "title": "Ensure newly filed process and retrospective tracking issues are assigned Won't or lowest priority at creation time so they do not block active sprint user stories in advance_story_stage.",
-      "status": "Draft",
-      "priority": "Won't"
-    },
-    {
-      "id": "ISSUE-0005",
-      "type": "Issue",
-      "title": "Validate story dependency sequences during sprint planning to ensure prerequisite foundational stories always hold higher priority than downstream dependent stories.",
-      "status": "Draft",
-      "priority": "Won't"
-    },
-    {
-      "id": "ISSUE-0003",
-      "type": "Issue",
-      "title": "Streamline ProductOwner specification drafting and backlog grooming sessions with strict prompt timeboxes and pre-structured templates to keep PO token usage under 30% of sprint budget.",
-      "status": "Draft",
-      "priority": "Won't"
-    },
-    {
-      "id": "ISSUE-0007",
-      "type": "Issue",
-      "title": "Backlog priority order conflict: US-0004 was marked 'Must' while depending on prerequisite US-0002, causing advance_story_stage to reject advancing US-0002 to Implemented until PO reprioritized US-0004.",
-      "status": "Draft",
-      "priority": "Won't"
     },
     {
       "id": "ISSUE-0009",
@@ -353,13 +358,13 @@
   "budgets": {
     "total": 6000000,
     "total_usd": 20.0,
-    "current_usd_spend": 0.5388257999999999
+    "current_usd_spend": 0.616319775
   },
   "token_usage": {
-    "total": 3365895,
+    "total": 3446405,
     "agents": {
       "ScrumMaster": 251567,
-      "ProductOwner": 1805379,
+      "ProductOwner": 1885889,
       "DevTeam": 1308949
     }
   },
