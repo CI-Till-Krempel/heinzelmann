@@ -97,7 +97,7 @@
       "id": "US-0010",
       "type": "User Story",
       "title": "Night-Time Scheduling, Hardware Protection, and Instant User Yield Governance Policy",
-      "status": "Ready",
+      "status": "Implemented",
       "priority": "Must",
       "user_story": "As an employee and system operator, I want the cluster daemon to enforce strict night-time execution windows, require AC power with >=80% battery, enforce a 75°C thermal ceiling, and instantly yield on user activity (<2s), so that client hardware is protected and daytime work is completely undisturbed.",
       "acceptance_criteria": [
@@ -109,7 +109,8 @@
       "notes": "Enforces zero-disruption governance and protects employee laptop batteries, thermals, and daytime user experience.",
       "stages_completed": [
         "Draft",
-        "Ready"
+        "Ready",
+        "Implemented"
       ]
     },
     {
@@ -289,7 +290,7 @@
       "id": "US-0010",
       "type": "User Story",
       "title": "Night-Time Scheduling, Hardware Protection, and Instant User Yield Governance Policy",
-      "status": "Ready",
+      "status": "Implemented",
       "priority": "Must",
       "user_story": "As an employee and system operator, I want the cluster daemon to enforce strict night-time execution windows, require AC power with >=80% battery, enforce a 75°C thermal ceiling, and instantly yield on user activity (<2s), so that client hardware is protected and daytime work is completely undisturbed.",
       "acceptance_criteria": [
@@ -328,7 +329,8 @@
       "estimate": 40000,
       "stages_completed": [
         "Draft",
-        "Ready"
+        "Ready",
+        "Implemented"
       ]
     }
   ],
@@ -361,11 +363,11 @@
     "current_usd_spend": 0.6873378750000001
   },
   "token_usage": {
-    "total": 3855683,
+    "total": 4016633,
     "agents": {
       "ScrumMaster": 251567,
-      "ProductOwner": 2295167,
-      "DevTeam": 1308949
+      "ProductOwner": 2378606,
+      "DevTeam": 1386460
     }
   },
   "story_estimates": {
@@ -423,7 +425,7 @@
   ],
   "sprint_approval_baseline": 0,
   "release_approval_baseline": 0,
-  "dev_touch_baseline": 0,
+  "dev_touch_baseline": 6,
   "sprint_files_touched": [
     "specs/stories/ST-2-Repeated-Story.md",
     "specs/stories/US-0012-Energy-Consumption-Correlation-and-Reporting-per-Job-via-OS-and-Utilization-Telemetry.md",
