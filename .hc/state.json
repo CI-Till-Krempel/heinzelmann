@@ -138,13 +138,6 @@
       "priority": "Must"
     },
     {
-      "id": "ISSUE-0008",
-      "type": "Issue",
-      "title": "Ensure newly filed process and retrospective tracking issues are assigned Won't or lowest priority at creation time so they do not block active sprint user stories in advance_story_stage.",
-      "status": "Draft",
-      "priority": "Must"
-    },
-    {
       "id": "ISSUE-0013",
       "type": "Issue",
       "title": "Sprint 4 initialization is blocked because release PR #15 (develop -> main) is currently open and unmerged. Merging or closing the release PR is required to start the new sprint.",
@@ -245,6 +238,13 @@
         "Given mapped smart plugs to node IDs, When power metrics are collected periodically, Then the Control Server records timestamped power telemetry in the node metrics store."
       ],
       "version": "v0.2"
+    },
+    {
+      "id": "ISSUE-0008",
+      "type": "Issue",
+      "title": "Ensure newly filed process and retrospective tracking issues are assigned Won't or lowest priority at creation time so they do not block active sprint user stories in advance_story_stage.",
+      "status": "Draft",
+      "priority": "Won't"
     },
     {
       "id": "ISSUE-0005",
@@ -356,10 +356,10 @@
     "current_usd_spend": 0.411648675
   },
   "token_usage": {
-    "total": 2046646,
+    "total": 2118709,
     "agents": {
       "ScrumMaster": 251567,
-      "ProductOwner": 766426,
+      "ProductOwner": 838489,
       "DevTeam": 1028653
     }
   },
