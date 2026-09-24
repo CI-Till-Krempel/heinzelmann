@@ -83,14 +83,6 @@
       ]
     },
     {
-      "id": "US-0001",
-      "type": "User Story",
-      "title": "ST-1",
-      "status": "Draft",
-      "priority": "Must",
-      "user_story": "As a <role>, I want <capability>, so that <benefit>."
-    },
-    {
       "id": "US-0003",
       "type": "User Story",
       "title": "Client Daemon Power Assertion and Sleep Prevention",
@@ -226,6 +218,14 @@
       "version": "v0.2"
     },
     {
+      "id": "US-0001",
+      "type": "User Story",
+      "title": "ST-1",
+      "status": "Draft",
+      "priority": "Won't",
+      "user_story": "As a <role>, I want <capability>, so that <benefit>."
+    },
+    {
       "id": "ISSUE-0011",
       "type": "Issue",
       "title": "Product Owner should automatically create and merge the sprint backlog PR immediately after sprint kickoff so DevTeam does not encounter start_feature_branch gate rejections.",
@@ -353,14 +353,14 @@
   "budgets": {
     "total": 6000000,
     "total_usd": 20.0,
-    "current_usd_spend": 0.4579125
+    "current_usd_spend": 0.5388257999999999
   },
   "token_usage": {
-    "total": 2768970,
+    "total": 3211273,
     "agents": {
       "ScrumMaster": 251567,
-      "ProductOwner": 1349833,
-      "DevTeam": 1167570
+      "ProductOwner": 1650757,
+      "DevTeam": 1308949
     }
   },
   "story_estimates": {
