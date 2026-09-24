@@ -166,13 +166,6 @@
       "priority": "Must"
     },
     {
-      "id": "ISSUE-0007",
-      "type": "Issue",
-      "title": "Backlog priority order conflict: US-0004 was marked 'Must' while depending on prerequisite US-0002, causing advance_story_stage to reject advancing US-0002 to Implemented until PO reprioritized US-0004.",
-      "status": "Draft",
-      "priority": "Must"
-    },
-    {
       "id": "US-0010",
       "type": "User Story",
       "title": "Night-Time Scheduling, Hardware Protection, and Instant User Yield Governance Policy",
@@ -268,6 +261,13 @@
       "version": "v0.2"
     },
     {
+      "id": "ISSUE-0007",
+      "type": "Issue",
+      "title": "Backlog priority order conflict: US-0004 was marked 'Must' while depending on prerequisite US-0002, causing advance_story_stage to reject advancing US-0002 to Implemented until PO reprioritized US-0004.",
+      "status": "Draft",
+      "priority": "Won't"
+    },
+    {
       "id": "ISSUE-0009",
       "type": "Issue",
       "title": "Token budget limit of 6,000,000 was exceeded (reaching 6,073,060 tokens) with ProductOwner accounting for over 50% of token usage and feature implementation taking only 34% of total tokens.",
@@ -353,14 +353,14 @@
   "budgets": {
     "total": 6000000,
     "total_usd": 20.0,
-    "current_usd_spend": 0.3250716
+    "current_usd_spend": 0.373479975
   },
   "token_usage": {
-    "total": 1485854,
+    "total": 1831581,
     "agents": {
       "ScrumMaster": 251567,
-      "ProductOwner": 339505,
-      "DevTeam": 894782
+      "ProductOwner": 551361,
+      "DevTeam": 1028653
     }
   },
   "story_estimates": {
