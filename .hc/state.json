@@ -176,7 +176,7 @@
       "id": "US-0010",
       "type": "User Story",
       "title": "Night-Time Scheduling, Hardware Protection, and Instant User Yield Governance Policy",
-      "status": "Draft",
+      "status": "Ready",
       "priority": "Must",
       "user_story": "As an employee and system operator, I want the cluster daemon to enforce strict night-time execution windows, require AC power with >=80% battery, enforce a 75°C thermal ceiling, and instantly yield on user activity (<2s), so that client hardware is protected and daytime work is completely undisturbed.",
       "acceptance_criteria": [
@@ -187,7 +187,8 @@
       "version": "v0.2",
       "notes": "Enforces zero-disruption governance and protects employee laptop batteries, thermals, and daytime user experience.",
       "stages_completed": [
-        "Draft"
+        "Draft",
+        "Ready"
       ]
     },
     {
@@ -283,7 +284,7 @@
       "id": "US-0010",
       "type": "User Story",
       "title": "Night-Time Scheduling, Hardware Protection, and Instant User Yield Governance Policy",
-      "status": "Draft",
+      "status": "Ready",
       "priority": "Must",
       "user_story": "As an employee and system operator, I want the cluster daemon to enforce strict night-time execution windows, require AC power with >=80% battery, enforce a 75°C thermal ceiling, and instantly yield on user activity (<2s), so that client hardware is protected and daytime work is completely undisturbed.",
       "acceptance_criteria": [
@@ -321,7 +322,8 @@
       ],
       "estimate": 40000,
       "stages_completed": [
-        "Draft"
+        "Draft",
+        "Ready"
       ]
     }
   ],
@@ -351,13 +353,13 @@
   "budgets": {
     "total": 6000000,
     "total_usd": 20.0,
-    "current_usd_spend": 0.296208225
+    "current_usd_spend": 0.3250716
   },
   "token_usage": {
-    "total": 1416184,
+    "total": 1485854,
     "agents": {
       "ScrumMaster": 251567,
-      "ProductOwner": 269835,
+      "ProductOwner": 339505,
       "DevTeam": 894782
     }
   },
