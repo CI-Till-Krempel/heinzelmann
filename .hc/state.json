@@ -356,10 +356,10 @@
     "current_usd_spend": 0.411648675
   },
   "token_usage": {
-    "total": 2118709,
+    "total": 2190922,
     "agents": {
       "ScrumMaster": 251567,
-      "ProductOwner": 838489,
+      "ProductOwner": 910702,
       "DevTeam": 1028653
     }
   },
