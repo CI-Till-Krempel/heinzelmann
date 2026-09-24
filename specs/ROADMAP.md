@@ -76,10 +76,17 @@ Stories
   - [x] REVIEWED
   - [x] TESTED
   - [x] ACCEPTED
-- [US-0008] Ollama Model Runner and Local Inference Execution
+- [US-0010] Night-Time Scheduling, Hardware Protection, and Instant User Yield Governance Policy
   - [x] DRAFT
   - [x] READY
   - [x] IMPLEMENTED
+  - [ ] REVIEWED
+  - [ ] TESTED
+  - [ ] ACCEPTED
+- [US-0008] Ollama Model Runner and Local Inference Execution
+  - [ ] DRAFT
+  - [ ] READY
+  - [ ] IMPLEMENTED
   - [ ] REVIEWED
   - [ ] TESTED
   - [ ] ACCEPTED
@@ -91,29 +98,22 @@ Stories
   - [ ] TESTED
   - [ ] ACCEPTED
 - [US-0009] Admin Dashboard Job Submission and Status Pipeline View
-  - [x] DRAFT
-  - [x] READY
-  - [ ] IMPLEMENTED
-  - [ ] REVIEWED
-  - [ ] TESTED
-  - [ ] ACCEPTED
-- [US-0010] Night-Time Scheduling Windows and Thermal Guard Policy
-  - [x] DRAFT
-  - [x] READY
-  - [ ] IMPLEMENTED
-  - [ ] REVIEWED
-  - [ ] TESTED
-  - [ ] ACCEPTED
-- [US-0011] Smart Plug Telemetry Collector for Shelly and Tapo
-  - [x] DRAFT
-  - [x] READY
+  - [ ] DRAFT
+  - [ ] READY
   - [ ] IMPLEMENTED
   - [ ] REVIEWED
   - [ ] TESTED
   - [ ] ACCEPTED
 - [US-0012] Energy Consumption Correlation and Reporting per Job
-  - [x] DRAFT
-  - [x] READY
+  - [ ] DRAFT
+  - [ ] READY
+  - [ ] IMPLEMENTED
+  - [ ] REVIEWED
+  - [ ] TESTED
+  - [ ] ACCEPTED
+- [US-0011] Smart Plug Telemetry Collector for Shelly and Tapo
+  - [ ] DRAFT
+  - [ ] READY
   - [ ] IMPLEMENTED
   - [ ] REVIEWED
   - [ ] TESTED
