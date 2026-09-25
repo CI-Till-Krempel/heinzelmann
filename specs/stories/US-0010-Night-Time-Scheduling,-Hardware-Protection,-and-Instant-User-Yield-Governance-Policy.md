@@ -2,7 +2,7 @@
 
 - Story ID: US-0010
 - Title: Night-Time Scheduling, Hardware Protection, and Instant User Yield Governance Policy
-- Status: Implemented
+- Status: Accepted
 - Priority: Must
 - Owner: Scrum Team
 - Last Updated: 2026-09-24
