@@ -69,6 +69,27 @@ Goals
 - Define and enforce scheduling policies (night-time windows, battery and thermal limits)
 - Integrate smart plug telemetry (Shelly/Tapo) and per-job energy consumption reporting
 Stories
+- [US-0007] Distributed Ray Cluster Bootstrap on Client Nodes
+  - [x] DRAFT
+  - [x] READY
+  - [x] IMPLEMENTED
+  - [x] REVIEWED
+  - [x] TESTED
+  - [x] ACCEPTED
+- [US-0010] Night-Time Scheduling, Hardware Protection, and Instant User Yield Governance Policy
+  - [x] DRAFT
+  - [x] READY
+  - [x] IMPLEMENTED
+  - [ ] REVIEWED
+  - [ ] TESTED
+  - [ ] ACCEPTED
+- [US-0008] Ollama Model Runner and Local Inference Execution
+  - [ ] DRAFT
+  - [ ] READY
+  - [ ] IMPLEMENTED
+  - [ ] REVIEWED
+  - [ ] TESTED
+  - [ ] ACCEPTED
 - [US-0006] Admin Dashboard Node Status and Live Metrics View
   - [ ] DRAFT
   - [ ] READY
@@ -76,44 +97,23 @@ Stories
   - [ ] REVIEWED
   - [ ] TESTED
   - [ ] ACCEPTED
-- [US-0007] Distributed Ray Cluster Bootstrap on Client Nodes
-  - [x] DRAFT
-  - [x] READY
-  - [ ] IMPLEMENTED
-  - [ ] REVIEWED
-  - [ ] TESTED
-  - [ ] ACCEPTED
-- [US-0008] Ollama Model Runner and Local Inference Execution
-  - [x] DRAFT
-  - [x] READY
-  - [ ] IMPLEMENTED
-  - [ ] REVIEWED
-  - [ ] TESTED
-  - [ ] ACCEPTED
 - [US-0009] Admin Dashboard Job Submission and Status Pipeline View
-  - [x] DRAFT
-  - [x] READY
-  - [ ] IMPLEMENTED
-  - [ ] REVIEWED
-  - [ ] TESTED
-  - [ ] ACCEPTED
-- [US-0010] Night-Time Scheduling Windows and Thermal Guard Policy
-  - [x] DRAFT
-  - [x] READY
-  - [ ] IMPLEMENTED
-  - [ ] REVIEWED
-  - [ ] TESTED
-  - [ ] ACCEPTED
-- [US-0011] Smart Plug Telemetry Collector for Shelly and Tapo
-  - [x] DRAFT
-  - [x] READY
+  - [ ] DRAFT
+  - [ ] READY
   - [ ] IMPLEMENTED
   - [ ] REVIEWED
   - [ ] TESTED
   - [ ] ACCEPTED
 - [US-0012] Energy Consumption Correlation and Reporting per Job
-  - [x] DRAFT
-  - [x] READY
+  - [ ] DRAFT
+  - [ ] READY
+  - [ ] IMPLEMENTED
+  - [ ] REVIEWED
+  - [ ] TESTED
+  - [ ] ACCEPTED
+- [US-0011] Smart Plug Telemetry Collector for Shelly and Tapo
+  - [ ] DRAFT
+  - [ ] READY
   - [ ] IMPLEMENTED
   - [ ] REVIEWED
   - [ ] TESTED

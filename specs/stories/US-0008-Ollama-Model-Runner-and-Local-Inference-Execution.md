@@ -2,8 +2,8 @@
 
 - Story ID: US-0008
 - Title: Ollama Model Runner and Local Inference Execution
-- Status: Ready
-- Priority: Should
+- Status: Implemented
+- Priority: Must
 - Owner: Scrum Team
 - Last Updated: 2026-09-23
 
@@ -18,10 +18,10 @@ Client nodes can execute LLM coding queries locally, eliminating central cloud i
 - Dependencies: ['EP-0004', 'US-0004']
 
 ## Test Approach
-
+Unit tests validating JSON serialization, API error handling, and metrics calculation.
 
 ### Tasks
-- Create OllamaRunner client in daemon codebase
-- Implement model pull and readiness verification check
-- Expose proxy inference endpoint with streaming response support
-- Add integration test with lightweight test model
+- Define Ollama models, request/response DTOs, and configuration
+- Implement OllamaManager to pull models and execute inference requests
+- Calculate and return performance metrics (tokens/sec, total tokens)
+- Add unit tests with simulated Ollama HTTP API responses

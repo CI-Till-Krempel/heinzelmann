@@ -2,8 +2,8 @@
 
 - Story ID: US-0007
 - Title: Distributed Ray Cluster Bootstrap on Client Nodes
-- Status: Ready
-- Priority: Should
+- Status: Accepted
+- Priority: Must
 - Owner: Scrum Team
 - Last Updated: 2026-09-23
 
@@ -18,10 +18,10 @@ Client machines can form a unified Ray cluster to run parallelized distributed c
 - Dependencies: ['EP-0004', 'US-0004']
 
 ## Test Approach
-
+Unit tests mocking container execution client and verifying lifecycle state transitions and parameter validation.
 
 ### Tasks
-- Define RayWorkerConfig schema and launch arguments
-- Implement Ray worker container orchestration in daemon
-- Add health check and clean shutdown handling for Ray workers
-- Add integration test for worker container lifecycle
+- Define RayWorkerConfig schema and launch parameters
+- Implement RayWorkerManager with start/stop/status methods
+- Hook into DaemonLifecycle to stop Ray worker cleanly when status transitions away from Idle
+- Add unit tests verifying container arguments and lifecycle management
