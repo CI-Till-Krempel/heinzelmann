@@ -316,7 +316,7 @@
   "sprint_goal": "Implement Ollama Model Runner and Local Inference Execution for client nodes (US-0008)",
   "sprint_number": 2,
   "sprint_backlog_pr_sprint": 2,
-  "planning_output_commit_count": 3,
+  "planning_output_commit_count": 4,
   "sprint_backlog_pr_content_baseline": 0,
   "sprint_backlog": [
     {
@@ -462,10 +462,10 @@
     "current_usd_spend": 0.530781825
   },
   "token_usage": {
-    "total": 3357147,
+    "total": 3400187,
     "agents": {
       "ScrumMaster": 371162,
-      "ProductOwner": 3898446,
+      "ProductOwner": 3941486,
       "DevTeam": 3118114,
       "Architect": 412290,
       "QA": 485681,
@@ -593,7 +593,7 @@
     }
   ],
   "sprint_approval_baseline": 2,
-  "release_approval_baseline": 1,
+  "release_approval_baseline": 2,
   "dev_touch_baseline": 9,
   "unadvanced_write_nudge_baseline": 0,
   "sprint_files_touched": [
@@ -640,7 +640,7 @@
   "qa_review_baseline": 2,
   "qa_tested_baseline": 8,
   "sprint_backlog_engagement_baseline": {},
-  "sprint_report_pending_release": true,
+  "sprint_report_pending_release": false,
   "blocking_interactions": [
     {
       "id": 1,
