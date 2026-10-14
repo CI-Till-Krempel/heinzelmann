@@ -444,6 +444,14 @@
       "category": "technical",
       "sprint_number": 2,
       "issue_id": "ISSUE-0015"
+    },
+    {
+      "action": "Ensure DevTeam pulls and rebases latest develop onto feature branches before marking PR ready for review to eliminate merge conflicts on specs/ROADMAP.md.",
+      "owner": "DevTeam",
+      "success_metric": "Zero merge conflicts on specs/ROADMAP.md across feature branch PR reviews.",
+      "status": "open",
+      "category": "steering",
+      "sprint_number": 2
     }
   ],
   "decision_log": [
@@ -470,13 +478,13 @@
   "budgets": {
     "total": 10000000,
     "total_usd": 100.0,
-    "current_usd_spend": 0.6614250750000001
+    "current_usd_spend": 0.6988740000000001
   },
   "token_usage": {
-    "total": 4514655,
+    "total": 4748980,
     "agents": {
-      "ScrumMaster": 371162,
-      "ProductOwner": 4856561,
+      "ScrumMaster": 427423,
+      "ProductOwner": 5034625,
       "DevTeam": 3118114,
       "Architect": 412290,
       "QA": 485681,
