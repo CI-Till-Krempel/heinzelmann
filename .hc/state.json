@@ -459,13 +459,13 @@
   "budgets": {
     "total": 10000000,
     "total_usd": 100.0,
-    "current_usd_spend": 0.35919285
+    "current_usd_spend": 0.39521565000000003
   },
   "token_usage": {
-    "total": 2990749,
+    "total": 3068543,
     "agents": {
-      "ScrumMaster": 332059,
-      "ProductOwner": 3571151,
+      "ScrumMaster": 371162,
+      "ProductOwner": 3609842,
       "DevTeam": 3118114,
       "Architect": 412290,
       "QA": 485681,
@@ -658,6 +658,15 @@
       "summary": "Release PR 'Release v0.1.4 - Sprint Increment (US-0010 Governance & Protection)' is waiting on a 'release' human approval.",
       "detail": "Cannot create a release PR - this interaction level requires a fresh 'release' human approval for this increment - call record_human_approval('release', ...) first (see docs/INTERACTION-LEVELS.md).",
       "created_at": "2026-09-25T13:09:03.932435+00:00",
+      "resolved": false,
+      "resolved_at": null
+    },
+    {
+      "id": 3,
+      "kind": "approval",
+      "summary": "Release PR 'Release v0.1.5 - Sprint Increment (US-0008 Ollama Model Runner)' is waiting on a 'release' human approval.",
+      "detail": "Cannot create a release PR - this interaction level requires a fresh 'release' human approval for this increment - call record_human_approval('release', ...) first (see docs/INTERACTION-LEVELS.md).",
+      "created_at": "2026-10-14T21:10:34.078539+00:00",
       "resolved": false,
       "resolved_at": null
     }
