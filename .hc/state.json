@@ -135,7 +135,7 @@
       "id": "US-0008",
       "type": "User Story",
       "title": "Ollama Model Runner and Local Inference Execution",
-      "status": "Reviewed",
+      "status": "Tested",
       "priority": "Must",
       "user_story": "As a developer running LLM coding agents, I want client nodes to pull designated Ollama models and execute local inference workloads, so that code analysis tasks run directly on idle client hardware.",
       "acceptance_criteria": [
@@ -147,7 +147,8 @@
         "Draft",
         "Ready",
         "Implemented",
-        "Reviewed"
+        "Reviewed",
+        "Tested"
       ]
     },
     {
@@ -305,7 +306,7 @@
   "sprint_goal": "Implement Ollama Model Runner and Local Inference Execution for client nodes (US-0008)",
   "sprint_number": 2,
   "sprint_backlog_pr_sprint": 2,
-  "planning_output_commit_count": 0,
+  "planning_output_commit_count": 1,
   "sprint_backlog_pr_content_baseline": 0,
   "sprint_backlog": [
     {
@@ -364,7 +365,7 @@
       "id": "US-0008",
       "type": "User Story",
       "title": "Ollama Model Runner and Local Inference Execution",
-      "status": "Reviewed",
+      "status": "Tested",
       "priority": "Must",
       "user_story": "As a developer running LLM coding agents, I want client nodes to pull designated Ollama models and execute local inference workloads, so that code analysis tasks run directly on idle client hardware.",
       "acceptance_criteria": [
@@ -376,7 +377,8 @@
         "Draft",
         "Ready",
         "Implemented",
-        "Reviewed"
+        "Reviewed",
+        "Tested"
       ],
       "code_files": [
         "client-daemon/src/main/kotlin/de/heinzelmann/daemon/ollama/OllamaModels.kt",
@@ -435,16 +437,16 @@
   "budgets": {
     "total": 10000000,
     "total_usd": 100.0,
-    "current_usd_spend": 0.21348389999999998
+    "current_usd_spend": 0.24087532499999997
   },
   "token_usage": {
-    "total": 2528035,
+    "total": 2627409,
     "agents": {
       "ScrumMaster": 119749,
       "ProductOwner": 3472354,
       "DevTeam": 3118114,
-      "Architect": 386835,
-      "QA": 359529,
+      "Architect": 412290,
+      "QA": 433448,
       "ScrumOrchestrator": 75867,
       "QualityGuardian": 14245
     }
@@ -547,7 +549,11 @@
     "client-daemon/src/main/kotlin/de/heinzelmann/daemon/ollama/OllamaManager.kt",
     "client-daemon/src/test/kotlin/de/heinzelmann/daemon/ollama/OllamaManagerTest.kt"
   ],
-  "last_check_build": {},
+  "last_check_build": {
+    "checked": null,
+    "passing": null,
+    "manifest_write_count_at_check": 0
+  },
   "last_pr_checks": {
     "passing": true,
     "git_push_count_at_check": 1
@@ -555,11 +561,11 @@
   "git_push_count": 1,
   "pr_review_calls": {
     "Architect": 2,
-    "QA": 1,
+    "QA": 2,
     "DevTeam": 1
   },
   "architect_review_baseline": 2,
-  "qa_review_baseline": 1,
+  "qa_review_baseline": 2,
   "qa_tested_baseline": 7,
   "sprint_backlog_engagement_baseline": {},
   "sprint_report_pending_release": false,
