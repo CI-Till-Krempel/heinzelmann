@@ -1,0 +1,3 @@
+[submodule "horseless-carriage"]
+	path = horseless-carriage
+	url = git@github.com:CI-Till-Krempel/Horseless-Carriage.git
