@@ -2,7 +2,7 @@
 
 - Story ID: US-0008
 - Title: Ollama Model Runner and Local Inference Execution
-- Status: Reviewed
+- Status: Tested
 - Priority: Must
 - Owner: Scrum Team
 - Last Updated: 2026-10-14
