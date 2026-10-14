@@ -149,7 +149,9 @@
         "Implemented",
         "Reviewed",
         "Tested"
-      ]
+      ],
+      "acceptance_check_count": 1,
+      "acceptance_check_note": "Verified that Ollama container management, model pulling, and local inference execution with token metrics meet all acceptance criteria."
     },
     {
       "id": "EP-0005",
@@ -306,7 +308,7 @@
   "sprint_goal": "Implement Ollama Model Runner and Local Inference Execution for client nodes (US-0008)",
   "sprint_number": 2,
   "sprint_backlog_pr_sprint": 2,
-  "planning_output_commit_count": 1,
+  "planning_output_commit_count": 2,
   "sprint_backlog_pr_content_baseline": 0,
   "sprint_backlog": [
     {
@@ -400,7 +402,9 @@
         "Inference prompt completion handling with latency and token metrics",
         "Unit tests for error handling, timeouts, and metrics computation",
         "CI passing and PR ready for review"
-      ]
+      ],
+      "acceptance_check_count": 1,
+      "acceptance_check_note": "Verified that Ollama container management, model pulling, and local inference execution with token metrics meet all acceptance criteria."
     }
   ],
   "impediment_log": [],
@@ -437,16 +441,16 @@
   "budgets": {
     "total": 10000000,
     "total_usd": 100.0,
-    "current_usd_spend": 0.24087532499999997
+    "current_usd_spend": 0.2578317
   },
   "token_usage": {
-    "total": 2627409,
+    "total": 2712139,
     "agents": {
       "ScrumMaster": 119749,
-      "ProductOwner": 3472354,
+      "ProductOwner": 3504851,
       "DevTeam": 3118114,
       "Architect": 412290,
-      "QA": 433448,
+      "QA": 485681,
       "ScrumOrchestrator": 75867,
       "QualityGuardian": 14245
     }
