@@ -256,7 +256,8 @@
       "type": "Issue",
       "title": "Sprint 4 initialization is blocked because release PR #15 (develop -> main) is currently open and unmerged. Merging or closing the release PR is required to start the new sprint.",
       "status": "Draft",
-      "priority": "Won't"
+      "priority": "Won't",
+      "notes": "Resolved and closed: PR #15 was merged and subsequent sprints progressed cleanly."
     },
     {
       "id": "ISSUE-0011",
@@ -466,13 +467,13 @@
   "budgets": {
     "total": 10000000,
     "total_usd": 100.0,
-    "current_usd_spend": 0.5876448
+    "current_usd_spend": 0.59499105
   },
   "token_usage": {
-    "total": 3825516,
+    "total": 3922323,
     "agents": {
       "ScrumMaster": 371162,
-      "ProductOwner": 4167422,
+      "ProductOwner": 4264229,
       "DevTeam": 3118114,
       "Architect": 412290,
       "QA": 485681,
@@ -1156,7 +1157,8 @@
     "specs/requirements/ISSUE-0015-Implement-automated-check-or-pre-push-hook-ensuring-feature-branches-are-rebased-onto-latest-develop-before-creating-pull-requests-to-eliminate-merge-conflicts-on-specs-ROADMAP.md..md",
     "specs/reports/TRANSCRIPT-009.md",
     "specs/reports/SPRINT-REPORT-010.md",
-    "specs/reports/RETRO-002.md"
+    "specs/reports/RETRO-002.md",
+    "specs/requirements/ISSUE-0016-Pull-request-#22-(feature-US-0008-ollama-model-runner)-cannot-be-cleanly-merged-into-develop-due-to-a-merge-conflict-on-specs-ROADMAP.md..md"
   ],
   "last_check_build": {
     "manifest_write_count_at_check": 0
