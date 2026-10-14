@@ -155,13 +155,6 @@
       "acceptance_check_note": "Verified that Ollama container management, model pulling, and local inference execution with token metrics meet all acceptance criteria."
     },
     {
-      "title": "Implement automated check or pre-push hook ensuring feature branches are rebased onto latest develop before creating pull requests to eliminate merge conflicts on specs/ROADMAP.md.",
-      "overview": "Implement automated check or pre-push hook ensuring feature branches are rebased onto latest develop before creating pull requests to eliminate merge conflicts on specs/ROADMAP.md.",
-      "owner": "DevTeam",
-      "type": "Issue",
-      "id": "ISSUE-0015"
-    },
-    {
       "id": "EP-0005",
       "type": "Epic",
       "title": "Cluster Admin Dashboard & Policy Management",
@@ -202,6 +195,15 @@
       ],
       "version": "v0.2",
       "notes": "Allows operators to submit jobs with governance constraints and monitor real-time execution alongside energy and cost ROI."
+    },
+    {
+      "title": "Implement automated check or pre-push hook ensuring feature branches are rebased onto latest develop before creating pull requests to eliminate merge conflicts on specs/ROADMAP.md.",
+      "overview": "Implement automated check or pre-push hook ensuring feature branches are rebased onto latest develop before creating pull requests to eliminate merge conflicts on specs/ROADMAP.md.",
+      "owner": "DevTeam",
+      "type": "Issue",
+      "id": "ISSUE-0015",
+      "notes": "Continuous improvement retro action for DevTeam to adopt pre-push rebase checks. Assigned priority Could so it does not block active sprint user story pipelines.",
+      "priority": "Could"
     },
     {
       "id": "US-0012",
@@ -467,13 +469,13 @@
   "budgets": {
     "total": 10000000,
     "total_usd": 100.0,
-    "current_usd_spend": 0.59499105
+    "current_usd_spend": 0.6179673750000001
   },
   "token_usage": {
-    "total": 3922323,
+    "total": 4123938,
     "agents": {
       "ScrumMaster": 371162,
-      "ProductOwner": 4264229,
+      "ProductOwner": 4465844,
       "DevTeam": 3118114,
       "Architect": 412290,
       "QA": 485681,
@@ -1158,7 +1160,8 @@
     "specs/reports/TRANSCRIPT-009.md",
     "specs/reports/SPRINT-REPORT-010.md",
     "specs/reports/RETRO-002.md",
-    "specs/requirements/ISSUE-0016-Pull-request-#22-(feature-US-0008-ollama-model-runner)-cannot-be-cleanly-merged-into-develop-due-to-a-merge-conflict-on-specs-ROADMAP.md..md"
+    "specs/requirements/ISSUE-0016-Pull-request-#22-(feature-US-0008-ollama-model-runner)-cannot-be-cleanly-merged-into-develop-due-to-a-merge-conflict-on-specs-ROADMAP.md..md",
+    "specs/requirements/ISSUE-0013-Sprint-4-initialization-is-blocked-because-release-PR-#15-(develop-->-main)-is-currently-open-and-unmerged.-Merging-or-closing-the-release-PR-is-required-to-start-the-new-sprint..md"
   ],
   "last_check_build": {
     "manifest_write_count_at_check": 0
