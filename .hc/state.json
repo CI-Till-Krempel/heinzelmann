@@ -459,13 +459,13 @@
   "budgets": {
     "total": 10000000,
     "total_usd": 100.0,
-    "current_usd_spend": 0.51021045
+    "current_usd_spend": 0.530781825
   },
   "token_usage": {
-    "total": 3271286,
+    "total": 3357147,
     "agents": {
       "ScrumMaster": 371162,
-      "ProductOwner": 3812585,
+      "ProductOwner": 3898446,
       "DevTeam": 3118114,
       "Architect": 412290,
       "QA": 485681,
@@ -586,6 +586,10 @@
     {
       "type": "release",
       "note": "User explicitly approved release of the US-0010 increment."
+    },
+    {
+      "type": "release",
+      "note": "Stakeholder authorized release PR creation for sprint increment US-0008."
     }
   ],
   "sprint_approval_baseline": 2,
