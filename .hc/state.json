@@ -135,7 +135,7 @@
       "id": "US-0008",
       "type": "User Story",
       "title": "Ollama Model Runner and Local Inference Execution",
-      "status": "Tested",
+      "status": "Accepted",
       "priority": "Must",
       "user_story": "As a developer running LLM coding agents, I want client nodes to pull designated Ollama models and execute local inference workloads, so that code analysis tasks run directly on idle client hardware.",
       "acceptance_criteria": [
@@ -148,7 +148,8 @@
         "Ready",
         "Implemented",
         "Reviewed",
-        "Tested"
+        "Tested",
+        "Accepted"
       ],
       "acceptance_check_count": 1,
       "acceptance_check_note": "Verified that Ollama container management, model pulling, and local inference execution with token metrics meet all acceptance criteria."
@@ -367,7 +368,7 @@
       "id": "US-0008",
       "type": "User Story",
       "title": "Ollama Model Runner and Local Inference Execution",
-      "status": "Tested",
+      "status": "Accepted",
       "priority": "Must",
       "user_story": "As a developer running LLM coding agents, I want client nodes to pull designated Ollama models and execute local inference workloads, so that code analysis tasks run directly on idle client hardware.",
       "acceptance_criteria": [
@@ -380,7 +381,8 @@
         "Ready",
         "Implemented",
         "Reviewed",
-        "Tested"
+        "Tested",
+        "Accepted"
       ],
       "code_files": [
         "client-daemon/src/main/kotlin/de/heinzelmann/daemon/ollama/OllamaModels.kt",
@@ -444,10 +446,10 @@
     "current_usd_spend": 0.2578317
   },
   "token_usage": {
-    "total": 2712139,
+    "total": 2744739,
     "agents": {
       "ScrumMaster": 119749,
-      "ProductOwner": 3504851,
+      "ProductOwner": 3537451,
       "DevTeam": 3118114,
       "Architect": 412290,
       "QA": 485681,
