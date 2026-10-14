@@ -89,7 +89,7 @@ Stories
   - [x] IMPLEMENTED
   - [x] REVIEWED
   - [x] TESTED
-  - [ ] ACCEPTED
+  - [x] ACCEPTED
 - [US-0006] Admin Dashboard Node Status and Live Metrics View
   - [ ] DRAFT
   - [ ] READY
