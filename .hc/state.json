@@ -202,8 +202,9 @@
       "owner": "DevTeam",
       "type": "Issue",
       "id": "ISSUE-0015",
-      "notes": "Continuous improvement retro action for DevTeam to adopt pre-push rebase checks. Assigned priority Could so it does not block active sprint user story pipelines.",
-      "priority": "Could"
+      "notes": "Categorized as steering change: A process and behavioral steering adjustment for DevTeam to enforce pre-push rebase checks against develop, preventing branch divergence and merge conflicts on specs/ROADMAP.md.",
+      "priority": "Could",
+      "category": "steering"
     },
     {
       "id": "US-0012",
@@ -326,7 +327,7 @@
   "sprint_goal": "Implement Ollama Model Runner and Local Inference Execution for client nodes (US-0008)",
   "sprint_number": 2,
   "sprint_backlog_pr_sprint": 2,
-  "planning_output_commit_count": 4,
+  "planning_output_commit_count": 5,
   "sprint_backlog_pr_content_baseline": 0,
   "sprint_backlog": [
     {
@@ -469,13 +470,13 @@
   "budgets": {
     "total": 10000000,
     "total_usd": 100.0,
-    "current_usd_spend": 0.6179673750000001
+    "current_usd_spend": 0.6614250750000001
   },
   "token_usage": {
-    "total": 4123938,
+    "total": 4514655,
     "agents": {
       "ScrumMaster": 371162,
-      "ProductOwner": 4465844,
+      "ProductOwner": 4856561,
       "DevTeam": 3118114,
       "Architect": 412290,
       "QA": 485681,
