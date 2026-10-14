@@ -155,6 +155,13 @@
       "acceptance_check_note": "Verified that Ollama container management, model pulling, and local inference execution with token metrics meet all acceptance criteria."
     },
     {
+      "title": "Implement automated check or pre-push hook ensuring feature branches are rebased onto latest develop before creating pull requests to eliminate merge conflicts on specs/ROADMAP.md.",
+      "overview": "Implement automated check or pre-push hook ensuring feature branches are rebased onto latest develop before creating pull requests to eliminate merge conflicts on specs/ROADMAP.md.",
+      "owner": "DevTeam",
+      "type": "Issue",
+      "id": "ISSUE-0015"
+    },
+    {
       "id": "EP-0005",
       "type": "Epic",
       "title": "Cluster Admin Dashboard & Policy Management",
@@ -451,12 +458,12 @@
   "budgets": {
     "total": 10000000,
     "total_usd": 100.0,
-    "current_usd_spend": 0.342159225
+    "current_usd_spend": 0.35919285
   },
   "token_usage": {
-    "total": 2881876,
+    "total": 2990749,
     "agents": {
-      "ScrumMaster": 223186,
+      "ScrumMaster": 332059,
       "ProductOwner": 3571151,
       "DevTeam": 3118114,
       "Architect": 412290,
@@ -476,33 +483,80 @@
     }
   },
   "sprint_report_kpis": {
-    "team_effectiveness": {
-      "commitment_reliability": 1,
-      "say_do_ratio": 0.8
+    "prompt_context_usage": {
+      "DevTeam": {
+        "usage_percent": 0.45,
+        "prompt_tokens": 4676,
+        "context_window_tokens": 1048576,
+        "available": true,
+        "model": "scrum-dev"
+      },
+      "Architect": {
+        "available": true,
+        "model": "scrum-arch",
+        "context_window_tokens": 1048576,
+        "usage_percent": 0.32,
+        "prompt_tokens": 3308
+      },
+      "QA": {
+        "model": "scrum-qa",
+        "prompt_tokens": 2642,
+        "usage_percent": 0.25,
+        "available": true,
+        "context_window_tokens": 1048576
+      },
+      "ScrumMaster": {
+        "usage_percent": 0.56,
+        "model": "scrum-sm",
+        "context_window_tokens": 1048576,
+        "prompt_tokens": 5905,
+        "available": true
+      },
+      "ProductOwner": {
+        "available": true,
+        "model": "scrum-po",
+        "prompt_tokens": 5615,
+        "context_window_tokens": 1048576,
+        "usage_percent": 0.54
+      },
+      "ScrumOrchestrator": {
+        "context_window_tokens": 1048576,
+        "usage_percent": 0.74,
+        "prompt_tokens": 7751,
+        "model": "scrum-orchestrator",
+        "available": true
+      }
     },
     "maintainability": {
       "tests_run": 4,
-      "code_complexity": 2.9375,
-      "tests_failed": 0,
-      "code_complexity_available": true,
       "test_coverage_available": true,
-      "test_coverage": 0.94
+      "code_complexity_available": true,
+      "code_complexity": 2.9375,
+      "test_coverage": 0.94,
+      "tests_failed": 0
+    },
+    "result_quality": {
+      "defect_escape_rate": null,
+      "defect_escape_rate_note": "not available - no defect/bug-lifecycle tracking exists yet",
+      "customer_satisfaction_note": "not available - no user/customer satisfaction survey exists yet",
+      "customer_satisfaction": null
     },
     "security": {
       "vulnerability_scan_available": true,
       "vulnerability_scan_results": {
-        "high": 0,
-        "low": 16,
         "critical": 0,
-        "medium": 0
+        "high": 0,
+        "medium": 0,
+        "low": 16
       }
     },
-    "result_quality": {
-      "defect_escape_rate": 0.05,
-      "customer_satisfaction": 4.5
+    "team_effectiveness": {
+      "commitment_reliability_note": "not available - no estimate-accuracy tracking exists yet",
+      "say_do_ratio": 1,
+      "commitment_reliability": null
     }
   },
-  "kpi_update_count": 1,
+  "kpi_update_count": 2,
   "kpi_baseline": 1,
   "backlog_scope_complete": true,
   "repo": {
