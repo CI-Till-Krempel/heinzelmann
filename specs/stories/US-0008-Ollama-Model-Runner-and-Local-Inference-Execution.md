@@ -2,10 +2,10 @@
 
 - Story ID: US-0008
 - Title: Ollama Model Runner and Local Inference Execution
-- Status: Draft
+- Status: Reviewed
 - Priority: Must
 - Owner: Scrum Team
-- Last Updated: 2026-09-25
+- Last Updated: 2026-10-14
 
 ## As a developer running LLM coding agents, I want client nodes to pull designated Ollama models and execute local inference workloads, so that code analysis tasks run directly on idle client hardware.
 
@@ -17,4 +17,10 @@
 
 
 ## Test Approach
+Unit tests with simulated HTTP client responses validating completion parsing and metrics calculation.
 
+### Tasks
+- Define Ollama request/response data models and metrics DTOs
+- Implement OllamaManager with container lifecycle check, model pull, and completion inference methods
+- Compute tokens/sec and total duration metrics on completion response
+- Write unit tests covering model pull, inference generation, and metrics calculation
