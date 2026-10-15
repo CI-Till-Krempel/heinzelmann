@@ -22,3 +22,10 @@
 - Owner: DevTeam
 - Status: open
 - Success Metric: Zero merge conflicts on specs/ROADMAP.md across feature branch PR reviews.
+
+## Establish a structured story readiness checklist between Product Owner and Architect prior to grooming to prevent redundant back-and-forth spec revisions.
+- Kind: Retro Action
+- Category: steering
+- Owner: ProductOwner
+- Status: open
+- Success Metric: Increase feature implementation token share from 32.7% to at least 45% and keep specification grooming under 1.5M tokens in the next sprint.
