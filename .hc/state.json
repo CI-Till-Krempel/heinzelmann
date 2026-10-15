@@ -534,16 +534,16 @@
   "budgets": {
     "total": 10000000,
     "total_usd": 100.0,
-    "current_usd_spend": 1.290196425
+    "current_usd_spend": 1.6096848750000001
   },
   "token_usage": {
-    "total": 1762839,
+    "total": 2937068,
     "agents": {
       "ScrumMaster": 3769995,
       "ProductOwner": 6512979,
-      "DevTeam": 3897782,
-      "Architect": 412290,
-      "QA": 485681,
+      "DevTeam": 4860585,
+      "Architect": 518514,
+      "QA": 590883,
       "ScrumOrchestrator": 309858,
       "QualityGuardian": 14245
     }
@@ -558,7 +558,8 @@
       "actual": 22000
     },
     "US-0006": {
-      "estimate": 25000
+      "estimate": 25000,
+      "actual": 24000
     }
   },
   "sprint_report_kpis": {
@@ -915,20 +916,25 @@
     "specs/reports/RETRO-004.md",
     "specs/reports/STEERING-003.md",
     "specs/stories/US-0006-Admin-Dashboard-Node-Status-and-Live-Metrics-View.md",
-    "specs/reports/TRANSCRIPT-011.md"
+    "specs/reports/TRANSCRIPT-011.md",
+    "admin-dashboard/src/main/kotlin/cluster/admin/model/NodeUiModel.kt",
+    "admin-dashboard/src/main/kotlin/cluster/admin/client/AdminDashboardClient.kt",
+    "admin-dashboard/src/main/kotlin/cluster/admin/viewmodel/NodeStatusViewModel.kt",
+    "admin-dashboard/src/main/kotlin/cluster/admin/ui/NodesTab.kt",
+    "admin-dashboard/src/test/kotlin/cluster/admin/viewmodel/NodeStatusViewModelTest.kt"
   ],
   "last_check_build": {
     "manifest_write_count_at_check": 0
   },
   "last_pr_checks": {
     "passing": true,
-    "git_push_count_at_check": 1
+    "git_push_count_at_check": 3
   },
-  "git_push_count": 1,
+  "git_push_count": 3,
   "pr_review_calls": {
-    "Architect": 2,
-    "QA": 2,
-    "DevTeam": 1
+    "Architect": 3,
+    "QA": 3,
+    "DevTeam": 2
   },
   "architect_review_baseline": 2,
   "qa_review_baseline": 2,
