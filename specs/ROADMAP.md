@@ -64,18 +64,8 @@ Stories
 
 ### v0.2 — Next iteration (target: YYYY-MM)
 Goals
-- Integrate Ray and Ollama for distributed LLM coding agent inference
-- Provide Compose for Desktop Admin Dashboard for live monitoring, job submission, and pipeline tracking
-- Define and enforce scheduling policies (night-time windows, battery and thermal limits)
-- Integrate smart plug telemetry (Shelly/Tapo) and per-job energy consumption reporting
+- Implement and deliver US-0006 (Admin Dashboard Node Status and Live Metrics View) to provide live monitoring of registered client nodes, system vitals, and operational metrics.
 Stories
-- [US-0007] Distributed Ray Cluster Bootstrap on Client Nodes
-  - [x] DRAFT
-  - [x] READY
-  - [x] IMPLEMENTED
-  - [x] REVIEWED
-  - [x] TESTED
-  - [x] ACCEPTED
 - [US-0010] Night-Time Scheduling, Hardware Protection, and Instant User Yield Governance Policy
   - [x] DRAFT
   - [x] READY
@@ -90,9 +80,16 @@ Stories
   - [x] REVIEWED
   - [x] TESTED
   - [x] ACCEPTED
+- [US-0007] Distributed Ray Cluster Bootstrap on Client Nodes
+  - [x] DRAFT
+  - [x] READY
+  - [x] IMPLEMENTED
+  - [x] REVIEWED
+  - [x] TESTED
+  - [x] ACCEPTED
 - [US-0006] Admin Dashboard Node Status and Live Metrics View
-  - [ ] DRAFT
-  - [ ] READY
+  - [x] DRAFT
+  - [x] READY
   - [ ] IMPLEMENTED
   - [ ] REVIEWED
   - [ ] TESTED

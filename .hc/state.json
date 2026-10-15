@@ -155,6 +155,59 @@
       "acceptance_check_note": "Verified that Ollama container management, model pulling, and local inference execution with token metrics meet all acceptance criteria."
     },
     {
+      "id": "US-0006",
+      "type": "User Story",
+      "title": "Admin Dashboard Node Status and Live Metrics View",
+      "status": "Ready",
+      "priority": "Must",
+      "user_story": "As an IT administrator, I want a desktop dashboard showing real-time status and hardware metrics of all cluster nodes, so that I can easily monitor cluster health and capacity at a glance.",
+      "acceptance_criteria": [
+        "Given the Compose for Desktop Admin Dashboard connected to Control Server, When viewing the Nodes tab, Then all registered nodes are listed with their ID, OS, status (Online/Offline/Busy), CPU, and RAM metrics.",
+        "Given changes in node status or metrics on the server, When updates arrive, Then the dashboard UI updates within 5 seconds without requiring manual refresh."
+      ],
+      "version": "v0.2",
+      "notes": "Provides operational visibility into fleet health, governance compliance, and live wattage telemetry without CLI scripting.",
+      "stages_completed": [
+        "Draft",
+        "Ready"
+      ]
+    },
+    {
+      "id": "ISSUE-0003",
+      "type": "Issue",
+      "title": "Streamline ProductOwner specification drafting and backlog grooming sessions with strict prompt timeboxes and pre-structured templates to keep PO token usage under 30% of sprint budget.",
+      "status": "Draft",
+      "priority": "Must"
+    },
+    {
+      "id": "ISSUE-0005",
+      "type": "Issue",
+      "title": "Validate story dependency sequences during sprint planning to ensure prerequisite foundational stories always hold higher priority than downstream dependent stories.",
+      "status": "Draft",
+      "priority": "Must"
+    },
+    {
+      "id": "ISSUE-0011",
+      "type": "Issue",
+      "title": "Product Owner should automatically create and merge the sprint backlog PR immediately after sprint kickoff so DevTeam does not encounter start_feature_branch gate rejections.",
+      "status": "Draft",
+      "priority": "Must"
+    },
+    {
+      "id": "ISSUE-0008",
+      "type": "Issue",
+      "title": "Ensure newly filed process and retrospective tracking issues are assigned Won't or lowest priority at creation time so they do not block active sprint user stories in advance_story_stage.",
+      "status": "Draft",
+      "priority": "Must"
+    },
+    {
+      "id": "ISSUE-0007",
+      "type": "Issue",
+      "title": "Backlog priority order conflict: US-0004 was marked 'Must' while depending on prerequisite US-0002, causing advance_story_stage to reject advancing US-0002 to Implemented until PO reprioritized US-0004.",
+      "status": "Draft",
+      "priority": "Must"
+    },
+    {
       "id": "EP-0005",
       "type": "Epic",
       "title": "Cluster Admin Dashboard & Policy Management",
@@ -167,20 +220,6 @@
       "title": "Distributed LLM & Ray Inference Engine",
       "status": "Open",
       "priority": "Should"
-    },
-    {
-      "id": "US-0006",
-      "type": "User Story",
-      "title": "Admin Dashboard Node Status and Live Metrics View",
-      "status": "Ready",
-      "priority": "Should",
-      "user_story": "As an IT administrator, I want a desktop dashboard showing real-time status and hardware metrics of all cluster nodes, so that I can easily monitor cluster health and capacity at a glance.",
-      "acceptance_criteria": [
-        "Given the Compose for Desktop Admin Dashboard connected to Control Server, When viewing the Nodes tab, Then all registered nodes are listed with their ID, OS, status (Online/Offline/Busy), CPU, and RAM metrics.",
-        "Given changes in node status or metrics on the server, When updates arrive, Then the dashboard UI updates within 5 seconds without requiring manual refresh."
-      ],
-      "version": "v0.2",
-      "notes": "Provides operational visibility into fleet health, governance compliance, and live wattage telemetry without CLI scripting."
     },
     {
       "id": "US-0009",
@@ -242,33 +281,12 @@
       "version": "v0.2"
     },
     {
-      "id": "ISSUE-0003",
-      "type": "Issue",
-      "title": "Streamline ProductOwner specification drafting and backlog grooming sessions with strict prompt timeboxes and pre-structured templates to keep PO token usage under 30% of sprint budget.",
-      "status": "Draft",
-      "priority": "Must"
-    },
-    {
-      "id": "ISSUE-0005",
-      "type": "Issue",
-      "title": "Validate story dependency sequences during sprint planning to ensure prerequisite foundational stories always hold higher priority than downstream dependent stories.",
-      "status": "Draft",
-      "priority": "Must"
-    },
-    {
       "id": "ISSUE-0013",
       "type": "Issue",
       "title": "Sprint 4 initialization is blocked because release PR #15 (develop -> main) is currently open and unmerged. Merging or closing the release PR is required to start the new sprint.",
       "status": "Draft",
       "priority": "Won't",
       "notes": "Resolved and closed: PR #15 was merged and subsequent sprints progressed cleanly."
-    },
-    {
-      "id": "ISSUE-0011",
-      "type": "Issue",
-      "title": "Product Owner should automatically create and merge the sprint backlog PR immediately after sprint kickoff so DevTeam does not encounter start_feature_branch gate rejections.",
-      "status": "Draft",
-      "priority": "Must"
     },
     {
       "title": "Establish a structured story readiness checklist between Product Owner and Architect prior to grooming to prevent redundant back-and-forth spec revisions.",
@@ -278,20 +296,6 @@
       "id": "ISSUE-0014",
       "status": "Draft",
       "priority": "Won't"
-    },
-    {
-      "id": "ISSUE-0008",
-      "type": "Issue",
-      "title": "Ensure newly filed process and retrospective tracking issues are assigned Won't or lowest priority at creation time so they do not block active sprint user stories in advance_story_stage.",
-      "status": "Draft",
-      "priority": "Must"
-    },
-    {
-      "id": "ISSUE-0007",
-      "type": "Issue",
-      "title": "Backlog priority order conflict: US-0004 was marked 'Must' while depending on prerequisite US-0002, causing advance_story_stage to reject advancing US-0002 to Implemented until PO reprioritized US-0004.",
-      "status": "Draft",
-      "priority": "Must"
     },
     {
       "id": "ST-1",
@@ -326,10 +330,10 @@
     }
   ],
   "definition_of_done": [],
-  "sprint_goal": "Implement Ollama Model Runner and Local Inference Execution for client nodes (US-0008)",
-  "sprint_number": 2,
+  "sprint_goal": "Implement and deliver US-0006 (Admin Dashboard Node Status and Live Metrics View) to provide live monitoring of registered client nodes, system vitals, and operational metrics.",
+  "sprint_number": 3,
   "sprint_backlog_pr_sprint": 2,
-  "planning_output_commit_count": 8,
+  "planning_output_commit_count": 10,
   "sprint_backlog_pr_content_baseline": 0,
   "sprint_backlog": [
     {
@@ -484,17 +488,17 @@
       "owner": "ProductOwner"
     }
   ],
-  "sprint_report": "# Sprint Review Report\n\n**Generated by Horseless Carriage v0.1.0** (Interaction Level: Product)\n\n## Summary\nSprint delivered US-0008 (Ollama Model Runner) with full acceptance. Retrospective findings were evaluated and triaged into the 'steering' category: DevTeam identity was updated and merged (PR #30) to eliminate merge conflicts, and ProductOwner identity steering change was proposed (PR #32) to institute a story readiness checklist with the Architect. All closeout requirements and KPIs are completed.\n\n## Accomplishments\n- Delivered and accepted US-0008: Ollama Model Runner integration and test coverage.\n- Recreated and merged DevTeam steering proposal PR #30 updating DevTeam-identity.md with rebasing working agreements.\n- Re-evaluated retrospective items into 'steering' category and opened steering proposal PR #32 for ProductOwner-identity.md establishing a story readiness checklist with the Architect.\n- Measured and published comprehensive quality and process KPIs.\n\n## Budget and Usage\n- USD Budget (LiteLLM): $100.00\n- Actual USD Spend (LiteLLM): $0.37\n- Process Overhead: 20.0%\n\n### Per-Agent Token Usage\n  - ScrumMaster: 1572689\n  - ProductOwner: 5108234\n  - DevTeam: 3118114\n  - Architect: 412290\n  - QA: 485681\n  - ScrumOrchestrator: 309858\n  - QualityGuardian: 14245\n\n## Sprint Length Feedback\n- Tokens used: 6,002,453 / 10,000,000 (60%)\n- Stories: 2/2 completed this sprint\n- All planned stories were completed within budget - no sprint-length change suggested.\n\n## Open Questions for Stakeholder (Blockers)\nNo stories are currently blocked.\n\n## Retrospective Actions (including efficiency improvements)\n- Establish a structured story readiness checklist between Product Owner and Architect prior to grooming to prevent redundant back-and-forth spec revisions. (Owner: ProductOwner, Status: open, Category: unset, filed as ISSUE-0014)\n- Implement automated check or pre-push hook ensuring feature branches are rebased onto latest develop before creating pull requests to eliminate merge conflicts on specs/ROADMAP.md. (Owner: DevTeam, Status: open, Category: technical, filed as ISSUE-0015)\n- Ensure DevTeam pulls and rebases latest develop onto feature branches before marking PR ready for review to eliminate merge conflicts on specs/ROADMAP.md. (Owner: DevTeam, Status: open, Category: steering)\n- Establish a structured story readiness checklist between Product Owner and Architect prior to grooming to prevent redundant back-and-forth spec revisions. (Owner: ProductOwner, Status: open, Category: steering)\n\n## Impediments\nNo impediments logged.\n\n## Story Estimates vs Actual Tokens\n- US-0010: estimate=40000, actual=23000\n- US-0008: estimate=25000, actual=22000\n\n## KPI Dashboard\n- Say-Do Ratio: 1\n- Commitment Reliability: not available (not available - no estimate-accuracy tracking exists yet)\n- Defect Escape Rate: not available (not available - no defect/bug-lifecycle tracking exists yet)\n- Customer Satisfaction: not available (not available - no user/customer satisfaction survey exists yet)\n- Test Coverage: not available (coverage summary not found in pytest output (exit code 2) - last output:\nt\n    ???\n<frozen importlib._bootstrap>:1176: in _find_and_load\n    ???\n<frozen importlib._bootstrap>:1147: in _find_and_load_unlocked\n    ???\n<frozen importlib._bootstrap>:690: in _load_unlocked\n    ???\n/usr/local/lib/python3.11/site-packages/_pytest/assertion/rewrite.py:188: in exec_module\n    exec(co, module.__dict__)\nhorseless-carriage/agents/scrum_team/tests/conftest.py:60: in <module>\n    from agents.scrum_team.tools.base import _configured_repo_root as _real_configured_repo_root\nE   ModuleNotFoundError: No module named 'agents'\n=========================== short test summary info ============================\nERROR horseless-carriage/agents/scrum_team/tests - ModuleNotFoundError: No mo...\n!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n1 error in 0.68s)\n- Code Complexity: 2.91660319878142\n- Security Scan: {'medium': 18, 'low': 1405, 'high': 0, 'critical': 0}\n\n### Per-Agent Prompt Context Usage\n  - DevTeam (scrum-dev): 4,676 / 1,048,576 tokens (0.45%)\n  - Architect (scrum-arch): 3,308 / 1,048,576 tokens (0.32%)\n  - ScrumOrchestrator (scrum-orchestrator): 7,751 / 1,048,576 tokens (0.74%)\n  - QA (scrum-qa): 2,642 / 1,048,576 tokens (0.25%)\n  - ProductOwner (scrum-po): 5,615 / 1,048,576 tokens (0.54%)\n  - ScrumMaster (scrum-sm): 5,905 / 1,048,576 tokens (0.56%)\n\n## Conversation Transcript\nFull transcript (61 entries) written to `specs/reports/TRANSCRIPT-010.md` (also mirrored at `specs/reports/TRANSCRIPT-LATEST.md`).\n\nMost recent contribution per agent:\n- **ScrumOrchestrator**: transfer_to_agent(agent_name=\"ProductOwner\")\n- **ScrumMaster**: create_sprint_report(summary=\"Sprint delivered US-...\", accomplishments=['Delivered and acce...)\n- **ProductOwner**: transfer_to_agent(agent_name=\"ScrumMaster\")\n",
+  "sprint_report": "# Sprint Review Report\n\n**Generated by Horseless Carriage v0.1.0** (Interaction Level: Product)\n\n## Mechanically-Rendered Report (Budget Used in Full)\nThis sprint's token/USD budget was used in full before Scrum Master's own `create_sprint_report` call could run - the expected way a sprint ends when the team spends its full budget on the sprint's actual work, not a failure. This report is rendered mechanically from logged state rather than authored by an agent, so `create_sprint_report`'s own content-completeness gates don't apply to it. Any feature branches still open at this point were left untouched - only this report and already-logged specs/ state were committed - and pick up again next sprint.\n\n## Story Status\n- US-0005 Control Server Job Queue and Dispatcher: Draft, Ready, Implemented, Reviewed, Tested, Accepted\n- US-0004 Docker Container Job Runner on Client Daemon: Draft, Ready, Implemented, Reviewed, Tested, Accepted\n- US-0007 Distributed Ray Cluster Bootstrap on Client Nodes: Draft, Ready, Implemented, Reviewed, Tested, Accepted\n- US-0002 Client Daemon Lifecycle & Metrics Collector: Draft, Ready, Implemented, Reviewed, Tested, Accepted\n- US-0003 Client Daemon Power Assertion and Sleep Prevention: Draft, Ready, Implemented, Reviewed, Tested, Accepted\n- US-0010 Night-Time Scheduling, Hardware Protection, and Instant User Yield Governance Policy: Draft, Ready, Implemented, Reviewed, Tested, Accepted\n- US-0001 Control Server Node Registration & Heartbeat API: Draft, Ready, Implemented, Reviewed, Tested, Accepted\n- US-0008 Ollama Model Runner and Local Inference Execution: Draft, Ready, Implemented, Reviewed, Tested, Accepted\n- US-0006 Admin Dashboard Node Status and Live Metrics View: not started\n- US-0009 Admin Dashboard Job Submission and Status Pipeline View: not started\n- ISSUE-0015 Implement automated check or pre-push hook ensuring feature branches are rebased onto latest develop before creating pull requests to eliminate merge conflicts on specs/ROADMAP.md.: not started\n- US-0012 Energy Consumption Correlation and Reporting per Job: not started\n- US-0011 Smart Plug Telemetry Collector for Shelly and Tapo: not started\n- ISSUE-0003 Streamline ProductOwner specification drafting and backlog grooming sessions with strict prompt timeboxes and pre-structured templates to keep PO token usage under 30% of sprint budget.: not started\n- ISSUE-0005 Validate story dependency sequences during sprint planning to ensure prerequisite foundational stories always hold higher priority than downstream dependent stories.: not started\n- ISSUE-0013 Sprint 4 initialization is blocked because release PR #15 (develop -> main) is currently open and unmerged. Merging or closing the release PR is required to start the new sprint.: not started\n- ISSUE-0011 Product Owner should automatically create and merge the sprint backlog PR immediately after sprint kickoff so DevTeam does not encounter start_feature_branch gate rejections.: not started\n- ISSUE-0014 Establish a structured story readiness checklist between Product Owner and Architect prior to grooming to prevent redundant back-and-forth spec revisions.: not started\n- ISSUE-0008 Ensure newly filed process and retrospective tracking issues are assigned Won't or lowest priority at creation time so they do not block active sprint user stories in advance_story_stage.: not started\n- ISSUE-0007 Backlog priority order conflict: US-0004 was marked 'Must' while depending on prerequisite US-0002, causing advance_story_stage to reject advancing US-0002 to Implemented until PO reprioritized US-0004.: not started\n- ST-1 Updated Story: not started\n- ST-2 Repeated Story: not started\n- ISSUE-0009 Token budget limit of 6,000,000 was exceeded (reaching 6,073,060 tokens) with ProductOwner accounting for over 50% of token usage and feature implementation taking only 34% of total tokens.: not started\n- ISSUE-0016 Pull request #22 (feature/US-0008-ollama-model-runner) cannot be cleanly merged into develop due to a merge conflict on specs/ROADMAP.md.: not started\n\n## Budget and Usage\n- Token usage: 0 / 10000000\n- USD Budget: $100.00\n- Actual USD Spend: $0.80\n\n## Open Questions for Stakeholder (Blockers)\nNo stories are currently blocked.\n\n## Retrospective Actions Logged So Far\n- Establish a structured story readiness checklist between Product Owner and Architect prior to grooming to prevent redundant back-and-forth spec revisions. (Owner: ProductOwner, Status: open, Category: unset)\n- Implement automated check or pre-push hook ensuring feature branches are rebased onto latest develop before creating pull requests to eliminate merge conflicts on specs/ROADMAP.md. (Owner: DevTeam, Status: open, Category: technical)\n- Ensure DevTeam pulls and rebases latest develop onto feature branches before marking PR ready for review to eliminate merge conflicts on specs/ROADMAP.md. (Owner: DevTeam, Status: open, Category: steering)\n- Establish a structured story readiness checklist between Product Owner and Architect prior to grooming to prevent redundant back-and-forth spec revisions. (Owner: ProductOwner, Status: open, Category: steering)\n\n## Impediments Logged So Far\nNone logged before the budget ran out.\n",
   "budgets": {
     "total": 10000000,
     "total_usd": 100.0,
-    "current_usd_spend": 0.7075396500000002
+    "current_usd_spend": 0.9452705250000001
   },
   "token_usage": {
-    "total": 7932925,
+    "total": 290599,
     "agents": {
-      "ScrumMaster": 3091364,
-      "ProductOwner": 5417473,
+      "ScrumMaster": 3769995,
+      "ProductOwner": 5717849,
       "DevTeam": 3220672,
       "Architect": 412290,
       "QA": 485681,
@@ -815,10 +819,14 @@
     {
       "type": "release",
       "note": "User approved the release and sprint increment closeout."
+    },
+    {
+      "type": "sprint",
+      "note": "User approved sprint kick-off for Admin Dashboard Node Status and Live Metrics View (US-0006)."
     }
   ],
   "sprint_approval_baseline": 2,
-  "release_approval_baseline": 3,
+  "release_approval_baseline": 4,
   "dev_touch_baseline": 9,
   "unadvanced_write_nudge_baseline": 0,
   "sprint_files_touched": [
@@ -853,7 +861,11 @@
     "specs/reports/TRANSCRIPT-010.md",
     "specs/reports/SPRINT-REPORT-011.md",
     "specs/reports/RETRO-003.md",
-    "specs/reports/STEERING-002.md"
+    "specs/reports/STEERING-002.md",
+    "specs/reports/SPRINT-REPORT-012.md",
+    "specs/reports/RETRO-004.md",
+    "specs/reports/STEERING-003.md",
+    "specs/stories/US-0006-Admin-Dashboard-Node-Status-and-Live-Metrics-View.md"
   ],
   "last_check_build": {
     "manifest_write_count_at_check": 0
@@ -934,6 +946,24 @@
       "summary": "Release PR 'Release v0.1.5 - Sprint Closeout & Reporting' is waiting on a 'release' human approval.",
       "detail": "Cannot create a release PR - this interaction level requires a fresh 'release' human approval for this increment - call record_human_approval('release', ...) first (see docs/INTERACTION-LEVELS.md).",
       "created_at": "2026-10-15T06:44:57.400689+00:00",
+      "resolved": false,
+      "resolved_at": null
+    },
+    {
+      "id": 8,
+      "kind": "stalled",
+      "summary": "ScrumMaster overrode the 'Review, Retro & Release'-phase gate to call start_sprint after being refused once.",
+      "detail": "args: {\"goal\": \"Implement and deliver US-0006 (Admin Dashboard Node Status and Live Metrics View) to provide live monitoring of registered client nodes, system vitals, and operational metrics.\"}",
+      "created_at": "2026-10-15T06:48:16.535205+00:00",
+      "resolved": false,
+      "resolved_at": null
+    },
+    {
+      "id": 9,
+      "kind": "approval",
+      "summary": "Release PR 'Sprint 3: budget-exhaustion close-out' is waiting on a 'release' human approval.",
+      "detail": "Cannot create a release PR - this interaction level requires a fresh 'release' human approval for this increment - call record_human_approval('release', ...) first (see docs/INTERACTION-LEVELS.md).",
+      "created_at": "2026-10-15T07:18:59.380233+00:00",
       "resolved": false,
       "resolved_at": null
     }
