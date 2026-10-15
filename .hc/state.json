@@ -491,10 +491,10 @@
     "current_usd_spend": 0.7075396500000002
   },
   "token_usage": {
-    "total": 7885522,
+    "total": 7932925,
     "agents": {
       "ScrumMaster": 3091364,
-      "ProductOwner": 5370070,
+      "ProductOwner": 5417473,
       "DevTeam": 3220672,
       "Architect": 412290,
       "QA": 485681,
@@ -811,6 +811,10 @@
     {
       "type": "sprint",
       "note": "User approved sprint kick-off for Admin Dashboard Node Status and Live Metrics View (US-0006)."
+    },
+    {
+      "type": "release",
+      "note": "User approved the release and sprint increment closeout."
     }
   ],
   "sprint_approval_baseline": 2,
