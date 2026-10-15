@@ -158,7 +158,7 @@
       "id": "US-0006",
       "type": "User Story",
       "title": "Admin Dashboard Node Status and Live Metrics View",
-      "status": "Draft",
+      "status": "Ready",
       "priority": "Must",
       "user_story": "As an IT administrator, I want a desktop dashboard showing real-time status and hardware metrics of all cluster nodes, so that I can easily monitor cluster health and capacity at a glance.",
       "acceptance_criteria": [
@@ -168,7 +168,8 @@
       "version": "v0.2",
       "notes": "Provides operational visibility into fleet health, governance compliance, and live wattage telemetry without CLI scripting.",
       "stages_completed": [
-        "Draft"
+        "Draft",
+        "Ready"
       ]
     },
     {
@@ -494,10 +495,10 @@
     "current_usd_spend": 0.9452705250000001
   },
   "token_usage": {
-    "total": 238728,
+    "total": 290599,
     "agents": {
       "ScrumMaster": 3769995,
-      "ProductOwner": 5665978,
+      "ProductOwner": 5717849,
       "DevTeam": 3220672,
       "Architect": 412290,
       "QA": 485681,
