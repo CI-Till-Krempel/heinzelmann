@@ -488,13 +488,13 @@
   "budgets": {
     "total": 10000000,
     "total_usd": 100.0,
-    "current_usd_spend": 0.4715252250000001
+    "current_usd_spend": 0.6700089000000001
   },
   "token_usage": {
-    "total": 6555548,
+    "total": 7592347,
     "agents": {
-      "ScrumMaster": 2023226,
-      "ProductOwner": 5108234,
+      "ScrumMaster": 2845007,
+      "ProductOwner": 5323252,
       "DevTeam": 3220672,
       "Architect": 412290,
       "QA": 485681,
@@ -523,7 +523,7 @@
       "tests_failed": 1,
       "code_complexity_available": true,
       "test_coverage_available": false,
-      "test_coverage_note": "coverage summary not found in pytest output (exit code 2) - last output:\nt\n    ???\n<frozen importlib._bootstrap>:1176: in _find_and_load\n    ???\n<frozen importlib._bootstrap>:1147: in _find_and_load_unlocked\n    ???\n<frozen importlib._bootstrap>:690: in _load_unlocked\n    ???\n/usr/local/lib/python3.11/site-packages/_pytest/assertion/rewrite.py:188: in exec_module\n    exec(co, module.__dict__)\nhorseless-carriage/agents/scrum_team/tests/conftest.py:60: in <module>\n    from agents.scrum_team.tools.base import _configured_repo_root as _real_configured_repo_root\nE   ModuleNotFoundError: No module named 'agents'\n=========================== short test summary info ============================\nERROR horseless-carriage/agents/scrum_team/tests - ModuleNotFoundError: No mo...\n!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n1 error in 0.68s"
+      "test_coverage_note": "coverage summary not found in pytest output (exit code 2) - last output:\nt\n    ???\n<frozen importlib._bootstrap>:1176: in _find_and_load\n    ???\n<frozen importlib._bootstrap>:1147: in _find_and_load_unlocked\n    ???\n<frozen importlib._bootstrap>:690: in _load_unlocked\n    ???\n/usr/local/lib/python3.11/site-packages/_pytest/assertion/rewrite.py:188: in exec_module\n    exec(co, module.__dict__)\nhorseless-carriage/agents/scrum_team/tests/conftest.py:60: in <module>\n    from agents.scrum_team.tools.base import _configured_repo_root as _real_configured_repo_root\nE   ModuleNotFoundError: No module named 'agents'\n=========================== short test summary info ============================\nERROR horseless-carriage/agents/scrum_team/tests - ModuleNotFoundError: No mo...\n!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n1 error in 0.55s"
     },
     "security": {
       "vulnerability_scan_available": true,
@@ -583,7 +583,7 @@
       }
     }
   },
-  "kpi_update_count": 4,
+  "kpi_update_count": 5,
   "kpi_baseline": 4,
   "backlog_scope_complete": true,
   "repo": {
@@ -807,6 +807,10 @@
     {
       "type": "release",
       "note": "User explicitly approved the release PR for v0.1.5 (US-0008 Ollama Model Runner)."
+    },
+    {
+      "type": "sprint",
+      "note": "User approved sprint kick-off for Admin Dashboard Node Status and Live Metrics View (US-0006)."
     }
   ],
   "sprint_approval_baseline": 2,
