@@ -556,13 +556,13 @@
   "budgets": {
     "total": 10000000,
     "total_usd": 100.0,
-    "current_usd_spend": 0.26083507499999997
+    "current_usd_spend": 0.2972004
   },
   "token_usage": {
-    "total": 4327086,
+    "total": 4382420,
     "agents": {
       "ScrumMaster": 3846066,
-      "ProductOwner": 6632526,
+      "ProductOwner": 6687860,
       "DevTeam": 5091289,
       "Architect": 893100,
       "QA": 1122355,
@@ -723,6 +723,10 @@
     {
       "type": "release",
       "note": "User explicitly approved the release closeout to continue."
+    },
+    {
+      "type": "release",
+      "note": "Human approved sprint release increment containing US-0006 and sprint report SPRINT-REPORT-013."
     }
   ],
   "sprint_approval_baseline": 4,
