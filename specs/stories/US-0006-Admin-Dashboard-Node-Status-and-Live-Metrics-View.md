@@ -17,4 +17,11 @@
 
 
 ## Test Approach
+Unit tests verifying AdminDashboardClient response parsing, NodeStatusViewModel state emissions, and UI metric rendering rules.
 
+### Tasks
+- Define NodeStatusViewModel and NodeUiState models representing node inventory and real-time CPU/RAM vitals
+- Implement AdminDashboardClient interacting with Ktor Control Server /api/nodes endpoint
+- Build Compose for Desktop NodesTab UI component rendering node status table, badges, and metrics
+- Implement automated polling refresh mechanism updating state within 5 seconds of server updates
+- Write unit tests verifying ViewModel state transitions, node list rendering logic, and metric parsing
