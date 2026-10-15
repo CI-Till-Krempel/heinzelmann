@@ -488,13 +488,13 @@
   "budgets": {
     "total": 10000000,
     "total_usd": 100.0,
-    "current_usd_spend": 0.6906152250000002
+    "current_usd_spend": 0.7075396500000002
   },
   "token_usage": {
-    "total": 7756047,
+    "total": 7885522,
     "agents": {
-      "ScrumMaster": 3008707,
-      "ProductOwner": 5323252,
+      "ScrumMaster": 3091364,
+      "ProductOwner": 5370070,
       "DevTeam": 3220672,
       "Architect": 412290,
       "QA": 485681,
@@ -921,6 +921,15 @@
       "summary": "ScrumMaster overrode the 'Review, Retro & Release'-phase gate to call start_sprint after being refused once.",
       "detail": "args: {\"goal\": \"Implement and deliver US-0006 (Admin Dashboard Node Status and Live Metrics View) to provide live monitoring of registered client nodes, system vitals, and operational metrics.\"}",
       "created_at": "2026-10-15T06:44:41.562772+00:00",
+      "resolved": false,
+      "resolved_at": null
+    },
+    {
+      "id": 7,
+      "kind": "approval",
+      "summary": "Release PR 'Release v0.1.5 - Sprint Closeout & Reporting' is waiting on a 'release' human approval.",
+      "detail": "Cannot create a release PR - this interaction level requires a fresh 'release' human approval for this increment - call record_human_approval('release', ...) first (see docs/INTERACTION-LEVELS.md).",
+      "created_at": "2026-10-15T06:44:57.400689+00:00",
       "resolved": false,
       "resolved_at": null
     }
