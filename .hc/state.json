@@ -492,14 +492,14 @@
   "budgets": {
     "total": 10000000,
     "total_usd": 100.0,
-    "current_usd_spend": 1.2612297
+    "current_usd_spend": 1.290196425
   },
   "token_usage": {
-    "total": 1518288,
+    "total": 1762839,
     "agents": {
       "ScrumMaster": 3769995,
-      "ProductOwner": 6389489,
-      "DevTeam": 3776721,
+      "ProductOwner": 6512979,
+      "DevTeam": 3897782,
       "Architect": 412290,
       "QA": 485681,
       "ScrumOrchestrator": 309858,
@@ -1003,6 +1003,15 @@
       "summary": "Release PR 'Release v0.1.5 - Sprint Closeout Sync' is waiting on a 'release' human approval.",
       "detail": "Cannot create a release PR - this interaction level requires a fresh 'release' human approval for this increment - call record_human_approval('release', ...) first (see docs/INTERACTION-LEVELS.md).",
       "created_at": "2026-10-15T07:21:30.182857+00:00",
+      "resolved": false,
+      "resolved_at": null
+    },
+    {
+      "id": 13,
+      "kind": "stalled",
+      "summary": "DevTeam overrode the 'Review, Retro & Release'-phase gate to call plan_sprint_backlog_item after being refused once.",
+      "detail": "args: {\"plan\": {\"approach\": \"Implement Compose for Desktop admin dashboard node status and metrics view with reactive StateFlow polling from Ktor Control Server node registry.\", \"code_files\": [\"admin-dashboard/src/main/kotlin/cluster/admin/model/NodeUiModel.kt\", \"admin-dashboard/src/main/kotlin/cluster/admin/client/AdminDashboardClient.kt\", \"admin-dashboard/src/main/kotlin/cluster/admin/viewmodel/NodeStatusViewModel.kt\", \"admin-dashboard/src/main/kotlin/cluster/admin/ui/NodesTab.kt\", \"admin-dashboard/src/test/kotlin/cluster/admin/viewmodel/NodeStatusViewModelTest.kt\"], \"dod_checks\": [\"Code implemented and unit tests passing\", \"Code reviewed for architecture and security standards\", \"Build and dependencies verified\", \"Acceptance criteria validated against Definition of Done\"], \"estimate\": 25000, \"risks\": \"Handling server disconnection gracefully and ensuring UI reactivity without excessive polling overhead.\", \"tasks\": [\"Define NodeStatusViewModel and NodeUiState models representing node inventory and real-time CPU/RAM vitals\", \"Implement AdminDashboardClient interacting with Ktor Control Server /api/nodes endpoint\", \"Build Compose for Desktop NodesTab UI component rendering node status table, badges, and metrics\", \"Implement automated polling refresh mechanism updating state within 5 seconds of server updates\", \"Write unit tests verifying ViewModel state transitions, node list rendering logic, and metric parsing\"], \"test_approach\": \"Unit tests verifying AdminDashboardClient response parsing, NodeStatusViewModel state emissions, and UI metric rendering rules.\"}, \"title_or_id\": \"US-0006\"}",
+      "created_at": "2026-10-15T07:46:06.348926+00:00",
       "resolved": false,
       "resolved_at": null
     }
