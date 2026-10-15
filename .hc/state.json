@@ -158,7 +158,7 @@
       "id": "US-0006",
       "type": "User Story",
       "title": "Admin Dashboard Node Status and Live Metrics View",
-      "status": "Ready",
+      "status": "Reviewed",
       "priority": "Must",
       "user_story": "As an IT administrator, I want a desktop dashboard showing real-time status and hardware metrics of all cluster nodes, so that I can easily monitor cluster health and capacity at a glance.",
       "acceptance_criteria": [
@@ -169,7 +169,9 @@
       "notes": "Provides operational visibility into fleet health, governance compliance, and live wattage telemetry without CLI scripting.",
       "stages_completed": [
         "Draft",
-        "Ready"
+        "Ready",
+        "Implemented",
+        "Reviewed"
       ]
     },
     {
@@ -333,7 +335,7 @@
   "sprint_goal": "Implement and deliver US-0006 (Admin Dashboard Node Status and Live Metrics View) to provide live monitoring of registered client nodes, system vitals, and operational metrics.",
   "sprint_number": 3,
   "sprint_backlog_pr_sprint": 3,
-  "planning_output_commit_count": 11,
+  "planning_output_commit_count": 12,
   "sprint_backlog_pr_content_baseline": 10,
   "sprint_backlog": [
     {
@@ -436,7 +438,7 @@
       "id": "US-0006",
       "type": "User Story",
       "title": "Admin Dashboard Node Status and Live Metrics View",
-      "status": "Ready",
+      "status": "Reviewed",
       "priority": "Must",
       "user_story": "As an IT administrator, I want a desktop dashboard showing real-time status and hardware metrics of all cluster nodes, so that I can easily monitor cluster health and capacity at a glance.",
       "acceptance_criteria": [
@@ -447,7 +449,9 @@
       "notes": "Provides operational visibility into fleet health, governance compliance, and live wattage telemetry without CLI scripting.",
       "stages_completed": [
         "Draft",
-        "Ready"
+        "Ready",
+        "Implemented",
+        "Reviewed"
       ],
       "approach": "Implement Compose for Desktop admin dashboard node status and metrics view with reactive StateFlow polling from Ktor Control Server node registry.",
       "test_approach": "Unit tests verifying AdminDashboardClient response parsing, NodeStatusViewModel state emissions, and UI metric rendering rules.",
@@ -534,16 +538,16 @@
   "budgets": {
     "total": 10000000,
     "total_usd": 100.0,
-    "current_usd_spend": 1.290196425
+    "current_usd_spend": 1.6554788250000003
   },
   "token_usage": {
-    "total": 1762839,
+    "total": 3359247,
     "agents": {
       "ScrumMaster": 3769995,
       "ProductOwner": 6512979,
-      "DevTeam": 3897782,
-      "Architect": 412290,
-      "QA": 485681,
+      "DevTeam": 5091289,
+      "Architect": 709989,
+      "QA": 590883,
       "ScrumOrchestrator": 309858,
       "QualityGuardian": 14245
     }
@@ -558,7 +562,8 @@
       "actual": 22000
     },
     "US-0006": {
-      "estimate": 25000
+      "estimate": 25000,
+      "actual": 24000
     }
   },
   "sprint_report_kpis": {
@@ -876,7 +881,7 @@
   ],
   "sprint_approval_baseline": 2,
   "release_approval_baseline": 5,
-  "dev_touch_baseline": 9,
+  "dev_touch_baseline": 14,
   "unadvanced_write_nudge_baseline": 0,
   "sprint_files_touched": [
     "specs/stories/ST-2-Repeated-Story.md",
@@ -915,22 +920,27 @@
     "specs/reports/RETRO-004.md",
     "specs/reports/STEERING-003.md",
     "specs/stories/US-0006-Admin-Dashboard-Node-Status-and-Live-Metrics-View.md",
-    "specs/reports/TRANSCRIPT-011.md"
+    "specs/reports/TRANSCRIPT-011.md",
+    "admin-dashboard/src/main/kotlin/cluster/admin/model/NodeUiModel.kt",
+    "admin-dashboard/src/main/kotlin/cluster/admin/client/AdminDashboardClient.kt",
+    "admin-dashboard/src/main/kotlin/cluster/admin/viewmodel/NodeStatusViewModel.kt",
+    "admin-dashboard/src/main/kotlin/cluster/admin/ui/NodesTab.kt",
+    "admin-dashboard/src/test/kotlin/cluster/admin/viewmodel/NodeStatusViewModelTest.kt"
   ],
   "last_check_build": {
     "manifest_write_count_at_check": 0
   },
   "last_pr_checks": {
     "passing": true,
-    "git_push_count_at_check": 1
+    "git_push_count_at_check": 3
   },
-  "git_push_count": 1,
+  "git_push_count": 3,
   "pr_review_calls": {
-    "Architect": 2,
-    "QA": 2,
-    "DevTeam": 1
+    "Architect": 4,
+    "QA": 3,
+    "DevTeam": 2
   },
-  "architect_review_baseline": 2,
+  "architect_review_baseline": 4,
   "qa_review_baseline": 2,
   "qa_tested_baseline": 8,
   "sprint_backlog_engagement_baseline": {
