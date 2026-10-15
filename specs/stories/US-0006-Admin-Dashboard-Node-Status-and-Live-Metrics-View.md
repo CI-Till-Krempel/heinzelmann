@@ -2,7 +2,7 @@
 
 - Story ID: US-0006
 - Title: Admin Dashboard Node Status and Live Metrics View
-- Status: Implemented
+- Status: Reviewed
 - Priority: Must
 - Owner: Scrum Team
 - Last Updated: 2026-10-15
