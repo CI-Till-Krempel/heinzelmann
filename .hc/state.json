@@ -454,6 +454,14 @@
       "status": "open",
       "category": "steering",
       "sprint_number": 2
+    },
+    {
+      "action": "Establish a structured story readiness checklist between Product Owner and Architect prior to grooming to prevent redundant back-and-forth spec revisions.",
+      "owner": "ProductOwner",
+      "success_metric": "Increase feature implementation token share from 32.7% to at least 45% and keep specification grooming under 1.5M tokens in the next sprint.",
+      "status": "open",
+      "category": "steering",
+      "sprint_number": 2
     }
   ],
   "decision_log": [
@@ -480,13 +488,13 @@
   "budgets": {
     "total": 10000000,
     "total_usd": 100.0,
-    "current_usd_spend": 0.283325025
+    "current_usd_spend": 0.33344700000000005
   },
   "token_usage": {
-    "total": 5614211,
+    "total": 5772761,
     "agents": {
-      "ScrumMaster": 1234091,
-      "ProductOwner": 5058590,
+      "ScrumMaster": 1342997,
+      "ProductOwner": 5108234,
       "DevTeam": 3118114,
       "Architect": 412290,
       "QA": 485681,
