@@ -66,6 +66,13 @@ Stories
 Goals
 - Implement and deliver US-0006 (Admin Dashboard Node Status and Live Metrics View) to provide live monitoring of registered client nodes, system vitals, and operational metrics.
 Stories
+- [US-0007] Distributed Ray Cluster Bootstrap on Client Nodes
+  - [x] DRAFT
+  - [x] READY
+  - [x] IMPLEMENTED
+  - [x] REVIEWED
+  - [x] TESTED
+  - [x] ACCEPTED
 - [US-0010] Night-Time Scheduling, Hardware Protection, and Instant User Yield Governance Policy
   - [x] DRAFT
   - [x] READY
@@ -80,17 +87,10 @@ Stories
   - [x] REVIEWED
   - [x] TESTED
   - [x] ACCEPTED
-- [US-0007] Distributed Ray Cluster Bootstrap on Client Nodes
-  - [x] DRAFT
-  - [x] READY
-  - [x] IMPLEMENTED
-  - [x] REVIEWED
-  - [x] TESTED
-  - [x] ACCEPTED
 - [US-0006] Admin Dashboard Node Status and Live Metrics View
   - [x] DRAFT
   - [x] READY
-  - [ ] IMPLEMENTED
+  - [x] IMPLEMENTED
   - [ ] REVIEWED
   - [ ] TESTED
   - [ ] ACCEPTED
