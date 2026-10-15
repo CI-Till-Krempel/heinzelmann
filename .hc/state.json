@@ -863,7 +863,8 @@
     "specs/reports/STEERING-002.md",
     "specs/reports/SPRINT-REPORT-012.md",
     "specs/reports/RETRO-004.md",
-    "specs/reports/STEERING-003.md"
+    "specs/reports/STEERING-003.md",
+    "specs/stories/US-0006-Admin-Dashboard-Node-Status-and-Live-Metrics-View.md"
   ],
   "last_check_build": {
     "manifest_write_count_at_check": 0
