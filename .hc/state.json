@@ -208,13 +208,6 @@
       "priority": "Must"
     },
     {
-      "id": "ISSUE-0007",
-      "type": "Issue",
-      "title": "Backlog priority order conflict: US-0004 was marked 'Must' while depending on prerequisite US-0002, causing advance_story_stage to reject advancing US-0002 to Implemented until PO reprioritized US-0004.",
-      "status": "Draft",
-      "priority": "Must"
-    },
-    {
       "id": "EP-0005",
       "type": "Epic",
       "title": "Cluster Admin Dashboard & Policy Management",
@@ -272,6 +265,13 @@
         "Given mapped smart plugs to node IDs, When power metrics are collected periodically, Then the Control Server records timestamped power telemetry in the node metrics store."
       ],
       "version": "v0.2"
+    },
+    {
+      "id": "ISSUE-0007",
+      "type": "Issue",
+      "title": "Backlog priority order conflict: US-0004 was marked 'Must' while depending on prerequisite US-0002, causing advance_story_stage to reject advancing US-0002 to Implemented until PO reprioritized US-0004.",
+      "status": "Draft",
+      "priority": "Won't"
     },
     {
       "id": "ISSUE-0005",
@@ -559,10 +559,10 @@
     "current_usd_spend": 0.44517442500000004
   },
   "token_usage": {
-    "total": 202907,
+    "total": 237980,
     "agents": {
       "ScrumMaster": 33706,
-      "ProductOwner": 169201
+      "ProductOwner": 204274
     }
   },
   "story_estimates": {
