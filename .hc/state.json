@@ -215,13 +215,6 @@
       "priority": "Must"
     },
     {
-      "id": "ISSUE-0005",
-      "type": "Issue",
-      "title": "Validate story dependency sequences during sprint planning to ensure prerequisite foundational stories always hold higher priority than downstream dependent stories.",
-      "status": "Draft",
-      "priority": "Must"
-    },
-    {
       "id": "EP-0005",
       "type": "Epic",
       "title": "Cluster Admin Dashboard & Policy Management",
@@ -279,6 +272,13 @@
         "Given mapped smart plugs to node IDs, When power metrics are collected periodically, Then the Control Server records timestamped power telemetry in the node metrics store."
       ],
       "version": "v0.2"
+    },
+    {
+      "id": "ISSUE-0005",
+      "type": "Issue",
+      "title": "Validate story dependency sequences during sprint planning to ensure prerequisite foundational stories always hold higher priority than downstream dependent stories.",
+      "status": "Draft",
+      "priority": "Won't"
     },
     {
       "id": "ISSUE-0003",
@@ -556,13 +556,13 @@
   "budgets": {
     "total": 10000000,
     "total_usd": 100.0,
-    "current_usd_spend": 0.40884180000000003
+    "current_usd_spend": 0.44517442500000004
   },
   "token_usage": {
-    "total": 167972,
+    "total": 202907,
     "agents": {
       "ScrumMaster": 33706,
-      "ProductOwner": 134266
+      "ProductOwner": 169201
     }
   },
   "story_estimates": {
