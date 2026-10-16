@@ -222,13 +222,6 @@
       "priority": "Must"
     },
     {
-      "id": "ISSUE-0003",
-      "type": "Issue",
-      "title": "Streamline ProductOwner specification drafting and backlog grooming sessions with strict prompt timeboxes and pre-structured templates to keep PO token usage under 30% of sprint budget.",
-      "status": "Draft",
-      "priority": "Must"
-    },
-    {
       "id": "EP-0005",
       "type": "Epic",
       "title": "Cluster Admin Dashboard & Policy Management",
@@ -286,6 +279,13 @@
         "Given mapped smart plugs to node IDs, When power metrics are collected periodically, Then the Control Server records timestamped power telemetry in the node metrics store."
       ],
       "version": "v0.2"
+    },
+    {
+      "id": "ISSUE-0003",
+      "type": "Issue",
+      "title": "Streamline ProductOwner specification drafting and backlog grooming sessions with strict prompt timeboxes and pre-structured templates to keep PO token usage under 30% of sprint budget.",
+      "status": "Draft",
+      "priority": "Won't"
     },
     {
       "id": "ISSUE-0013",
@@ -559,10 +559,10 @@
     "current_usd_spend": 0.40884180000000003
   },
   "token_usage": {
-    "total": 99537,
+    "total": 167972,
     "agents": {
       "ScrumMaster": 33706,
-      "ProductOwner": 65831
+      "ProductOwner": 134266
     }
   },
   "story_estimates": {
