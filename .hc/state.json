@@ -194,13 +194,6 @@
       "notes": "Allows operators to submit jobs with governance constraints and monitor real-time execution alongside energy and cost ROI."
     },
     {
-      "id": "ISSUE-0011",
-      "type": "Issue",
-      "title": "Product Owner should automatically create and merge the sprint backlog PR immediately after sprint kickoff so DevTeam does not encounter start_feature_branch gate rejections.",
-      "status": "Draft",
-      "priority": "Must"
-    },
-    {
       "id": "EP-0005",
       "type": "Epic",
       "title": "Cluster Admin Dashboard & Policy Management",
@@ -258,6 +251,13 @@
         "Given mapped smart plugs to node IDs, When power metrics are collected periodically, Then the Control Server records timestamped power telemetry in the node metrics store."
       ],
       "version": "v0.2"
+    },
+    {
+      "id": "ISSUE-0011",
+      "type": "Issue",
+      "title": "Product Owner should automatically create and merge the sprint backlog PR immediately after sprint kickoff so DevTeam does not encounter start_feature_branch gate rejections.",
+      "status": "Draft",
+      "priority": "Won't"
     },
     {
       "id": "ISSUE-0008",
@@ -559,10 +559,10 @@
     "current_usd_spend": 0.457848075
   },
   "token_usage": {
-    "total": 273228,
+    "total": 308628,
     "agents": {
       "ScrumMaster": 33706,
-      "ProductOwner": 239522
+      "ProductOwner": 274922
     }
   },
   "story_estimates": {
