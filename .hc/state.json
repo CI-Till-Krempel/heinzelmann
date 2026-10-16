@@ -201,13 +201,6 @@
       "priority": "Must"
     },
     {
-      "id": "ISSUE-0008",
-      "type": "Issue",
-      "title": "Ensure newly filed process and retrospective tracking issues are assigned Won't or lowest priority at creation time so they do not block active sprint user stories in advance_story_stage.",
-      "status": "Draft",
-      "priority": "Must"
-    },
-    {
       "id": "EP-0005",
       "type": "Epic",
       "title": "Cluster Admin Dashboard & Policy Management",
@@ -265,6 +258,13 @@
         "Given mapped smart plugs to node IDs, When power metrics are collected periodically, Then the Control Server records timestamped power telemetry in the node metrics store."
       ],
       "version": "v0.2"
+    },
+    {
+      "id": "ISSUE-0008",
+      "type": "Issue",
+      "title": "Ensure newly filed process and retrospective tracking issues are assigned Won't or lowest priority at creation time so they do not block active sprint user stories in advance_story_stage.",
+      "status": "Draft",
+      "priority": "Won't"
     },
     {
       "id": "ISSUE-0007",
@@ -556,13 +556,13 @@
   "budgets": {
     "total": 10000000,
     "total_usd": 100.0,
-    "current_usd_spend": 0.44517442500000004
+    "current_usd_spend": 0.457848075
   },
   "token_usage": {
-    "total": 237980,
+    "total": 273228,
     "agents": {
       "ScrumMaster": 33706,
-      "ProductOwner": 204274
+      "ProductOwner": 239522
     }
   },
   "story_estimates": {
