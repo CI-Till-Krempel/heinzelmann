@@ -180,6 +180,55 @@
       "acceptance_check_note": "Verified that Compose for Desktop Admin Dashboard lists all registered nodes with ID, OS, status badges, CPU, and RAM metrics via NodesTabRenderer and NodeHardwareMetrics, and that NodeStatusViewModel automated 4-second polling loop satisfies the <5 second real-time update requirement."
     },
     {
+      "id": "US-0009",
+      "type": "User Story",
+      "title": "Admin Dashboard Job Submission and Status Pipeline View",
+      "status": "Ready",
+      "priority": "Must",
+      "user_story": "As an IT administrator, I want a Compose for Desktop UI to submit batch job configurations and view active job progress in real time, so that I can manage and monitor cluster workload execution.",
+      "acceptance_criteria": [
+        "Given the Compose for Desktop Admin Dashboard, When the admin enters job parameters (docker image, command, target node tags) and clicks Submit, Then the job is posted to the Control Server and appears in the active queue table.",
+        "Given active running jobs in the cluster, When the admin views the Job Pipeline view, Then each job's live state (Queued, Running, Succeeded, Failed) and execution duration are dynamically updated."
+      ],
+      "version": "v0.2",
+      "notes": "Allows operators to submit jobs with governance constraints and monitor real-time execution alongside energy and cost ROI."
+    },
+    {
+      "id": "ISSUE-0011",
+      "type": "Issue",
+      "title": "Product Owner should automatically create and merge the sprint backlog PR immediately after sprint kickoff so DevTeam does not encounter start_feature_branch gate rejections.",
+      "status": "Draft",
+      "priority": "Must"
+    },
+    {
+      "id": "ISSUE-0008",
+      "type": "Issue",
+      "title": "Ensure newly filed process and retrospective tracking issues are assigned Won't or lowest priority at creation time so they do not block active sprint user stories in advance_story_stage.",
+      "status": "Draft",
+      "priority": "Must"
+    },
+    {
+      "id": "ISSUE-0007",
+      "type": "Issue",
+      "title": "Backlog priority order conflict: US-0004 was marked 'Must' while depending on prerequisite US-0002, causing advance_story_stage to reject advancing US-0002 to Implemented until PO reprioritized US-0004.",
+      "status": "Draft",
+      "priority": "Must"
+    },
+    {
+      "id": "ISSUE-0005",
+      "type": "Issue",
+      "title": "Validate story dependency sequences during sprint planning to ensure prerequisite foundational stories always hold higher priority than downstream dependent stories.",
+      "status": "Draft",
+      "priority": "Must"
+    },
+    {
+      "id": "ISSUE-0003",
+      "type": "Issue",
+      "title": "Streamline ProductOwner specification drafting and backlog grooming sessions with strict prompt timeboxes and pre-structured templates to keep PO token usage under 30% of sprint budget.",
+      "status": "Draft",
+      "priority": "Must"
+    },
+    {
       "id": "EP-0005",
       "type": "Epic",
       "title": "Cluster Admin Dashboard & Policy Management",
@@ -192,20 +241,6 @@
       "title": "Distributed LLM & Ray Inference Engine",
       "status": "Open",
       "priority": "Should"
-    },
-    {
-      "id": "US-0009",
-      "type": "User Story",
-      "title": "Admin Dashboard Job Submission and Status Pipeline View",
-      "status": "Ready",
-      "priority": "Should",
-      "user_story": "As an IT administrator, I want a Compose for Desktop UI to submit batch job configurations and view active job progress in real time, so that I can manage and monitor cluster workload execution.",
-      "acceptance_criteria": [
-        "Given the Compose for Desktop Admin Dashboard, When the admin enters job parameters (docker image, command, target node tags) and clicks Submit, Then the job is posted to the Control Server and appears in the active queue table.",
-        "Given active running jobs in the cluster, When the admin views the Job Pipeline view, Then each job's live state (Queued, Running, Succeeded, Failed) and execution duration are dynamically updated."
-      ],
-      "version": "v0.2",
-      "notes": "Allows operators to submit jobs with governance constraints and monitor real-time execution alongside energy and cost ROI."
     },
     {
       "title": "Implement automated check or pre-push hook ensuring feature branches are rebased onto latest develop before creating pull requests to eliminate merge conflicts on specs/ROADMAP.md.",
@@ -251,41 +286,6 @@
         "Given mapped smart plugs to node IDs, When power metrics are collected periodically, Then the Control Server records timestamped power telemetry in the node metrics store."
       ],
       "version": "v0.2"
-    },
-    {
-      "id": "ISSUE-0011",
-      "type": "Issue",
-      "title": "Product Owner should automatically create and merge the sprint backlog PR immediately after sprint kickoff so DevTeam does not encounter start_feature_branch gate rejections.",
-      "status": "Draft",
-      "priority": "Must"
-    },
-    {
-      "id": "ISSUE-0008",
-      "type": "Issue",
-      "title": "Ensure newly filed process and retrospective tracking issues are assigned Won't or lowest priority at creation time so they do not block active sprint user stories in advance_story_stage.",
-      "status": "Draft",
-      "priority": "Must"
-    },
-    {
-      "id": "ISSUE-0007",
-      "type": "Issue",
-      "title": "Backlog priority order conflict: US-0004 was marked 'Must' while depending on prerequisite US-0002, causing advance_story_stage to reject advancing US-0002 to Implemented until PO reprioritized US-0004.",
-      "status": "Draft",
-      "priority": "Must"
-    },
-    {
-      "id": "ISSUE-0005",
-      "type": "Issue",
-      "title": "Validate story dependency sequences during sprint planning to ensure prerequisite foundational stories always hold higher priority than downstream dependent stories.",
-      "status": "Draft",
-      "priority": "Must"
-    },
-    {
-      "id": "ISSUE-0003",
-      "type": "Issue",
-      "title": "Streamline ProductOwner specification drafting and backlog grooming sessions with strict prompt timeboxes and pre-structured templates to keep PO token usage under 30% of sprint budget.",
-      "status": "Draft",
-      "priority": "Must"
     },
     {
       "id": "ISSUE-0013",
@@ -556,11 +556,14 @@
   "budgets": {
     "total": 10000000,
     "total_usd": 100.0,
-    "current_usd_spend": 0.372164475
+    "current_usd_spend": 0.40884180000000003
   },
   "token_usage": {
-    "total": 0,
-    "agents": {}
+    "total": 99537,
+    "agents": {
+      "ScrumMaster": 33706,
+      "ProductOwner": 65831
+    }
   },
   "story_estimates": {
     "US-0010": {
