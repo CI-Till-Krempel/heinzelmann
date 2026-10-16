@@ -556,12 +556,12 @@
   "budgets": {
     "total": 10000000,
     "total_usd": 100.0,
-    "current_usd_spend": 0.34294912499999997
+    "current_usd_spend": 0.372164475
   },
   "token_usage": {
-    "total": 4559167,
+    "total": 4625264,
     "agents": {
-      "ScrumMaster": 3908137,
+      "ScrumMaster": 3974234,
       "ProductOwner": 6802536,
       "DevTeam": 5091289,
       "Architect": 893100,
@@ -966,6 +966,15 @@
       "created_at": "2026-10-15T15:46:32.777068+00:00",
       "resolved": true,
       "resolved_at": "2026-10-16T09:54:43.852931+00:00"
+    },
+    {
+      "id": 19,
+      "kind": "stalled",
+      "summary": "ScrumMaster overrode the 'Review, Retro & Release'-phase gate to call start_sprint after being refused once.",
+      "detail": "args: {\"goal\": \"Implement and deliver US-0009 (Admin Dashboard Job Submission and Status Pipeline View) to enable cluster administrators to submit jobs and monitor execution status across the pipeline.\"}",
+      "created_at": "2026-10-16T09:54:52.001902+00:00",
+      "resolved": false,
+      "resolved_at": null
     }
   ],
   "overclaim_rejection_counts": {},
