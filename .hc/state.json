@@ -158,7 +158,7 @@
       "id": "US-0006",
       "type": "User Story",
       "title": "Admin Dashboard Node Status and Live Metrics View",
-      "status": "Accepted",
+      "status": "Reviewed",
       "priority": "Must",
       "user_story": "As an IT administrator, I want a desktop dashboard showing real-time status and hardware metrics of all cluster nodes, so that I can easily monitor cluster health and capacity at a glance.",
       "acceptance_criteria": [
@@ -184,7 +184,7 @@
       "type": "User Story",
       "title": "Admin Dashboard Job Submission and Status Pipeline View",
       "status": "Ready",
-      "priority": "Must",
+      "priority": "Should",
       "user_story": "As an IT administrator, I want a Compose for Desktop UI to submit batch job configurations and view active job progress in real time, so that I can manage and monitor cluster workload execution.",
       "acceptance_criteria": [
         "Given the Compose for Desktop Admin Dashboard, When the admin enters job parameters (docker image, command, target node tags) and clicks Submit, Then the job is posted to the Control Server and appears in the active queue table.",
@@ -340,6 +340,7 @@
   "sprint_goal": "Implement and deliver US-0009 (Admin Dashboard Job Submission and Status Pipeline View) to enable cluster administrators to submit jobs and monitor execution status across the pipeline.",
   "sprint_number": 4,
   "sprint_backlog_pr_sprint": 3,
+  "sprint_backlog_pr_opened": true,
   "planning_output_commit_count": 16,
   "sprint_backlog_pr_content_baseline": 10,
   "sprint_backlog": [
@@ -554,9 +555,9 @@
   ],
   "sprint_report": "",
   "budgets": {
-    "total": 10000000,
-    "total_usd": 100.0,
-    "current_usd_spend": 0.457848075
+    "total": 5000000,
+    "total_usd": 50.0,
+    "current_usd_spend": 0.0
   },
   "token_usage": {
     "total": 308628,
@@ -591,23 +592,27 @@
   "messages": [
     {
       "role": "system",
-      "content": "\n[SPRINT PHASE: Development] This sprint's Sprint Backlog is published - implement/review/test/accept its stories. New backlog grooming or re-planning belongs in Conceptual Work/Plan & Start Sprint, not here.\n"
+      "content": "\n[SPRINT PHASE: Plan & Start Sprint] The Ready backlog is deep enough - Scrum Master calls start_sprint(goal) if that hasn't happened yet this sprint, then Product Owner publishes it via create_sprint_backlog_pr(). More backlog grooming belongs here only for a specific, stated reason, not as a default.\n"
     },
     {
       "role": "user",
-      "content": "Replay your last message"
+      "content": "Hi"
     },
     {
       "role": "model",
-      "content": "Checking repo status and budget usage to determine current sprint context."
+      "content": "⚠️ [CONNECTION ERROR] Could not reach the LiteLLM proxy for this request (litellm.InternalServerError: InternalServerError: Litellm_proxyException - Connection error.). Please check that the proxy is running and try again."
+    },
+    {
+      "role": "user",
+      "content": "Hi"
     },
     {
       "role": "model",
-      "content": "Listing documentation to check the active stories and sprint status."
+      "content": "⚠️ [CONNECTION ERROR] Could not reach the LiteLLM proxy for this request (litellm.InternalServerError: InternalServerError: Litellm_proxyException - Connection error.). Please check that the proxy is running and try again."
     },
     {
-      "role": "model",
-      "content": "Reading specs/ROADMAP.md to inspect current sprint stories and stage progress."
+      "role": "user",
+      "content": "whats the current state ?"
     }
   ],
   "hc_version": "0.1.0",
@@ -707,6 +712,7 @@
     "specs/reports/RETRO-005.md",
     "specs/reports/STEERING-004.md"
   ],
+  "source_content_change_count": 0,
   "last_check_build": {
     "manifest_write_count_at_check": 0
   },
@@ -723,6 +729,8 @@
   "architect_review_baseline": 4,
   "qa_review_baseline": 5,
   "qa_tested_baseline": 9,
+  "content_loss_warnings": [],
+  "content_loss_acknowledged_baseline": 0,
   "sprint_backlog_engagement_baseline": {
     "Architect": 2,
     "QA": 2,
@@ -900,6 +908,15 @@
       "created_at": "2026-10-16T09:54:52.001902+00:00",
       "resolved": false,
       "resolved_at": null
+    },
+    {
+      "id": 20,
+      "kind": "stalled",
+      "summary": "Orchestrator has replied 3 times in a row without calling any tool.",
+      "detail": "Check the chat - it may be waiting on something, or just talking instead of acting.",
+      "created_at": "2026-11-06T13:20:55.431387+00:00",
+      "resolved": false,
+      "resolved_at": null
     }
   ],
   "overclaim_rejection_counts": {},
@@ -940,6 +957,8 @@
       "branch": "steering/productowner-identity-20261015063218"
     }
   ],
+  "framework_change_proposal_count": 0,
+  "framework_change_proposals": [],
   "blocked_story_ids_as_of_last_report": [],
   "accepted_count_baseline": 9,
   "version_goals": {
