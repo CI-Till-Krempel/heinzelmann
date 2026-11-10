@@ -574,10 +574,10 @@
     "current_usd_spend": 0.2268328
   },
   "token_usage": {
-    "total": 111435,
+    "total": 131141,
     "agents": {
       "ProductOwner": 72538,
-      "Architect": 38897
+      "Architect": 58603
     }
   },
   "story_estimates": {
@@ -723,7 +723,7 @@
     "specs/reports/STEERING-004.md",
     "specs/stories/US-0009-Admin-Dashboard-Job-Submission-and-Status-Pipeline-View.md"
   ],
-  "source_content_change_count": 0,
+  "source_content_change_count": 1,
   "last_check_build": {
     "manifest_write_count_at_check": 0
   },
@@ -935,8 +935,8 @@
       "summary": "'US-0009' is BLOCKED (technical): git checkout develop is failing because an untracked working tree file `pytest.ini` would be overwritten. This is blocking the creation of the sprint backlog PR. Please resolve the untracked file conflict.",
       "detail": "Raised by ProductOwner. Resolve via Architect's resolve_story_blocker('US-0009', resolution).",
       "created_at": "2026-11-10T09:55:18.166734+00:00",
-      "resolved": false,
-      "resolved_at": null
+      "resolved": true,
+      "resolved_at": "2026-11-10T09:55:53.222738+00:00"
     },
     {
       "id": 22,
