@@ -762,7 +762,8 @@
     "admin-dashboard/src/main/kotlin/ui/JobPipeline.kt",
     "admin-dashboard/src/main/kotlin/ui/JobSubmissionViewModel.kt",
     "admin-dashboard/src/test/kotlin/ui/JobSubmissionViewModelTest.kt",
-    "specs/stories/US-0011-Smart-Plug-Telemetry-Collector-for-Shelly-and-Tapo.md"
+    "specs/stories/US-0011-Smart-Plug-Telemetry-Collector-for-Shelly-and-Tapo.md",
+    "specs/stories/US-0012-Energy-Consumption-Correlation-and-Reporting-per-Job.md"
   ],
   "source_content_change_count": 10,
   "last_check_build": {
