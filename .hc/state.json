@@ -456,13 +456,13 @@
   "budgets": {
     "total": 5000000,
     "total_usd": 50.0,
-    "current_usd_spend": 1.0473358
+    "current_usd_spend": 1.1195134
   },
   "token_usage": {
-    "total": 1363656,
+    "total": 1444824,
     "agents": {
       "ScrumMaster": 83492,
-      "ProductOwner": 250242,
+      "ProductOwner": 331410,
       "ScrumOrchestrator": 66292,
       "Architect": 103541,
       "DevTeam": 896509,
@@ -985,6 +985,15 @@
       "summary": "ProductOwner overrode the 'Development'-phase gate to call advance_story_stage after being refused once.",
       "detail": "args: {\"stage\": \"Draft\", \"title_or_id\": \"US-0009\"}",
       "created_at": "2026-11-10T14:28:24.496193+00:00",
+      "resolved": false,
+      "resolved_at": null
+    },
+    {
+      "id": 24,
+      "kind": "stalled",
+      "summary": "ProductOwner overrode the 'Development'-phase gate to call advance_story_stage after being refused once.",
+      "detail": "args: {\"stage\": \"Ready\", \"title_or_id\": \"US-0009\"}",
+      "created_at": "2026-11-10T14:28:30.974882+00:00",
       "resolved": false,
       "resolved_at": null
     }
