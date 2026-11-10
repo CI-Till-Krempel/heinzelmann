@@ -15,6 +15,7 @@
 
 ## Notes
 
+- ⚠️ REVIEW DENIED at Tested by QA: The test suite failed to execute because there is no Gradle wrapper (`gradlew`) committed in the repository. Please commit the `gradlew` script and `gradle/wrapper/gradle-wrapper.jar` so the tests can run on CI.
 
 ## Test Approach
 Unit testing for ViewModel, manual UI checks.
