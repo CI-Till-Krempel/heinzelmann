@@ -571,12 +571,13 @@
   "budgets": {
     "total": 5000000,
     "total_usd": 50.0,
-    "current_usd_spend": 0.154817
+    "current_usd_spend": 0.2268328
   },
   "token_usage": {
-    "total": 47603,
+    "total": 111435,
     "agents": {
-      "ProductOwner": 47603
+      "ProductOwner": 72538,
+      "Architect": 38897
     }
   },
   "story_estimates": {
@@ -719,7 +720,8 @@
     "specs/reports/TRANSCRIPT-012.md",
     "specs/reports/SPRINT-REPORT-013.md",
     "specs/reports/RETRO-005.md",
-    "specs/reports/STEERING-004.md"
+    "specs/reports/STEERING-004.md",
+    "specs/stories/US-0009-Admin-Dashboard-Job-Submission-and-Status-Pipeline-View.md"
   ],
   "source_content_change_count": 0,
   "last_check_build": {
@@ -933,6 +935,15 @@
       "summary": "'US-0009' is BLOCKED (technical): git checkout develop is failing because an untracked working tree file `pytest.ini` would be overwritten. This is blocking the creation of the sprint backlog PR. Please resolve the untracked file conflict.",
       "detail": "Raised by ProductOwner. Resolve via Architect's resolve_story_blocker('US-0009', resolution).",
       "created_at": "2026-11-10T09:55:18.166734+00:00",
+      "resolved": false,
+      "resolved_at": null
+    },
+    {
+      "id": 22,
+      "kind": "stalled",
+      "summary": "Architect overrode the 'Plan & Start Sprint'-phase gate to call delete_file after being refused once.",
+      "detail": "args: {\"path\": \"pytest.ini\"}",
+      "created_at": "2026-11-10T09:55:34.876527+00:00",
       "resolved": false,
       "resolved_at": null
     }
