@@ -227,7 +227,7 @@
       "id": "US-0012",
       "type": "User Story",
       "title": "Energy Consumption Correlation and Reporting per Job",
-      "status": "Ready",
+      "status": "Draft",
       "priority": "Could",
       "user_story": "As an administrator, I want the Control Server to correlate smart plug energy data with individual job runs, so that the total kilowatt-hour cost of batch LLM inference jobs can be analyzed and reported.",
       "acceptance_criteria": [
@@ -235,7 +235,10 @@
         "Given computed job energy metrics, When the admin requests job execution details via the API or dashboard, Then the total energy consumed (kWh) and average power draw (W) are returned in the job report."
       ],
       "notes": "Replaces physical smart plug telemetry with native OS power metrics (macOS powermetrics/IOKit, Windows RAPL) and software TDP estimation models.",
-      "version": "v0.2"
+      "version": "v0.2",
+      "stages_completed": [
+        "Draft"
+      ]
     },
     {
       "id": "EP-0006",
