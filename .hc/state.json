@@ -1034,6 +1034,15 @@
       "created_at": "2026-11-10T14:28:50.993543+00:00",
       "resolved": false,
       "resolved_at": null
+    },
+    {
+      "id": 28,
+      "kind": "stalled",
+      "summary": "ProductOwner overrode the 'Development'-phase gate to call advance_story_stage after being refused once.",
+      "detail": "args: {\"stage\": \"Ready\", \"title_or_id\": \"US-0012\"}",
+      "created_at": "2026-11-10T14:28:51.435803+00:00",
+      "resolved": false,
+      "resolved_at": null
     }
   ],
   "overclaim_rejection_counts": {},
