@@ -191,7 +191,15 @@
         "Given active running jobs in the cluster, When the admin views the Job Pipeline view, Then each job's live state (Queued, Running, Succeeded, Failed) and execution duration are dynamically updated."
       ],
       "version": "v0.2",
-      "notes": "Allows operators to submit jobs with governance constraints and monitor real-time execution alongside energy and cost ROI."
+      "notes": "Allows operators to submit jobs with governance constraints and monitor real-time execution alongside energy and cost ROI.",
+      "blocked": {
+        "question": "git checkout develop is failing because an untracked working tree file `pytest.ini` would be overwritten. This is blocking the creation of the sprint backlog PR. Please resolve the untracked file conflict.",
+        "category": "technical",
+        "raised_by": "ProductOwner",
+        "raised_at_stage": "Ready",
+        "escalated_to_user": false,
+        "blocking_interaction_id": 21
+      }
     },
     {
       "id": "EP-0005",
