@@ -248,14 +248,17 @@
       "id": "US-0011",
       "type": "User Story",
       "title": "Smart Plug Telemetry Collector for Shelly and Tapo",
-      "status": "Ready",
+      "status": "Draft",
       "priority": "Could",
       "user_story": "As an energy efficiency researcher, I want the Control Server to collect real-time wattage data from smart plugs connected to client laptops, so that energy consumption during jobs is accurately monitored.",
       "acceptance_criteria": [
         "Given a configured smart plug IP and credentials (Shelly Gen2 / Tapo P110), When the Control Server queries the smart plug API, Then it successfully reads instantaneous power (Watts) and cumulative energy (kWh).",
         "Given mapped smart plugs to node IDs, When power metrics are collected periodically, Then the Control Server records timestamped power telemetry in the node metrics store."
       ],
-      "version": "v0.2"
+      "version": "v0.2",
+      "stages_completed": [
+        "Draft"
+      ]
     },
     {
       "id": "ISSUE-0011",
