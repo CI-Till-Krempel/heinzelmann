@@ -92,25 +92,25 @@ Stories
   - [x] READY
   - [x] IMPLEMENTED
   - [x] REVIEWED
-  - [ ] TESTED
-  - [ ] ACCEPTED
+  - [x] TESTED
+  - [x] ACCEPTED
 - [US-0009] Admin Dashboard Job Submission and Status Pipeline View
-  - [ ] DRAFT
-  - [ ] READY
-  - [ ] IMPLEMENTED
+  - [x] DRAFT
+  - [x] READY
+  - [x] IMPLEMENTED
   - [ ] REVIEWED
   - [ ] TESTED
   - [ ] ACCEPTED
 - [US-0012] Energy Consumption Correlation and Reporting per Job
-  - [ ] DRAFT
-  - [ ] READY
+  - [x] DRAFT
+  - [x] READY
   - [ ] IMPLEMENTED
   - [ ] REVIEWED
   - [ ] TESTED
   - [ ] ACCEPTED
 - [US-0011] Smart Plug Telemetry Collector for Shelly and Tapo
-  - [ ] DRAFT
-  - [ ] READY
+  - [x] DRAFT
+  - [x] READY
   - [ ] IMPLEMENTED
   - [ ] REVIEWED
   - [ ] TESTED
