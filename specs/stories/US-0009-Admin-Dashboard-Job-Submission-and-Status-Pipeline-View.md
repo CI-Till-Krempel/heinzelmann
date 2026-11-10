@@ -2,7 +2,7 @@
 
 - Story ID: US-0009
 - Title: Admin Dashboard Job Submission and Status Pipeline View
-- Status: Implemented
+- Status: Reviewed
 - Priority: Should
 - Owner: Scrum Team
 - Last Updated: 2026-11-10
