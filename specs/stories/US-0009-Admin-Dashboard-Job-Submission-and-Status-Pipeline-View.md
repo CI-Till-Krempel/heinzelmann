@@ -17,4 +17,10 @@
 
 
 ## Test Approach
+Unit testing for ViewModel, manual UI checks.
 
+### Tasks
+- Build Job Submission form view in Compose for Desktop
+- Connect form to POST /api/jobs Control Server endpoint
+- Build Job Pipeline data table with status indicators
+- Add unit tests for Job Submission ViewModel
