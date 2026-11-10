@@ -2,7 +2,7 @@
 
 - Story ID: US-0009
 - Title: Admin Dashboard Job Submission and Status Pipeline View
-- Status: Ready
+- Status: Reviewed
 - Priority: Should
 - Owner: Scrum Team
 - Last Updated: 2026-11-10
@@ -15,6 +15,13 @@
 
 ## Notes
 
+- ⚠️ REVIEW DENIED at Tested by QA: The `gradlew` script lacks execute permissions, causing a "Permission denied" error when the pipeline attempts to run the tests. Please ensure the script is made executable (`chmod +x gradlew` and commit the file mode change).
 
 ## Test Approach
+Unit testing for ViewModel, manual UI checks.
 
+### Tasks
+- Build Job Submission form view in Compose for Desktop
+- Connect form to POST /api/jobs Control Server endpoint
+- Build Job Pipeline data table with status indicators
+- Add unit tests for Job Submission ViewModel
