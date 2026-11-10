@@ -341,7 +341,7 @@
   "sprint_number": 5,
   "sprint_backlog_pr_sprint": 3,
   "sprint_backlog_pr_opened": true,
-  "planning_output_commit_count": 16,
+  "planning_output_commit_count": 17,
   "sprint_backlog_pr_content_baseline": 10,
   "sprint_backlog": [
     {
@@ -551,17 +551,25 @@
       "decision": "Declared backlog scope complete via declare_backlog_scope_complete",
       "rationale": "The remaining scope of v0.2 is explicitly bounded to the four remaining core stories: US-0010 (Governance and Scheduling), US-0006 (Dashboard Node Status & Governance), US-0009 (Dashboard Pipeline & ROI), and US-0012 (OS Power & Energy Reporting). Physical IoT smart plug stories (US-0011) have been deferred per stakeholder alignment. Additional filler stories would violate ISSUE-0046.",
       "owner": "ProductOwner"
+    },
+    {
+      "title": "Local-only develop progress could not be auto-reconciled with origin",
+      "decision": "Preserved the pre-reset local tip (e7f444ef) as branch 'rescued-develop-e7f444ef' (pushed) before develop was reset to origin/develop.",
+      "rationale": "SPEC-ISSUE-0050: a real merge conflict between local-only progress (e.g. a story's own stage-transition state) and origin's own newer commits couldn't be auto-resolved safely - see the rescue branch to recover it by hand.",
+      "owner": "system"
     }
   ],
   "sprint_report": "",
   "budgets": {
     "total": 5000000,
     "total_usd": 50.0,
-    "current_usd_spend": 0.07308300000000001
+    "current_usd_spend": 0.154817
   },
   "token_usage": {
-    "total": 0,
-    "agents": {}
+    "total": 47603,
+    "agents": {
+      "ProductOwner": 47603
+    }
   },
   "story_estimates": {
     "US-0010": {
@@ -908,6 +916,15 @@
       "summary": "Orchestrator has replied 3 times in a row without calling any tool.",
       "detail": "Check the chat - it may be waiting on something, or just talking instead of acting.",
       "created_at": "2026-11-06T13:20:55.431387+00:00",
+      "resolved": false,
+      "resolved_at": null
+    },
+    {
+      "id": 21,
+      "kind": "blocked_story",
+      "summary": "'US-0009' is BLOCKED (technical): git checkout develop is failing because an untracked working tree file `pytest.ini` would be overwritten. This is blocking the creation of the sprint backlog PR. Please resolve the untracked file conflict.",
+      "detail": "Raised by ProductOwner. Resolve via Architect's resolve_story_blocker('US-0009', resolution).",
+      "created_at": "2026-11-10T09:55:18.166734+00:00",
       "resolved": false,
       "resolved_at": null
     }
