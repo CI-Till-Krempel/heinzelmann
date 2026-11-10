@@ -198,7 +198,13 @@
         "Ready",
         "Implemented",
         "Reviewed"
-      ]
+      ],
+      "review_denial": {
+        "stage": "Tested",
+        "reason": "The test suite failed to execute because there is no Gradle wrapper (`gradlew`) committed in the repository. Please commit the `gradlew` script and `gradle/wrapper/gradle-wrapper.jar` so the tests can run on CI.",
+        "by": "QA",
+        "review_count_at_denial": 7
+      }
     },
     {
       "id": "EP-0005",
@@ -356,7 +362,7 @@
   "sprint_number": 5,
   "sprint_backlog_pr_sprint": 5,
   "sprint_backlog_pr_opened": true,
-  "planning_output_commit_count": 19,
+  "planning_output_commit_count": 20,
   "sprint_backlog_pr_content_baseline": 18,
   "sprint_backlog": [
     {
@@ -394,7 +400,13 @@
         "Ready",
         "Implemented",
         "Reviewed"
-      ]
+      ],
+      "review_denial": {
+        "stage": "Tested",
+        "reason": "The test suite failed to execute because there is no Gradle wrapper (`gradlew`) committed in the repository. Please commit the `gradlew` script and `gradle/wrapper/gradle-wrapper.jar` so the tests can run on CI.",
+        "by": "QA",
+        "review_count_at_denial": 7
+      }
     }
   ],
   "impediment_log": [
@@ -476,17 +488,17 @@
   "budgets": {
     "total": 5000000,
     "total_usd": 50.0,
-    "current_usd_spend": 1.2912386
+    "current_usd_spend": 1.4346516
   },
   "token_usage": {
-    "total": 1933362,
+    "total": 2088225,
     "agents": {
       "ScrumMaster": 83492,
       "ProductOwner": 540432,
       "ScrumOrchestrator": 66292,
-      "Architect": 142327,
+      "Architect": 182089,
       "DevTeam": 1137239,
-      "QA": 21257
+      "QA": 136358
     }
   },
   "story_estimates": {
@@ -780,6 +792,8 @@
   ],
   "source_content_change_count": 12,
   "last_check_build": {
+    "checked": null,
+    "passing": null,
     "manifest_write_count_at_check": 0
   },
   "last_pr_checks": {
@@ -789,7 +803,7 @@
   "git_push_count": 6,
   "pr_review_calls": {
     "Architect": 6,
-    "QA": 6,
+    "QA": 7,
     "DevTeam": 4
   },
   "architect_review_baseline": 6,
