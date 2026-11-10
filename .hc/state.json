@@ -183,7 +183,7 @@
       "id": "US-0009",
       "type": "User Story",
       "title": "Admin Dashboard Job Submission and Status Pipeline View",
-      "status": "Ready",
+      "status": "Draft",
       "priority": "Should",
       "user_story": "As an IT administrator, I want a Compose for Desktop UI to submit batch job configurations and view active job progress in real time, so that I can manage and monitor cluster workload execution.",
       "acceptance_criteria": [
@@ -192,7 +192,10 @@
       ],
       "version": "v0.2",
       "notes": "Allows operators to submit jobs with governance constraints and monitor real-time execution alongside energy and cost ROI.",
-      "blocked": null
+      "blocked": null,
+      "stages_completed": [
+        "Draft"
+      ]
     },
     {
       "id": "EP-0005",
@@ -349,7 +352,7 @@
       "id": "US-0009",
       "type": "User Story",
       "title": "Admin Dashboard Job Submission and Status Pipeline View",
-      "status": "Ready",
+      "status": "Draft",
       "priority": "Should",
       "user_story": "As an IT administrator, I want a Compose for Desktop UI to submit batch job configurations and view active job progress in real time, so that I can manage and monitor cluster workload execution.",
       "acceptance_criteria": [
@@ -374,7 +377,10 @@
       ],
       "test_approach": "Unit testing for ViewModel, manual UI checks.",
       "risks_assumptions": "Assumes Control Server POST /api/jobs and GET /api/jobs already exist.",
-      "approach": "Add a job submission form and pipeline data table to Compose for Desktop Admin Dashboard. Connect it to the Control Server /api/jobs endpoints."
+      "approach": "Add a job submission form and pipeline data table to Compose for Desktop Admin Dashboard. Connect it to the Control Server /api/jobs endpoints.",
+      "stages_completed": [
+        "Draft"
+      ]
     }
   ],
   "impediment_log": [
